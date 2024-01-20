@@ -1,0 +1,23 @@
+.keyboard {
+    width: 95%;
+    max-width: 1260px;
+    aspect-ratio: 126 / 39;
+    display: flex;
+}
+
+$w-key-width: 4.7619%;
+.w-key {
+    background-color: white;
+    border: black 1px solid;
+    width: $w-key-width;
+    height: 100%;
+}
+
+$b-key-width: 2.5%;
+.b-key {
+    background-color: black;
+    width: $b-key-width;
+    height: 54%;
+    margin: 0% calc($b-key-width / -2);
+    position: relative;
+}
