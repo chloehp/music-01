@@ -2,25 +2,22 @@ import './kb.scss';
 import WKey from "./w-key";
 import BKey from "./b-key";
 
-export default function Keyboard() {    
-    //function keyPress(note) {
-    let keyPress = function(note){
-        console.log("keypress note: " + note);
-    }
+export default function Keyboard(props) {    
+
     return (      
         <div className='keyboard'>
-            <WKey func={keyPress} note={"F"}/>
-                <BKey func={keyPress} note={"F*"}/>
-            <WKey func={keyPress} note={"G"}/>
-                <BKey func={keyPress} note={"G*"}/>
-            <WKey func={keyPress} note={"A"}/>
-                <BKey func={keyPress} note={"A*"}/>
-            <WKey func={keyPress} note={"B"}/>
-            <WKey func={keyPress} note={"C"}/>
-                <BKey func={keyPress} note={"C*"}/>
-            <WKey func={keyPress} note={"D"}/>
-                <BKey func={keyPress} note={"D*"}/>
-            <WKey func={keyPress} note={"E"}/>
+            <WKey func={props.keyPress} note={"F"} React={props.React}/>
+                <BKey func={props.keyPress} note={"F#"} React={props.React}/>
+            <WKey func={props.keyPress} note={"G"} React={props.React}/>
+                <BKey func={props.keyPress} note={"G#"} React={props.React}/>
+            <WKey func={props.keyPress} note={"A"} React={props.React}/>
+                <BKey func={props.keyPress} note={"A#"} React={props.React}/>
+            <WKey func={props.keyPress} note={"B"} React={props.React}/>
+            <WKey func={props.keyPress} note={"C"} React={props.React}/>
+                <BKey func={props.keyPress} note={"C#"} React={props.React}/>
+            <WKey func={props.keyPress} note={"D"} React={props.React}/>
+                <BKey func={props.keyPress} note={"D#"} React={props.React}/>
+            <WKey func={props.keyPress} note={"E"} React={props.React}/>
         </div>
     );
 }

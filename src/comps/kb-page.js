@@ -1,11 +1,10 @@
 
 import Keyboard from "./kb/keyboard";
 
-export default function KbPage() {
+export default function KbPage(props) {
     return (      
         <div className='kb-page'>
-            <p>aaaa</p>
-            <Keyboard />
+            <Keyboard keyPress={props.keyPress} React={props.React}/>
         </div>
     );
  }
