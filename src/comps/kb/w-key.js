@@ -4,7 +4,10 @@ export default function WKey(props) {
     
     return (      
         <div className='w-key' 
-        onMouseDown={() => props.func(props.note, props.React.createRef())}
+        onMouseDown={() => props.keyPress(props.note)}
+        onMouseUp={() => props.keyRelease(props.note)}
+        onMouseLeave={() => props.keyRelease(props.note)}
+        id={props.note}
         >
             {props.note}
         </div>

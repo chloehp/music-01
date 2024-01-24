@@ -11,6 +11,9 @@ $w-key-width: 4.7619%;
     border: black 1px solid;
     width: $w-key-width;
     height: 100%;
+    z-index: 90;
+    color: black;
+    filter: contrast(1);
 }
 
 $b-key-width: 2.5%;
@@ -20,4 +23,7 @@ $b-key-width: 2.5%;
     height: 54%;
     margin: 0% calc($b-key-width / -2);
     position: relative;
+    z-index: 100;
+    color: white;
+    filter: contrast(1);
 }

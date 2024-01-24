@@ -1,28 +1,40 @@
 import './App.scss';
 import * as Tone from "tone";
-//import React, { Component } from "react";
+//import { useRef } from 'react';
 import KbPage from "./comps/kb-page";
-import React from 'react';
 
 function App() {
   
+  const activeNotes = [];
+  const activeTones = [];
+  const now = Tone.now();  
 
-  let playNote = function(note, element){
-    //console.log("keypress note: " + note);
-    //let element = useRef(null);
-    console.log(element.myRef.current);
-    get
+  let attackNote = function(note){
+    if (activeNotes.indexOf(note) === -1){
+      activeNotes.push(note);
+      activeTones.push(new Tone.Synth().toDestination());
+      activeTones[activeNotes.length - 1].triggerAttack(note + "4");
+    }
+    displayNote();
+  }
+  let releaseNote = function(note){
+    const thisNoteIndex = activeNotes.indexOf(note);
+    if (thisNoteIndex !== -1){
+      activeTones[thisNoteIndex].triggerRelease(now);
 
-    const synth = new Tone.Synth().toDestination();
-    const now = Tone.now();
-
-    synth.triggerAttack(note + "4");
-    window.onmouseup = function(){synth.triggerRelease(now)}
+      activeNotes.splice(thisNoteIndex, 1);
+      activeTones.splice(thisNoteIndex, 1);
+    }
+    displayNote();
+  }
+  let displayNote = function(){
+    document.getElementById("note-displayer").innerText = activeNotes;
   }
 
   return (
-    <div className="App">
-      <KbPage keyPress={playNote} React={React}/>
+    <div className="App" >
+      <KbPage keyPress={attackNote} keyRelease={releaseNote}/>
+      <p id='note-displayer'></p>
     </div>
   );
 }

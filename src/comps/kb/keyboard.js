@@ -6,18 +6,18 @@ export default function Keyboard(props) {
 
     return (      
         <div className='keyboard'>
-            <WKey func={props.keyPress} note={"F"} React={props.React}/>
-                <BKey func={props.keyPress} note={"F#"} React={props.React}/>
-            <WKey func={props.keyPress} note={"G"} React={props.React}/>
-                <BKey func={props.keyPress} note={"G#"} React={props.React}/>
-            <WKey func={props.keyPress} note={"A"} React={props.React}/>
-                <BKey func={props.keyPress} note={"A#"} React={props.React}/>
-            <WKey func={props.keyPress} note={"B"} React={props.React}/>
-            <WKey func={props.keyPress} note={"C"} React={props.React}/>
-                <BKey func={props.keyPress} note={"C#"} React={props.React}/>
-            <WKey func={props.keyPress} note={"D"} React={props.React}/>
-                <BKey func={props.keyPress} note={"D#"} React={props.React}/>
-            <WKey func={props.keyPress} note={"E"} React={props.React}/>
+            <WKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"C"}/>
+            <BKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"C#"}/>
+            <WKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"D"}/>
+            <BKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"D#"}/>
+            <WKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"E"}/>
+            <WKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"F"}/>
+            <BKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"F#"}/>
+            <WKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"G"}/>
+            <BKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"G#"}/>
+            <WKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"A"}/>
+            <BKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"A#"}/>
+            <WKey keyPress={props.keyPress} keyRelease={props.keyRelease} note={"B"}/>
         </div>
     );
 }
