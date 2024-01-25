@@ -50,6 +50,7 @@ function App() {
   }
 
   let hitLatency = 0.03; //control for performance
+  //try turning this into global.attackNote to clean props
   let attackNote = function(note){ 
     if (activeNotes.indexOf(note) === -1){
       let instrument = new Tone.Synth().toDestination(); //instrument choice
