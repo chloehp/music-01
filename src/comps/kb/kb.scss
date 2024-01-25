@@ -1,29 +1,44 @@
 .keyboard {
-    width: 95%;
+    width: 98%;
     max-width: 1260px;
-    aspect-ratio: 126 / 39;
+    aspect-ratio: 126/39;
     display: flex;
+    justify-content: center;
+    margin: auto;
+    border-right: #798E6D 1px solid;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 $w-key-width: 4.7619%;
 .w-key {
-    background-color: white;
-    border: black 1px solid;
+    background-color: #E1F0DA;
+    border-left: #798E6D 1px solid;
     width: $w-key-width;
     height: 100%;
     z-index: 90;
     color: black;
     filter: contrast(1);
+    @media (max-width: 300px){font-size: 0;}
 }
 
 $b-key-width: 2.5%;
 .b-key {
-    background-color: black;
+    background-color: #41473C;
     width: $b-key-width;
     height: 54%;
     margin: 0% calc($b-key-width / -2);
     position: relative;
     z-index: 100;
     color: white;
-    filter: contrast(1);
+    filter: contrast(1);    
+
+    @media (max-width: 990px){font-size: 0;}
+}
+
+.key-note {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
 }
