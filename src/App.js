@@ -2,7 +2,7 @@ import './App.scss';
 import * as Tone from "tone";
 //import { useRef } from 'react';
 //import React, { useState } from 'react'; 
-import KbPage from "./comps/kb-page";
+import Keyboard from "./kb/keyboard";
 
 function App() {  
   const activeNotes = [];
@@ -80,10 +80,11 @@ function App() {
 
   return (
     <div className="App">
-      <KbPage keyPress={attackNote} keyRelease={releaseNote}/>
+      <Keyboard keyPress={attackNote} keyRelease={releaseNote}/>
       <p id='note-displayer'></p>
     </div>
   );
 }
 
 export default App;
+//
