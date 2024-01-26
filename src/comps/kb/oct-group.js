@@ -5,7 +5,7 @@ import BKey from "./b-key";
 export default function OctGroup(props) {    
 
     return (      
-        <div className='oct-group'>
+        <div className='keyboard--oct-group'>
             <WKey   keyPress={props.keyPress}   keyRelease={props.keyRelease}   note={"C" + props.octave}/>
             <BKey   keyPress={props.keyPress}   keyRelease={props.keyRelease}   note={"C#" + props.octave}/>
             <WKey   keyPress={props.keyPress}   keyRelease={props.keyRelease}   note={"D" + props.octave}/>

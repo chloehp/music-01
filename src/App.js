@@ -2,7 +2,7 @@ import './App.scss';
 import * as Tone from "tone";
 //import { useRef } from 'react';
 //import React, { useState } from 'react'; 
-import Keyboard from "./kb/keyboard";
+import KbPage from "./comps/kb-page";
 
 function App() {  
   const activeNotes = [];
@@ -44,6 +44,17 @@ function App() {
       case "y": return "A" + (oct + 1);
       case "7": return "A#" + (oct + 1);
       case "u": return "B" + (oct + 1);
+      
+      case "i": return "C" + (oct + 2);
+      case "9": return "C#" + (oct + 2);
+      case "o": return "D" + (oct + 2);
+      case "0": return "D#" + (oct + 2);
+      case "p": return "E" + (oct + 2);
+      case "[": return "F" + (oct + 2);
+      case "=": return "F#" + (oct + 2);
+      case "]": return "G" + (oct + 2);
+      case "Backspace": return "G#" + (oct + 2);
+      case "#": return "A" + (oct + 2);
 
       default: return false;
     }
@@ -80,7 +91,7 @@ function App() {
 
   return (
     <div className="App">
-      <Keyboard keyPress={attackNote} keyRelease={releaseNote}/>
+      <KbPage keyPress={attackNote} keyRelease={releaseNote}/>
       <p id='note-displayer'></p>
     </div>
   );

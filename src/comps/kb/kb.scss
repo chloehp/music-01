@@ -1,38 +1,40 @@
 .keyboard {
     width: 98%;
-    max-width: 1260px;
-    aspect-ratio: 126/39;
+    aspect-ratio: 126/39;  
+    bottom: 1%; left: 1%;
+    position: absolute;
     display: flex;
-    justify-content: center;
-    margin: auto;
-    border-right: #798E6D 1px solid;
+    border-right: #798E6D 2px solid; border-top: #798E6D 1px solid; border-bottom: #798E6D 1px solid;
+    font-size: 0; //removes text
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    &--oct-group {
+        width: 100%;
+        display: flex;
+    }
 }
 
-$w-key-width: 4.7619%;
+$w-key-width: calc(100% / 7);
 .w-key {
     background-color: #E1F0DA;
-    border-left: #798E6D 1px solid;
-    width: $w-key-width;
-    height: 100%;
+    border-left: #798E6D 2px solid;
+    width: $w-key-width; height: 100%;
     z-index: 90;
     color: black;
     filter: contrast(1);
     @media (max-width: 300px){font-size: 0;}
 }
 
-$b-key-width: 2.5%;
+$b-key-width: 8.4%;
 .b-key {
     background-color: #41473C;
-    width: $b-key-width;
-    height: 54%;
+    width: $b-key-width; height: 54%;
     margin: 0% calc($b-key-width / -2);
     position: relative;
     z-index: 100;
     color: white;
     filter: contrast(1);    
-
-    @media (max-width: 990px){font-size: 0;}
+    @media (max-width: 960px){font-size: 0;}
 }
 
 .key-note {

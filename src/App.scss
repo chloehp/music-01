@@ -1,11 +1,57 @@
 .App {
-  background-color: #BFD8AF;
+  background-color: #8ea781;
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-
+  top: 0;  left: 0;
+  height: 100%;  width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.kb-page {
+  width: 100%;
+  max-width: 1530px;
+  background-color: #BFD8AF;
+  position: relative;
+  overflow: hidden;
+  
+  &--cob {
+    background-color: #899D7E;
+    border-radius: 30px;
+    position: absolute;
+  }
+  #kbcob-0 {
+    width: 45%; height: 70%;
+    left: -31%; top: -30%;
+  }
+  #kbcob-1 {
+    width: 30%; height: 54%;
+    left: 18%; top: 18%;
+  }
+  #kbcob-2 {
+    width: 33%; height: 27%;
+    right: 15%; top: 18%;
+  }
+  $kbcm-posX: 3%; $kbcm-size: 8%;
+  #kbcob-m-0 {
+    width: $kbcm-size; 
+    aspect-ratio: 1/1;
+    right: $kbcm-posX; top: 2%;
+  }
+  #kbcob-m-1 {
+    width: $kbcm-size; 
+    aspect-ratio: 1/1;
+    right: $kbcm-posX; top: 17%;
+  }
+  #kbcob-m-2 {
+    width: $kbcm-size; 
+    aspect-ratio: 1/1;
+    right: $kbcm-posX; top: 32%;
+  }
+}
+
+#note-displayer {
+  position: absolute;
+  top: 6%;  left: 0;
+  width: 100%;
+  text-align: center;
 }
