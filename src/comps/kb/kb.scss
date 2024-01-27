@@ -4,9 +4,11 @@
     bottom: 1%; left: 1%;
     position: absolute;
     display: flex;
-    border-right: #798E6D 2px solid; border-top: #798E6D 1px solid; border-bottom: #798E6D 1px solid;
+    border-right: #798E6D 2px solid; //border-top: #798E6D 1px solid; border-bottom: #798E6D 1px solid;
     font-size: 0; //removes text
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 30px;
+    overflow: hidden;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.36));
 
     &--oct-group {
         width: 100%;
