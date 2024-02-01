@@ -1,4 +1,4 @@
-
+//NOT IN USE
 import * as Tone from "tone";
 
 const instrument = new Tone.Synth().toDestination();

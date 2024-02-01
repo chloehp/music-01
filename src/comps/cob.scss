@@ -1,0 +1,92 @@
+.smallplayer{
+  position: absolute;
+  width: 24%;
+  aspect-ratio: 1/1;
+  background-color: #41473C;
+  color: #899D7E;
+  border-radius: 30%;
+  cursor: pointer;
+}
+.back-button{
+  left: 12%;
+  top: 9%;
+}
+.play-button{
+  left: 38%;
+  top: 9%;
+}
+.forw-button{
+  right: 12%;
+  top: 9%;
+}
+  
+.kb-page--cob {
+  background-color: #899D7E;
+  border-radius: 30px;
+  position: absolute;
+  z-index: 60;
+  transition: all 600ms;
+  overflow: hidden;
+  
+
+  &--octave {
+    position: absolute;
+    left: 0;
+    width: 100%; height: 39%;
+  }
+  &--octave:hover {background-color: #798E6D;}
+  &--octave:active {scale: 1.5;}
+}
+#kbcob-0 {
+  width: 45%; height: 70%;
+  left: -30%; top: -30%;
+}
+#kbcob-0.hide {left: -75%;}
+#kbcob-1 {
+  width: 30%; height: 54%;
+  left: 18%; top: 18%;
+}
+#kbcob-1.hide {
+opacity: 0;
+pointer-events: none;
+}
+#kbcob-2 {
+  width: 36%; height: 27%;
+  left: 51%; top: 18%;
+}
+#kbcob-2.hide {
+opacity: 0;
+pointer-events: none;
+}
+
+.kb-page--cob.cobm {
+    width: 8%; 
+    aspect-ratio: 1/1;
+    left: 90%;
+    transition: all ease-in-out 630ms 120ms;  
+    z-index: 120;
+    cursor: pointer;
+}
+.kb-page--cob.cobm.trak {
+    animation: x-trak 900ms cubic-bezier( 0.24, 0.1, 0.15, 1 ) forwards;//
+}
+.kb-page--cob.cobm.ogkb {
+    animation: x-kb 900ms cubic-bezier( 0.24, 0.1, 0.15, 1 ) forwards;//
+}
+#kbcob-m-0       {top: 2%;}
+#kbcob-m-0.trak {top: 72%;}
+#kbcob-m-1       {top: 17%;}
+#kbcob-m-1.trak {top: 57%;}
+#kbcob-m-2       {top: 32%;}
+#kbcob-m-2.trak {top: 42%;}
+
+.cobtainer {transition: opacity 750ms;}
+
+@keyframes x-trak {
+  from {left: 90%;}
+  to {left: 3%;}
+}
+@keyframes x-kb {
+  from {left: 3%;}
+  to {left: 90%;}
+}
