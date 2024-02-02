@@ -6,7 +6,7 @@ const options = {
   recordAdd : true,
   
   //track options
-  noteLength : 300,
+  noteLength : 600,
   trackSelection : 0,
   trackhead : 0,
   instrumentSelect : 0,

@@ -8,23 +8,22 @@ import tr from '../func/tracks';
 import Track from './track';
 
 export default function Tracker(props) {    
-    const firstTrackObject = { track : 0, instruments : [0], effects : []}
+    const firstTrackObject = { trackno : 0 }
     const [trCompsAr, setTracks] = useState([firstTrackObject])
 
     function addTrack() {
-        tr.newTrack();
-        const newTrackNo = tr.tracks.length;
-        const newTrackObject = { track : newTrackNo, instruments : [options.instrumentSelect], effects : []};
+        tr.newTrack();                                                  // adds mew track array, changes trackSelection to new track
+        const newTrackObject = { trackno : options.trackSelection };    //
         setTracks([...trCompsAr, newTrackObject]);
-
-        options.trackSelection = newTrackNo;
+        
         console.log("track added");
+        console.log(options.trackSelection);
     }
 
     return (      
         <div ref={props.trackRef} className='tracker hide'>
             <div className='fill' style={{display: "flex"}}>
-                {trCompsAr.map((x) => ( <Track track={x.track} instruments={x.instruments} effects={x.effects} />))}
+                {trCompsAr.map((x) => ( <Track trackno={x.trackno} />))}
                 <div className='add-new'><div className='add-new--a clicker' onClick={addTrack}><p className='add-new--a--plus center'>+</p></div></div>
             </div>
         </div>
