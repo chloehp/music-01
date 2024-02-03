@@ -48,22 +48,22 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
 
+            $row-width: 45px;
             &--row {
-                width: 45px; height: 15px;
+                width: $row-width; height: 14px;
                 border-bottom: 1px solid #41473C;
-                position: relative;
-
-                &--point {
-                    position: absolute;
-                    left: 0; top: 0;
-                    width: 100%;
-                    background-color: #BFD8AF;
-                    border-radius: 9px;
-                    text-align: center;
-                    z-index: 90;
-                    //-webkit-user-drag: element;
-                }
+            }
+            &--point {
+                position: absolute;
+                width: $row-width;
+                background-color: #BFD8AF;
+                border-radius: 9px;
+                text-align: center;
+                z-index: 90;
+                overflow: hidden;
+                //-webkit-user-drag: element;
             }
         }
     }
