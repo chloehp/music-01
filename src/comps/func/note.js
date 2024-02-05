@@ -32,30 +32,32 @@ function displayNote(){
 
 const note = {
   //
-  attackNote : function(note, hL = options.hitLatency){ 
-    for (let i = 0; i < activeNotes.length; i++) {if (activeNotes[i].n === note) {return}}  // check if note is already being played, return if true
+  attackNote : function(playNote, hL = options.hitLatency){ 
+    for (let i = 0; i < activeNotes.length; i++) {if (activeNotes[i].n === playNote) {return}}  // check if note is already being played, return if true
     const startTime = ((new Date()) - recordStartTime);           // start time
-    activeNotes.push({n : note, t : startTime, p : activeNotes.length});                  // push to array
-    instrument.triggerAttack(note, now + hL);                                 // attack note
-    document.getElementById("kk-" + note).style.filter = "contrast(0.3)";     // visual press key
+    activeNotes.push({n : playNote, t : startTime, p : activeNotes.length});                  // push to array
+    instrument.triggerAttack(playNote, now + hL);                                 // attack note
+    document.getElementById("kk-" + playNote).style.filter = "contrast(0.3)";     // visual press key
     //console.log("attack note");
     displayNote();
   },
   //
-  releaseNote : function(note, hL = options.hitLatency){ 
+  releaseNote : function(playNote, hL = options.hitLatency){ 
     for (let i = 0; i < activeNotes.length; i++) {
-      if (activeNotes[i].n === note) {
-        instrument.triggerRelease(note, now + hL);                      // release note 
+      if (activeNotes[i].n === playNote) {
+        instrument.triggerRelease(playNote, now + hL);                      // release note 
         if (record) {                                                   // if recording
-          const identifier = track.length + "-id-" + Math.floor(Math.random() * 1000);
+          const nowTime = (new Date()) - recordStartTime;
+          if ((nowTime / b32) > options.trackLength) {note.recordGo(); return}            // if reached track length, stop recording
+          const identifier = track.length + "-id-" + Math.floor(Math.random() * 1000);  // make new id
           //const identifier = Math.random();
           const startTime = activeNotes[i].t / b32;
-          const noteLength = (((new Date()) - recordStartTime) - activeNotes[i].t) / b32;                                                                     // note length is difference between now and when note was pressed, divided by 1/64th note
-          const newPoint = {id : identifier, note : note, start : startTime, len : noteLength, ins : options.instrumentSelect, eff : effect, on : false, pos : activeNotes[i].p};  // create object to be recorded
+          const noteLength = (nowTime - activeNotes[i].t) / b32;                                                                     // note length is difference between now and when note was pressed, divided by 1/64th note
+          const newPoint = {id : identifier, n : playNote, start : startTime, len : noteLength, ins : options.instrumentSelect, eff : effect, on : false, pos : activeNotes[i].p};  // create object to be recorded
           track.push(newPoint);       // push object to array
         }
         activeNotes.splice(i, 1);                                           // remove from array
-        document.getElementById("kk-" + note).style.filter = "contrast(1)"; // visual press key
+        document.getElementById("kk-" + playNote).style.filter = "contrast(1)"; // visual press key
         displayNote(); 
       }
     }
@@ -69,12 +71,16 @@ const note = {
       console.log(tr.tracks[options.trackSelection]);
       record = false;
       trackFill(options.trackSelection);
+      document.getElementById("red-spot").classList.remove("r-s-on");
+      console.log("recording stopped");
     }
     else {
       track = tr.tracks[options.trackSelection];
       options.trackhead = 0;  
       recordStartTime = new Date(); 
       record = true;
+      document.getElementById("red-spot").classList.add("r-s-on");
+      console.log("recording started");
     }
   },
   //
@@ -108,6 +114,7 @@ const note = {
   playTrack : function(track) {
     const timeNow = (((new Date()) - recordStartTime) / b32);
     pausePoint = timeNow * b32;
+    if (timeNow > options.trackLength) {note.trackReset(); return}            // if reached track length, stop recording
     //console.log(timeNow);
     const trackLen = track.length;
     for (let y = 0; y < trackLen; y++) {
@@ -116,10 +123,10 @@ const note = {
           track[y].on = true;
           const useInstr = instrumentSwitch(track[y].ins);                            // get instrument
           const noteLen = (track[y].len * b32);                                         // multiplied by 1/32nd note
-          useInstr.triggerAttack(track[y].note, now + 0.3);                                    // attack note
+          useInstr.triggerAttack(track[y].n, now + 0.3);                                    // attack note
           // eslint-disable-next-line
           setTimeout(function(){
-            useInstr.triggerRelease(track[y].note, now + 0.3)
+            useInstr.triggerRelease(track[y].n, now + 0.3)
             track[y].on = false;
           }, noteLen)   // release note   
         }
@@ -128,5 +135,7 @@ const note = {
   }
 
 }
+
+//console.log(note);
 
 export default note;

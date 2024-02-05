@@ -10,6 +10,6 @@ const options = {
   trackSelection : 0,
   trackhead : 0,
   instrumentSelect : 0,
+  trackLength : 150,
 }
-
 export default options;

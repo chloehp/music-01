@@ -8,9 +8,9 @@ export default function SmallPlayer(props) {
     //function trackHeadZero(){options.trackhead = 0};
     return (      
         <div>
-            <div className='smallplayer back-button' onClick={note.trackReset}><div className='center'>Back</div></div>
-            <div className='smallplayer play-button' onClick={note.playGo}><div className='center'>Play/Pause</div></div>
-            <div className='smallplayer forw-button'></div>
+            <div className='smallplayer clicker back-button' onMouseDown={note.trackReset}><div className='center'>Back</div></div>
+            <div className='smallplayer clicker play-button' onMouseDown={note.playGo}><div className='center'>Play/Pause</div></div>
+            <div className='smallplayer clicker rec-button'  onMouseDown={note.recordGo}><div id='red-spot' className='center'></div></div>
         </div>
     );
 }

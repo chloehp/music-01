@@ -4,12 +4,13 @@ import './cob.scss';
 //
 import { useRef } from 'react';
 //func
-import note from './func/note';
+//import note from './func/note';
 import options from './func/options';
 //pages
 import Keyboard from "./kb/keyboard";
 import Tracker from './track/tracker';
 import SmallPlayer from './small-player';
+import ScalesList from './scales-list';
 
 export default function KbPage(props) {    
     //refs
@@ -99,7 +100,7 @@ export default function KbPage(props) {
                     <div className='kb-page--cob--octave' style={{top: 0}}    onClick={() => changeOctave(options.octave + 1)}></div>
                     <div className='kb-page--cob--octave' style={{bottom: 0}} onClick={() => changeOctave(options.octave - 1)}></div>
                 </div>
-                <div ref={m2Ref} className='kb-page--cob cobm' id='kbcob-m-2' onClick={note.recordGo}><div className='red-spot center'></div></div>
+                <div ref={m2Ref} className='kb-page--cob cobm' id='kbcob-m-2'><ScalesList /></div>
             </div>
 
             <Keyboard kbRef={kbRef}/>

@@ -38,7 +38,7 @@ function trackFill(trackno = options.trackSelection) {
                     point.setAttribute("id", trackArray[z].id);
                     point.setAttribute("draggable", "true");
 
-                    point.innerHTML = trackArray[z].note;
+                    point.innerHTML = trackArray[z].n;
                     point.style.top = ((trackArray[z].start) * 15) + "px"; // position 
                     point.style.height = ((trackArray[z].len) * 15) + "px"; // height is note length, * 15 as each row (beat) is 15 px. i don't know why it needs to be divided by 3 but it 'just works' (???)
                     column.appendChild(point);      

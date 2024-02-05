@@ -15,16 +15,9 @@
   width: 100%; height: 100%;
 }
 
-.red-spot {
-  border-radius: 100%;
-  background-color: #a52121;
-  width: 54%;
-  aspect-ratio: 1/1;
-  transition: all 450ms;
-}
-.red-spot.r-s-on {
-  border-radius: 30%;
-  background-color: #000;
+.width-0 {
+  width: 0 !important;
+  margin: 0 !important;
 }
 
 .App {
