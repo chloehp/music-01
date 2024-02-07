@@ -20,11 +20,15 @@ export default function Tracker(props) {
         console.log(options.trackSelection);
     }
 
+    function addScroll() {document.getElementById("addNew").style.top = document.getElementById("wholeTracker").scrollTop + "px"}    
+
     return (      
-        <div ref={props.trackRef} className='tracker hide'>
+        <div ref={props.trackRef} onScroll={addScroll} id={"wholeTracker"} className='tracker hide'>
             <div className='fill' style={{display: "flex"}}>
                 {trCompsAr.map((x) => ( <Track trackno={x.trackno} />))}
-                <div className='add-new'><div className='add-new--a clicker' onClick={addTrack}><p className='add-new--a--plus center'>+</p></div></div>
+                <div className='add-new' id={"addNew"}>
+                    <div className='add-new--a clicker' onClick={addTrack}><p className='add-new--a--plus center'>+</p></div>
+                </div>
             </div>
         </div>
     );

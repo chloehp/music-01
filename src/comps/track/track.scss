@@ -49,6 +49,7 @@
             flex-direction: column;
             justify-content: center;
             position: relative;
+            touch-action: none;
 
             $row-width: 45px;
             &--row {
@@ -63,7 +64,16 @@
                 text-align: center;
                 z-index: 90;
                 overflow: hidden;
+                cursor: move;
                 //-webkit-user-drag: element;
+
+                &--btm {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%; height: 12px;
+                    cursor: n-resize;
+                    background-color: #94ab8c;
+                }
             }
         }
     }
@@ -79,6 +89,8 @@
     width: 18%;
     padding: 3%;
     flex-shrink: 0;
+    position: relative;
+    transition: top ease 300ms;
 
     &--a {
         width: 100%; height: 100%;
@@ -86,7 +98,7 @@
         background-color: #899D7E;
         filter: brightness(1);
         cursor: pointer;
-        //transition: all linear 60ms;
+        transition: all linear 60ms;
 
         &--plus {
             top: 48%;

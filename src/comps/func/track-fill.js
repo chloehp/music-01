@@ -3,8 +3,8 @@ import options from './options';
 import tr from './tracks';
 import dragElement from './dragdrop';
 
-function trackFill(trackno = options.trackSelection) {
-    console.log("print track " + trackno);
+function trackFill(trackno = options.trackSelection, roundBeats = true) {
+    //console.log("print track " + trackno);
     const trackEl = document.querySelectorAll(".track--track")[trackno];
     
     trackEl.innerHTML = null;
@@ -14,7 +14,8 @@ function trackFill(trackno = options.trackSelection) {
         const trackArray = tr.tracks[trackSel];
         const trackDetails = tr.evalTrackForDisplay(trackArray);
         console.log(trackDetails);
-        const trackLength = Math.ceil(trackDetails.trackLen);
+        console.log(trackArray);
+        const trackLength = options.trackLength || Math.ceil(trackDetails.trackLen);
 
         for (let x = 0; x < trackDetails.highActiveNotes; x++) { // active note columns
             if (x !== 0) {
@@ -32,28 +33,33 @@ function trackFill(trackno = options.trackSelection) {
                 column.appendChild(row);
             }
             for (let z = 0; z < trackArray.length; z++) { // notes
-                if (trackArray[z].pos === x) {
+                const trkPnt = trackArray[z];
+                if (trkPnt.pos === x) {
                     const point = document.createElement("div");
                     point.setAttribute("class", "track--track--column--point");
-                    point.setAttribute("id", trackArray[z].id);
-                    point.setAttribute("draggable", "true");
+                    point.setAttribute("id", trkPnt.id);
+                    if (roundBeats === true) {  // round the notes to the beat
+                        trkPnt.start = Math.round(trkPnt.start);
+                        trkPnt.len = Math.round(trkPnt.len);
+                    }
+                    if (trkPnt.pos < 0) {trkPnt.pos = 0}        // do not allow position below zero
+                    if (trkPnt.start < 0) {trkPnt.start = 0}    // do not allow start below zero
 
-                    point.innerHTML = trackArray[z].n;
-                    point.style.top = ((trackArray[z].start) * 15) + "px"; // position 
-                    point.style.height = ((trackArray[z].len) * 15) + "px"; // height is note length, * 15 as each row (beat) is 15 px. i don't know why it needs to be divided by 3 but it 'just works' (???)
+                    if (trkPnt.start > trackLength) {trkPnt.len = 0; trkPnt.start = 0}  // if all of the note is past notelength, get rid of
+                    else if (trkPnt.start + trkPnt.len > trackLength) {trkPnt.len += trackLength - (trkPnt.start + trkPnt.len)}   // if just part of the note is over, limit to track end
+
+                    point.innerHTML = trkPnt.n;
+                    point.style.top = ((trkPnt.start) * 15) + "px"; // position 
+                    point.style.height = ((trkPnt.len) * 15) + "px"; // height is note length, * 15 as each row (beat) is 15 px. i don't know why it needs to be divided by 3 but it 'just works' (???)
                     column.appendChild(point);      
                     
-                    //point.onmousedown = function(e){
-                    //    e = e || window.event;
-                    //    console.log(point.id);
-                    //    const mX = e.clientX; const mY = e.clientY;
-                    //    point.onmousedown = function(){
-                    //        const moveX = e.clientX - mX;
-                    //        const moveY = e.clientY - mY;
-                    //        console.log("move: X" + moveX + " Y" + moveY);
-                    //    }
-                    //}
-                    dragElement(point);
+                    const btm = document.createElement("div");
+                    btm.setAttribute("class", "track--track--column--point--btm");
+                    point.appendChild(btm);
+                    
+                    btm.onmousedown = function(){console.log(dragElement(point, true))};
+                    btm.onmouseup = function(){dragElement(point, false)};
+                    dragElement(point, false);
                 }           
             }
         }

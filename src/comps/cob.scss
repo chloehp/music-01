@@ -6,7 +6,10 @@
   color: #899D7E;
   border-radius: 30%;
   cursor: pointer;
+  transition: scale 300ms;
 }
+.smallplayer:hover {scale: 1.1;}
+.smallplayer.sp-bobble {animation: bobble 900ms;}
 .back-button{
   left: 12%;
   top: 9%;
@@ -19,6 +22,8 @@
   right: 12%;
   top: 9%;
 }
+
+
   
 .kb-page--cob {
   background-color: #899D7E;

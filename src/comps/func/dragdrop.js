@@ -1,15 +1,20 @@
+import tr from "./tracks";
+import options from "./options";
+import trackFill from "./track-fill";
+//taken from w3schools, modded to add height and touch
 
-function dragElement(elmnt) {
-    
-}
-
-//needs work for touch
-/*
-function dragElement(elmnt) {
+function dragElement(elmnt, lenChange = false) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    const originalX = elmnt.offsetLeft;
     const trackerEl = document.querySelector(".tracker");
     elmnt.onmousedown = dragMouseDown;
     elmnt.ontouchstart = dragTouchDown;
+
+    const trackSelLen = tr.tracks[options.trackSelection].length;
+    let thisPointInArray;
+    for (let i = 0; i < trackSelLen; i++) {
+        if (elmnt.id === tr.tracks[options.trackSelection][i].id) {thisPointInArray = tr.tracks[options.trackSelection][i]}
+    }
 
     function dragMouseDown(e) {
         e = e || window.event;
@@ -40,21 +45,36 @@ function dragElement(elmnt) {
         pos3 = e.clientX || e.targetTouches[0].pageX;
         pos4 = e.clientY || e.targetTouches[0].pageY;
         // set the element's new position:
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        if (lenChange === false) {
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            thisPointInArray.start -= (pos2 / 15);
+        }
+        else {
+            const chHeight = parseInt(elmnt.style.height) - pos2;
+            elmnt.style.height = chHeight + "px";
+            thisPointInArray.len -= (pos2 / 15);
+        }
     }
 
     function closeDragElement() {
         // stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
+        changePosition();
+        trackFill();
     }
     function closeTouchElement() {
-        trackerEl.style.touchAction = "auto";
         // stop moving when mouse button is released:
         document.ontouchend = null;
         document.ontouchmove = null;
+        changePosition();
+        trackFill();
+    }
+    function changePosition() { // ?
+        if      (elmnt.offsetLeft > originalX + 45) {thisPointInArray.pos++}
+        else if (elmnt.offsetLeft < originalX - 45) {thisPointInArray.pos--}
     }
 }
-*/
+
 export default dragElement;

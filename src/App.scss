@@ -73,3 +73,16 @@
   width: 100%;
   text-align: center;
 }
+
+// GLOBAL ANIMATIONS
+
+@keyframes bobble {
+  0% {scale: 1.1;}
+  6% {scale: 0.8;}
+  24% {scale: 1.04;}
+  40% {scale: 0.93;}
+  60% {scale: 1.01;}
+  70% {scale: 0.98;}
+  90% {scale: 1.0045;}
+  100% {scale: 1;}
+}

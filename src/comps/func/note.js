@@ -12,11 +12,9 @@ import trackFill from "./track-fill";
 const activeNotes = [];
 let track = tr.tracks[options.trackSelection];
 const now = Tone.now();
-
 let recordStartTime = new Date();
-let pausePoint = 0;
 
-let b32 = (options.noteLength / 32);                          // demisemiquaver
+let quaVar = (options.noteLength / options.noteFraction);     // demisemiquaver
 let instrument = instrumentSwitch(options.instrumentSelect);  // instrument choice
 let effect = null;                                            // effect choice
 
@@ -48,13 +46,13 @@ const note = {
         instrument.triggerRelease(playNote, now + hL);                      // release note 
         if (record) {                                                   // if recording
           const nowTime = (new Date()) - recordStartTime;
-          if ((nowTime / b32) > options.trackLength) {note.recordGo(); return}            // if reached track length, stop recording
           const identifier = track.length + "-id-" + Math.floor(Math.random() * 1000);  // make new id
           //const identifier = Math.random();
-          const startTime = activeNotes[i].t / b32;
-          const noteLength = (nowTime - activeNotes[i].t) / b32;                                                                     // note length is difference between now and when note was pressed, divided by 1/64th note
+          const startTime = activeNotes[i].t / quaVar;
+          const noteLength = (nowTime - activeNotes[i].t) / quaVar;                                                                     // note length is difference between now and when note was pressed, divided by 1/64th note
           const newPoint = {id : identifier, n : playNote, start : startTime, len : noteLength, ins : options.instrumentSelect, eff : effect, on : false, pos : activeNotes[i].p};  // create object to be recorded
           track.push(newPoint);       // push object to array
+          if ((nowTime / quaVar) > options.trackLength) {note.recordGo()}            // if reached track length, stop recording
         }
         activeNotes.splice(i, 1);                                           // remove from array
         document.getElementById("kk-" + playNote).style.filter = "contrast(1)"; // visual press key
@@ -68,7 +66,7 @@ const note = {
     console.log("recordGo");
     if (play === true) {return}
     if (record) {
-      console.log(tr.tracks[options.trackSelection]);
+      //console.log(tr.tracks[options.trackSelection]);
       record = false;
       trackFill(options.trackSelection);
       document.getElementById("red-spot").classList.remove("r-s-on");
@@ -87,33 +85,30 @@ const note = {
   playGo : function() {
     if (play) {play = false} 
     else {
-      recordStartTime = new Date() - pausePoint;
-      console.log("pausePoint" + pausePoint);
+      recordStartTime = new Date() - (options.trackhead / quaVar);
       play = true;
     }
 
     const thisInt = setInterval(function(){
       if (play) {
-        for (let i = 0; i < tr.tracks.length; i++) {
-          note.playTrack(tr.tracks[i]);
-        }
+        for (let i = 0; i < tr.tracks.length; i++) {note.playTrack(tr.tracks[i])}
       }
       else {
         clearInterval(thisInt);
-        console.log("pause");
+        console.log("paused at " + options.trackhead);
         return
       }
-    }, b32);   
+    }, quaVar);   
   },
   //
   trackReset : function() {
     recordStartTime = new Date();
-    pausePoint = 0;
+    options.trackhead = 0;
   },
   //  
   playTrack : function(track) {
-    const timeNow = (((new Date()) - recordStartTime) / b32);
-    pausePoint = timeNow * b32;
+    const timeNow = ((new Date()) - recordStartTime) / quaVar;
+    options.trackhead = timeNow;
     if (timeNow > options.trackLength) {note.trackReset(); return}            // if reached track length, stop recording
     //console.log(timeNow);
     const trackLen = track.length;
@@ -122,7 +117,7 @@ const note = {
         if (track[y].on === false) {
           track[y].on = true;
           const useInstr = instrumentSwitch(track[y].ins);                            // get instrument
-          const noteLen = (track[y].len * b32);                                         // multiplied by 1/32nd note
+          const noteLen = (track[y].len * quaVar);                                         // multiplied by 1/32nd note
           useInstr.triggerAttack(track[y].n, now + 0.3);                                    // attack note
           // eslint-disable-next-line
           setTimeout(function(){

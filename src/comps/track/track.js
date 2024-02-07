@@ -16,8 +16,8 @@ export default function Track(props) {
     function changeTrack() {options.trackSelection = props.trackno}
 
     return (      
-        <div ref={trRef} className='track' id={"track" + props.trackno}>
-            <div className='track--details' onClick={changeTrack}></div>
+        <div ref={trRef} className='track' onMouseDown={changeTrack} id={"track" + props.trackno}>
+            <div className='track--details'></div>
             <div className='track--track'></div>
         </div>
     );
