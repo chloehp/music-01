@@ -1,5 +1,5 @@
 
-const keySwitch = function(key, oct){
+const keySwitch = function(key, oct, down){
     switch(key) {
       case "Shift": return "C" + oct;
       case "a": return "C#" + oct;
@@ -37,6 +37,12 @@ const keySwitch = function(key, oct){
       case "]": return "G" + (oct + 2);
       case "Backspace": return "G#" + (oct + 2);
       case "#": return "A" + (oct + 2);
+
+      case "m": 
+        if (down === false) {          
+          console.log("mute");
+        }
+      return false;
 
       default: return false;
     }
