@@ -117,7 +117,7 @@ export default function KbPage(props) {
                     <div className='kb-page--cob--octave' style={{top: 0}}    onClick={() => changeOctave(options.octave + 1)}></div>
                     <div className='kb-page--cob--octave' style={{bottom: 0}} onClick={() => changeOctave(options.octave - 1)}></div>
                 </div>
-                <div ref={m2Ref} className='kb-page--cob cobm' id='kbcob-m-2' onClick={m2Click}></div>
+                <div ref={m2Ref} className='kb-page--cob cobm' id='kbcob-m-2' onClick={m2Click}>Scales</div>
                 <div ref={trPlayBtn} id='tracker-play-btn' onMouseDown={clickPlayButton}>Play/Pause</div>
             </div>
             

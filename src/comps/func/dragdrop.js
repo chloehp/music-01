@@ -19,7 +19,8 @@ function dragElement(elmnt, lenChange = false) {
 
     function dragMouseDown(e) {
         e = e || window.event;
-        e.preventDefault();
+        //e.preventDefault();
+        if (e.target.classList.contains("track--track--column--point--input")) {return}
         // get the mouse cursor position at startup:
         pos3 = e.clientX; pos4 = e.clientY;
         document.onmouseup = closeDragElement;
@@ -77,7 +78,7 @@ function dragElement(elmnt, lenChange = false) {
         const movedPosY = elmnt.offsetTop - originalY;
         thisPointInArray.pos += movedPosX;
         
-        if ((movedPosX === 0) && (movedPosY === 0)) {
+        if ((movedPosX === 0) && (movedPosY === 0) && (lenChange === false)) {
             console.log(elmnt.id)
         }
     }

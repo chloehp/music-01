@@ -14,7 +14,7 @@ export default function SmallPlayer(props) {
     else if (chooseMeasure === 1) {measTrkLen = options.trackLength / options.beatFraction}
     else if (chooseMeasure === 2) {measTrkLen = Math.trunc(options.trackLength * (options.beatLength / options.beatFraction))}
     else    {//chooseMeasure === 3
-        const tSec = (options.trackLength * (options.beatLength / options.beatFraction)) / 1000;
+        const tSec = (options.trackLength * options.beatLength) / 1000;
         if (tSec > 60) {                                // if performance issues occur, make extra var to only do this every 6th interval, 450 milliseconds
             const mins = Math.floor(tSec / 60);
             const secs = Math.round(tSec % 60);

@@ -12,7 +12,7 @@ const options = {
   beatFraction : 16,    // 1 row = 1/X fraction of beat, 1/(X*4) fraction of note
   trackSelection : 0,   // select active track for editing or recording on
   trackhead : 0,        // where you are in the track, measured in fractions of a beat (beatFraction)
-  instrumentSelect : 9, // live instrument selection from instrument-switch.js
+  instruSelect : 0,     // live instrument selection from instrument-switch.js
   trackLength : 200,    // track length in beats
   timeSigTop    : 4,    // top of time signature
   timeSigBottom : 4,    // bottom of time signature
