@@ -1,38 +1,11 @@
-.smallplayer{
-  position: absolute;
-  width: 24%;
-  aspect-ratio: 1/1;
-  background-color: #41473C;
-  color: #899D7E;
-  border-radius: 30%;
-  cursor: pointer;
-  transition: scale 300ms;
-}
-.smallplayer:hover {scale: 1.1;}
-.smallplayer.sp-bobble {animation: bobble 900ms;}
-.back-button{
-  left: 12%;
-  top: 9%;
-}
-.play-button{
-  left: 38%;
-  top: 9%;
-}
-.rec-button{
-  right: 12%;
-  top: 9%;
-}
-
-
-  
+ 
 .kb-page--cob {
   background-color: #899D7E;
   border-radius: 30px;
   position: absolute;
   z-index: 60;
   transition: all 600ms;
-  overflow: hidden;
-  
+  overflow: hidden; 
 
   &--octave {
     position: absolute;
@@ -65,7 +38,7 @@ pointer-events: none;
 }
 
 .kb-page--cob.cobm {
-    width: 8%; 
+    width: 7%; 
     aspect-ratio: 1/1;
     left: 90%;
     transition: all ease-in-out 630ms 120ms;  
@@ -78,20 +51,41 @@ pointer-events: none;
 .kb-page--cob.cobm.ogkb {
     animation: x-kb 900ms cubic-bezier( 0.24, 0.1, 0.15, 1 ) forwards;//
 }
-#kbcob-m-0       {top: 2%;}
-#kbcob-m-0.trak {top: 72%;}
-#kbcob-m-1       {top: 17%;}
-#kbcob-m-1.trak {top: 57%;}
-#kbcob-m-2       {top: 32%;}
+#kbcob-m-0       {top: 6%;}
+#kbcob-m-0.trak {top: 68%;}
+#kbcob-m-1       {top: 20%;}
+#kbcob-m-1.trak {top: 55%;}
+#kbcob-m-2       {top: 34%;}
 #kbcob-m-2.trak {top: 42%;}
 
 .cobtainer {transition: opacity 750ms;}
 
 @keyframes x-trak {
   from {left: 90%;}
-  to {left: 3%;}
+  to {left: 4%;}
 }
 @keyframes x-kb {
-  from {left: 3%;}
+  from {left: 4%;}
   to {left: 90%;}
+}
+
+#tracker-play-btn {
+  background-color: #E1F0DA;
+  border: #41473C 2px solid;
+  border-radius: 30px;
+  position: absolute;
+  top: 81%; left: -15%;
+  width: 9%; aspect-ratio: 1/1;
+  z-index: 60;
+  cursor: pointer;
+  transition: all 600ms;
+}
+#tracker-play-btn.trak {left: 3%;}
+
+#main-menu {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 27%; height: 51%;
+  margin: 3%;
+  color: #41473C;
 }

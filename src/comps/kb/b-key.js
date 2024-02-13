@@ -6,8 +6,11 @@ export default function BKey(props) {
     return (      
         <div className='b-key' 
         onMouseDown={() => note.attackNote(props.note)}
+        onTouchStart={() => note.attackNote(props.note)}
         onMouseUp={() => note.releaseNote(props.note)}
         onMouseLeave={() => note.releaseNote(props.note)}
+        onTouchEnd={() => note.releaseNote(props.note)}
+        onTouchCancel={() => note.releaseNote(props.note)}
         id={"kk-" + props.note}
         >
             <p className='key-note'>{noOctvNote}</p>

@@ -18,7 +18,57 @@
 .width-0 {
   width: 0 !important;
   margin: 0 !important;
+  pointer-events: none;
+  font-size: 0;
 }
+
+.win {
+  position: absolute;
+  border-radius: 30px;
+  z-index: 150;
+  background-color: rgba(61, 61, 61, 0.9);
+  display: flex;
+  color: #BFD8AF;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms;
+
+  &--spacer {
+    width: calc(100% - 60px); height: 2px;
+    margin-left: 30px;
+    background-color: #BFD8AF;
+    border-radius: 15px;
+  }
+  &--title {
+    position: absolute;
+    width: 100%;
+  }
+  &--container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24%;
+    padding: 0 30px;
+    overflow-y: auto; overflow-x: hidden;  
+
+    &--block {
+      background-color: #41473C;
+      border-radius: 15px;
+      margin: 18px auto 0;
+      padding: 15px;
+      text-align: left;
+      cursor: pointer;
+      transition: scale 300ms;
+    }
+    &--block:hover {scale: 1.1;}
+    &--block.block-selected {
+      background-color: #BFD8AF;
+      color: #41473C;
+      font-weight: bold;
+    }
+  }
+}
+.win.win-open {opacity: 1; pointer-events: all;}
 
 .App {
   background-color: #8ea781;
@@ -75,7 +125,7 @@
 }
 
 // GLOBAL ANIMATIONS
-
+.sp-bobble {animation: bobble 900ms;}
 @keyframes bobble {
   0% {scale: 1.1;}
   6% {scale: 0.8;}

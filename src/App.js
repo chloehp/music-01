@@ -24,6 +24,7 @@ export default function App() {
     if (hit){note.attackNote(hit)};                     //attack
   });
   window.addEventListener('keyup', function(event) {    //keyboard keyboard release
+    //console.log(event.key);
     const hit = keySwitch(event.key, options.octave, false);   //keyswitch
     if (hit){note.releaseNote(hit)};                    //release
   });

@@ -6,6 +6,7 @@ import trackFill from "./track-fill";
 function dragElement(elmnt, lenChange = false) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     const originalX = elmnt.offsetLeft;
+    const originalY = elmnt.offsetTop;
     const trackerEl = document.querySelector(".tracker");
     elmnt.onmousedown = dragMouseDown;
     elmnt.ontouchstart = dragTouchDown;
@@ -71,9 +72,14 @@ function dragElement(elmnt, lenChange = false) {
         changePosition();
         trackFill();
     }
-    function changePosition() { // ?
-        if      (elmnt.offsetLeft > originalX + 45) {thisPointInArray.pos++}
-        else if (elmnt.offsetLeft < originalX - 45) {thisPointInArray.pos--}
+    function changePosition() {        
+        const movedPosX = Math.trunc((elmnt.offsetLeft - originalX) / 54);
+        const movedPosY = elmnt.offsetTop - originalY;
+        thisPointInArray.pos += movedPosX;
+        
+        if ((movedPosX === 0) && (movedPosY === 0)) {
+            console.log(elmnt.id)
+        }
     }
 }
 

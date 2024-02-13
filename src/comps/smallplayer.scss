@@ -1,0 +1,56 @@
+.smallplayer{
+    position: absolute;
+    width: 21%;
+    aspect-ratio: 1/1;
+    background-color: #41473C;
+    color: #899D7E;
+    border-radius: 30%;
+    cursor: pointer;
+    transition: scale 300ms;
+    div {pointer-events: none;}
+  }
+  .smallplayer:hover {scale: 1.1;}
+  .back-button{
+    left: 12%;
+    top: 9%;
+  }
+  .play-button{
+    left: 38%; top: 9%;
+  }
+  .rec-button{
+    right: 12%; top: 9%;
+  }
+  .seeker {
+    position: absolute;
+    bottom: 0; 
+    width: 100%; height: 27%;
+    display: flex;
+    justify-content: space-evenly;
+    color: #BFD8AF;
+  
+    &--t {width: 6%; text-align: center;}
+    &--track {
+      position: relative;
+      height: 36%; width: 75%;
+      cursor: pointer;
+  
+      &--line {
+        position: absolute;
+        left: 0%; top: 45%;
+        width: 100%; height: 10%;
+        background-color: #BFD8AF;
+        pointer-events: none;
+      }
+      &--head {
+        position: absolute;
+        left: 0%; top: 0;
+        width: 7px; height: 100%;
+        background-color: #41473C;
+        border-radius: 6px;
+        translate: -50%;
+        pointer-events: none;
+        transition: left 150ms;
+      }
+    }
+  }
+  

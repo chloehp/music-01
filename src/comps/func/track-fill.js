@@ -5,16 +5,13 @@ import dragElement from './dragdrop';
 
 function trackFill(trackno = options.trackSelection, roundBeats = true) {
     //console.log("print track " + trackno);
-    const trackEl = document.querySelectorAll(".track--track")[trackno];
-    
+    const trackEl = document.querySelectorAll(".track--track")[trackno];    
     trackEl.innerHTML = null;
     
     const trackSel = options.trackSelection;
     if ((trackno === trackSel) && (tr.tracks[trackSel])){
         const trackArray = tr.tracks[trackSel];
         const trackDetails = tr.evalTrackForDisplay(trackArray);
-        console.log(trackDetails);
-        console.log(trackArray);
         const trackLength = options.trackLength || Math.ceil(trackDetails.trackLen);
 
         for (let x = 0; x < trackDetails.highActiveNotes; x++) { // active note columns
@@ -29,6 +26,7 @@ function trackFill(trackno = options.trackSelection, roundBeats = true) {
 
             for (let y = 0; y < trackLength; y++) { // beat rows
                 const row = document.createElement("div");
+                //if (y % )
                 row.setAttribute("class", "track--track--column--row");
                 column.appendChild(row);
             }
@@ -43,9 +41,10 @@ function trackFill(trackno = options.trackSelection, roundBeats = true) {
                         trkPnt.len = Math.round(trkPnt.len);
                     }
                     if (trkPnt.pos < 0) {trkPnt.pos = 0}        // do not allow position below zero
+                    //else if (trkPnt.pos > trackDetails.highActiveNotes) {trkPnt.pos = trackDetails.highActiveNotes + 1} // do not allow position above max + 1                    
                     if (trkPnt.start < 0) {trkPnt.start = 0}    // do not allow start below zero
 
-                    if (trkPnt.start > trackLength) {trkPnt.len = 0; trkPnt.start = 0}  // if all of the note is past notelength, get rid of
+                    if (trkPnt.start > trackLength) {trkPnt.len = 0; trkPnt.start = 0}  // if all of the note is past track length, get rid of
                     else if (trkPnt.start + trkPnt.len > trackLength) {trkPnt.len += trackLength - (trkPnt.start + trkPnt.len)}   // if just part of the note is over, limit to track end
 
                     point.innerHTML = trkPnt.n;
@@ -62,7 +61,9 @@ function trackFill(trackno = options.trackSelection, roundBeats = true) {
                     dragElement(point, false);
                 }           
             }
-        }
+        }        
+        console.log(trackDetails);
+        console.log(trackArray);
     }
 }  
 

@@ -1,3 +1,4 @@
+import note from "./note";
 
 const keySwitch = function(key, oct, down){
     switch(key) {
@@ -42,6 +43,9 @@ const keySwitch = function(key, oct, down){
         if (down === false) {          
           console.log("mute");
         }
+      return false;
+      case " ": 
+        if (down === false) {note.playGo()}
       return false;
 
       default: return false;

@@ -12,6 +12,16 @@ const instrumentSwitch = function(id){
         //case 6: return new Tone.PolySynth(Tone.NoiseSynth).toDestination();
         //case 7: return new Tone.PolySynth(Tone.PluckSynth).toDestination();
         case 8: return new Tone.PolySynth(Tone.AMSynth).toDestination();
+        case 9: return new Tone.Sampler({
+            urls: {
+              "C4": "C4.mp3",
+              "D#4": "Ds4.mp3",
+              "F#4": "Fs4.mp3",
+              "A4": "A4.mp3",
+            },
+            release: 1,
+            baseUrl: "https://tonejs.github.io/audio/salamander/",
+          }).toDestination();    
         default: return new Tone.PolySynth(Tone.Synth).toDestination();
     }
 }

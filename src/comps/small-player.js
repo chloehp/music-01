@@ -1,38 +1,84 @@
-import './cob.scss';
+import './smallplayer.scss';
 //func
 import note from './func/note';
+import options from './func/options';
+import animation from './func/animation';
+import { useRef } from 'react';
 //import options from './func/options';
 
 export default function SmallPlayer(props) { 
+
+    let chooseMeasure = 3;  //0: small beats //1: beats //2: milliseconds //3: minutes and seconds
+    let measTrkLen = 0;
+    if      (chooseMeasure === 0) {measTrkLen = options.trackLength}
+    else if (chooseMeasure === 1) {measTrkLen = options.trackLength / options.beatFraction}
+    else if (chooseMeasure === 2) {measTrkLen = Math.trunc(options.trackLength * (options.beatLength / options.beatFraction))}
+    else    {//chooseMeasure === 3
+        const tSec = (options.trackLength * (options.beatLength / options.beatFraction)) / 1000;
+        if (tSec > 60) {                                // if performance issues occur, make extra var to only do this every 6th interval, 450 milliseconds
+            const mins = Math.floor(tSec / 60);
+            const secs = Math.round(tSec % 60);
+            if (secs < 10) {measTrkLen = mins + ":0" + secs}
+            else {measTrkLen = mins + ":" + secs}                
+        }
+        else {measTrkLen = tSec.toFixed(2)}
+    }
     
-    function clickBackButton(){
-        note.trackReset();
-        const ele = document.querySelector(".back-button");
-        bobble(ele);
+    function clickBackButton(event){
+        note.trackSet();
+        animation.bobble(event.target || document.querySelector(".back-button"));
     }
-    function clickPlayButton(){
+    function clickPlayButton(event){
         note.playGo();
-        const ele = document.querySelector(".play-button");
-        bobble(ele);
+        animation.bobble(event.target || document.querySelector(".play-button"));
     }
-    function clickRecButton(){
+    function clickRecButton(event){
         note.recordGo();
-        const ele = document.querySelector(".rec-button");
-        bobble(ele);
+        animation.bobble(event.target || document.querySelector(".rec-button"));
+    }
+    
+    function seek(event, down) {
+        const seekPos = event.nativeEvent.offsetX / event.target.offsetWidth;   // returns decimal
+        //options.trackhead = options.trackLength * seekPos;
+        note.trackSet(options.trackLength * seekPos);
     }
 
-    function bobble(element) {
-        element.classList.add("sp-bobble");        
-        setTimeout(function(){
-            element.classList.remove("sp-bobble");    
-        }, 1200)
-    }
-    //function trackHeadZero(){options.trackhead = 0};
+    const timeNow = useRef(); const trackHead = useRef();
+    let tNow = 0;
+    setInterval(function () {
+        if      (chooseMeasure === 0) {tNow = Math.trunc(options.trackhead)}    // small beats
+        else if (chooseMeasure === 1) {tNow = Math.trunc(options.trackhead / options.beatFraction)}    // beats
+        else if (chooseMeasure === 2) {tNow = Math.trunc(options.trackhead * (options.beatLength / options.beatFraction))}  // milliseconds
+        else    {//chooseMeasure === 3      // minutes:seconds
+            const tSec = (options.trackhead * (options.beatLength / options.beatFraction)) / 1000;
+            if (tSec > 60) {                                // if performance issues occur, make extra var to only do this every 6th interval, 450 milliseconds
+                const mins = Math.floor(tSec / 60);
+                const secs = Math.round(tSec % 60);
+                if (secs < 10) {tNow = mins + ":0" + secs}
+                else {tNow = mins + ":" + secs}                
+            }
+            else {tNow = tSec.toFixed(2)}
+        }
+        try {
+            trackHead.current.style.left = ((options.trackhead / options.trackLength) * 100) + "%";
+            timeNow.current.innerHTML = tNow;
+        } catch {}
+    }, 75);
+
     return (      
         <div>
-            <div className='smallplayer back-button' onMouseDown={clickBackButton}><div className='center'>Back</div></div>
-            <div className='smallplayer play-button' onMouseDown={clickPlayButton}><div className='center'>Play/Pause</div></div>
-            <div className='smallplayer rec-button'  onMouseDown={clickRecButton}><div id='red-spot' className='center'></div></div>
+            <div className='smallplayer back-button' onMouseDown={(e) => clickBackButton(e)}><div className='center'>Back</div></div>
+            <div className='smallplayer play-button' onMouseDown={(e) => clickPlayButton(e)}><div className='center'>Play/Pause</div></div>
+            <div className='smallplayer rec-button'  onMouseDown={(e) => clickRecButton(e)}><div id='red-spot' className='center'></div></div>
+
+            <div className='seeker'>
+                <div className='seeker--t' ref={timeNow}>0</div>
+                <div className='seeker--track' onMouseDown={(e) => seek(e, true)} onMouseUp={(e) => seek(e, false)}>
+                    <div className='seeker--track--line'></div>
+                    <div className='seeker--track--head' ref={trackHead}></div>
+                </div>
+                <div className='seeker--t'>{measTrkLen}</div>
+            </div>
         </div>
     );
 }

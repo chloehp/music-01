@@ -13,6 +13,7 @@ export default function Keyboard(props) {
             <OctGroup octave={"5"}/>
             <OctGroup octave={"6"}/>
             <OctGroup octave={"7"}/>
+            <OctGroup octave={"8"}/>
         </div>
     );
 }
