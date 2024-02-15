@@ -9,15 +9,16 @@ import trackFill from "./track-fill";
 //import { Time } from "tone";
     
 // func vars
+const everyNote = ["Ab", "A", "A#", "Bb", "B", "C", "C#", "Db", "D", "D#", "Eb", "E", "F", "F#", "Gb", "G", "G#"];
 const activeNotes = [];
 let track = tr.tracks[options.trackSelection];
 const now = Tone.now();
 let recordStartTime = new Date();
 
-let quaVar = options.beatLength;     // demisemiquaver
-let instrument = instrumentSwitch(options.instruSelect);      // instrument choice
-let playInsts = [];                                           // instruments used in playback
-let effect = null;                                            // effect choice
+let quaVar = options.beat64Len;                              // hemidemisemiquaver
+let instrument = instrumentSwitch[options.instruSelect].x;   // instrument choice
+let playInsts = [];                                          // instruments used in playback
+let effect = null;                                           // effect choice
 let pausePoint = 0;
 
 // display active notes (the array) // fix to be more efficient
@@ -30,15 +31,24 @@ function displayNote(){
 const note = {
   //
   validate : function(n) {
-    const ins = instrumentSwitch(0);
-    try {
-      ins.triggerAttack(n, now + 0.15);
-      setTimeout(function(){
-        ins.triggerRelease(n, now + 0.15)   
-      }, 300);
-      return true
+    if (
+       ((n.length === 3) || (n.length === 2)) 
+    && (everyNote.includes(n.slice(0, -1)) === true)
+    && (isNaN(n.charAt(n.length - 1)) === false)
+    ) {
+      const ins = instrumentSwitch[0].x;
+      try {
+        ins.triggerAttack(n, now + 0.15);
+        setTimeout(function(){
+          ins.triggerRelease(n, now + 0.15)   
+        }, 300);
+        return true
+      }
+      catch {console.error("Uh oh. How did you get this? Please write in and let me know."); return false}      
     }
-    catch {return false}
+    else {
+      return false
+    }
   },
   //
   attackNote : function(playNote, hL = options.hitLatency){ 
@@ -111,7 +121,7 @@ const note = {
       for (let i = 0; i < tr.tracks.length; i++) {
         if (tr.tracks[i][0]) {
           const instruFromTrck = tr.tracks[i][0].ins;
-          playInsts.push(instrumentSwitch(instruFromTrck));
+          playInsts.push(instrumentSwitch[instruFromTrck].x);
         }
       }
       console.log(playInsts);
@@ -144,7 +154,6 @@ const note = {
         &&  (track[y].on === false)                                             // if note is not already being played
       ) {               
         track[y].on = true;                                 // note is being played
-        //const useInstr = instrumentSwitch(track[y].ins);  // get instrument
         const useInstr = playInsts[ti];                     // get instrument
         const noteLen = (track[y].len * quaVar);            // multiplied by 1/32nd note
         useInstr.triggerAttack(track[y].n, now + 0.15);     // attack note

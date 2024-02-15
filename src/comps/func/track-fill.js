@@ -26,8 +26,8 @@ function trackFill(roundBeats = true) {
 
             for (let y = 0; y < trackLength; y++) { // beat rows
                 const row = document.createElement("div");
-                if (y % options.beatFraction === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl2")}
-                else if (y % (options.beatFraction * options.timeSigTop) === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl3")}
+                if (y % 16 === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl2")}
+                else if (y % (16 * options.timeSigTop) === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl3")}
                 else {row.setAttribute("class", "track--track--column--row tr-r-lvl1")}
                 column.appendChild(row);
                 row.onmousedown = function(){note.trackSet(y)};
@@ -61,7 +61,11 @@ function trackFill(roundBeats = true) {
                     input.setAttribute("type", "text");
                     input.setAttribute("value", trkPnt.n);
                     point.appendChild(input);
-                    input.oninput = function(){if (note.validate(input.value) === true) {trkPnt.n = input.value.toUpperCase()}}
+                    input.oninput = function(){
+                        const inVal = (input.value.charAt(0).toUpperCase()) + (input.value.slice(1, 3));
+                        if (note.validate(inVal) === true) {trkPnt.n = inVal}
+                    }
+                    //const inVal = (input.value.charAt(0).toUpperCase) + (input.value.slice(1, 3));
                     
                     /* Create node to change note length in tracker */
                     const btm = document.createElement("div");          

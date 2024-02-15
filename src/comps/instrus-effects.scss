@@ -1,0 +1,13 @@
+.instrs-efcts {
+    display: flex;
+
+    &--sep {
+        width: 3px; height: 45%;
+        margin-top: 6%;
+        flex-shrink: 0;
+        background-color: #BFD8AF;
+    }
+    &--instruments {
+        width: 66%;
+    }
+}

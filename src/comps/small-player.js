@@ -11,10 +11,10 @@ export default function SmallPlayer(props) {
     let chooseMeasure = 3;  //0: small beats //1: beats //2: milliseconds //3: minutes and seconds
     let measTrkLen = 0;
     if      (chooseMeasure === 0) {measTrkLen = options.trackLength}
-    else if (chooseMeasure === 1) {measTrkLen = options.trackLength / options.beatFraction}
-    else if (chooseMeasure === 2) {measTrkLen = Math.trunc(options.trackLength * (options.beatLength / options.beatFraction))}
+    else if (chooseMeasure === 1) {measTrkLen = options.trackLength}
+    else if (chooseMeasure === 2) {measTrkLen = Math.trunc(options.trackLength * options.beat64Len)}
     else    {//chooseMeasure === 3
-        const tSec = (options.trackLength * options.beatLength) / 1000;
+        const tSec = (options.trackLength * options.beat64Len) / 1000;
         if (tSec > 60) {                                // if performance issues occur, make extra var to only do this every 6th interval, 450 milliseconds
             const mins = Math.floor(tSec / 60);
             const secs = Math.round(tSec % 60);
@@ -26,15 +26,15 @@ export default function SmallPlayer(props) {
     
     function clickBackButton(event){
         note.trackSet();
-        animation.bobble(event.target || document.querySelector(".back-button"));
+        animation.bobble(event.target || document.getElementById("back-button"));
     }
     function clickPlayButton(event){
         note.playGo();
-        animation.bobble(event.target || document.querySelector(".play-button"));
+        animation.bobble(event.target || document.getElementById("play-button"));
     }
     function clickRecButton(event){
         note.recordGo();
-        animation.bobble(event.target || document.querySelector(".rec-button"));
+        animation.bobble(event.target || document.getElementById("rec-button"));
     }
     
     function seek(event, down) {
@@ -47,10 +47,10 @@ export default function SmallPlayer(props) {
     let tNow = 0;
     setInterval(function () {
         if      (chooseMeasure === 0) {tNow = Math.trunc(options.trackhead)}    // small beats
-        else if (chooseMeasure === 1) {tNow = Math.trunc(options.trackhead / options.beatFraction)}    // beats
-        else if (chooseMeasure === 2) {tNow = Math.trunc(options.trackhead * (options.beatLength / options.beatFraction))}  // milliseconds
+        else if (chooseMeasure === 1) {tNow = Math.trunc(options.trackhead)}    // beats
+        else if (chooseMeasure === 2) {tNow = Math.trunc(options.trackhead * options.beat64Len)}  // milliseconds
         else    {//chooseMeasure === 3      // minutes:seconds
-            const tSec = (options.trackhead * (options.beatLength / options.beatFraction)) / 1000;
+            const tSec = (options.trackhead * options.beat64Len) / 1000;
             if (tSec > 60) {                                // if performance issues occur, make extra var to only do this every 6th interval, 450 milliseconds
                 const mins = Math.floor(tSec / 60);
                 const secs = Math.round(tSec % 60);
@@ -67,9 +67,9 @@ export default function SmallPlayer(props) {
 
     return (      
         <div>
-            <div className='smallplayer back-button' onMouseDown={(e) => clickBackButton(e)}><div className='center'>Back</div></div>
-            <div className='smallplayer play-button' onMouseDown={(e) => clickPlayButton(e)}><div className='center'>Play/Pause</div></div>
-            <div className='smallplayer rec-button'  onMouseDown={(e) => clickRecButton(e)}><div id='red-spot' className='center'></div></div>
+            <div className='smallplayer' id='back-button' onMouseDown={(e) => clickBackButton(e)}><div className='center'>Back</div></div>
+            <div className='smallplayer' id='play-button' onMouseDown={(e) => clickPlayButton(e)}><div className='center'>Play/Pause</div></div>
+            <div className='smallplayer' id='rec-button'  onMouseDown={(e) => clickRecButton(e)}><div id='red-spot' className='center'></div></div>
 
             <div className='seeker'>
                 <div className='seeker--t' ref={timeNow}>0</div>

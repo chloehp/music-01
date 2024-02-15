@@ -12,10 +12,11 @@ import Keyboard from "./kb/keyboard";
 import Tracker from './track/tracker';
 import SmallPlayer from './small-player';
 import ScalesList from './scales-list';
+import InstrusAndEffects from './instrus-effects';
 
 export default function KbPage(props) {    
     //refs   
-    const kbCob0 = useRef();    const kbCob1 = useRef();    const kbCob2 = useRef();    
+    const kbCob0 = useRef(); const kbCob1 = useRef(); const kbCob2 = useRef(); const kbCob3 = useRef();
     const m0Ref = useRef();    const m1Ref = useRef();    const m2Ref = useRef();
     
     const kbRef = useRef(); const trackRef = useRef(); const trPlayBtn = useRef(); const scalesWinRef = useRef();
@@ -26,6 +27,7 @@ export default function KbPage(props) {
             kbRef.current.classList.add("hide");
             kbCob1.current.classList.add("hide");
             kbCob2.current.classList.add("hide");
+            kbCob3.current.classList.add("hide");
             m0Ref.current.classList.remove("ogkb");
             m0Ref.current.classList.add("trak");
 
@@ -64,6 +66,7 @@ export default function KbPage(props) {
             setTimeout(function(){
                 kbCob1.current.classList.remove("hide");
                 kbCob2.current.classList.remove("hide");
+                kbCob3.current.classList.remove("hide");
             }, 1200);    
             kbTrack = true;
         }
@@ -109,8 +112,9 @@ export default function KbPage(props) {
                         <p>Credits</p> 
                     </div>
                 </div>
-                <div ref={kbCob1} className='kb-page--cob' id='kbcob-1'></div>
+                <div ref={kbCob1} className='kb-page--cob' id='kbcob-1'><InstrusAndEffects /></div>
                 <div ref={kbCob2} className='kb-page--cob' id='kbcob-2'><SmallPlayer /></div>
+                <div ref={kbCob3} className='kb-page--cob' id='kbcob-3'></div>
 
                 <div ref={m0Ref} className='kb-page--cob cobm' id='kbcob-m-0' onClick={kbPageChange}></div>
                 <div ref={m1Ref} className='kb-page--cob cobm' id='kbcob-m-1'>

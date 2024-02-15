@@ -16,25 +16,33 @@
   &--octave:active {scale: 1.5;}
 }
 #kbcob-0 {
-  width: 45%; height: 70%;
+  width: 42%; height: 70%;
   left: -30%; top: -30%;
 }
-#kbcob-0.hide {left: -75%;}
-#kbcob-1 {
-  width: 30%; height: 54%;
-  left: 18%; top: 18%;
+#kbcob-0.hide {
+  left: -75%;
 }
-#kbcob-1.hide {
-opacity: 0;
-pointer-events: none;
+#kbcob-1 {
+  width: 33%; height: 54%;
+  left: 15%; top: 18%;
 }
 #kbcob-2 {
   width: 36%; height: 27%;
   left: 51%; top: 18%;
 }
-#kbcob-2.hide {
-opacity: 0;
-pointer-events: none;
+#kbcob-3 {
+  width: 34.5%; height: 15%;
+  left: 51%; top: 1.5%;
+  background-color: #E1F0DA;
+  color: #899D7E;
+  font-size: 12px;
+  line-height: 0.75em;
+  font-style: italic;
+  padding-left: 1.5%;
+}
+#kbcob-1.hide, #kbcob-2.hide, #kbcob-3.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .kb-page--cob.cobm {
@@ -85,7 +93,7 @@ pointer-events: none;
 #main-menu {
   position: absolute;
   bottom: 0; right: 0;
-  width: 27%; height: 51%;
+  width: 21%; height: 54%;
   margin: 3%;
   color: #41473C;
 }

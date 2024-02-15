@@ -47,6 +47,11 @@ const keySwitch = function(key, oct, down){
       case " ": 
         if (down === false) {note.playGo()}
       return false;
+      case "Enter": 
+        if (down === false) {          
+          console.log("Enter");
+        }
+      return false;
 
       default: return false;
     }

@@ -10,15 +10,14 @@
     div {pointer-events: none;}
   }
   .smallplayer:hover {scale: 1.1;}
-  .back-button{
-    left: 12%;
-    top: 9%;
+  #back-button{
+    left: 15%; top: 9%;
   }
-  .play-button{
-    left: 38%; top: 9%;
+  #play-button{
+    left: 39%; top: 9%;
   }
-  .rec-button{
-    right: 12%; top: 9%;
+  #rec-button{
+    right: 15%; top: 9%;
   }
   .seeker {
     position: absolute;

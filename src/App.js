@@ -18,15 +18,15 @@ import note from './comps/func/note';
 export default function App() {  
 
   //PC keyboard -> musical keyboard
-  window.addEventListener('keydown', function(event) {  //keyboard keyboard attack
-    if (event.repeat) {return}                          //prevent usual keydown continuous fire
-    const hit = keySwitch(event.key, options.octave, true);   //keyswitch
-    if (hit){note.attackNote(hit)};                     //attack
+  window.addEventListener('keydown', function(event) {                              //keyboard keyboard attack
+    if (event.repeat) {return}                                                      //prevent usual keydown continuous fire
+    const hit = keySwitch(event.key, options.octave, true);                         //keyswitch
+    if ((hit !== false) && (options.musicalQwerty === true)){note.attackNote(hit)}   //attack
   });
-  window.addEventListener('keyup', function(event) {    //keyboard keyboard release
+  window.addEventListener('keyup', function(event) {                                //keyboard keyboard release
     //console.log(event.key);
-    const hit = keySwitch(event.key, options.octave, false);   //keyswitch
-    if (hit){note.releaseNote(hit)};                    //release
+    const hit = keySwitch(event.key, options.octave, false);                        //keyswitch
+    if ((hit !== false) && (options.musicalQwerty === true)){note.releaseNote(hit)}  //release
   });
 
   const startRef = useRef();

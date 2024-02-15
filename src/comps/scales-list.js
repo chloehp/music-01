@@ -1,5 +1,6 @@
 import './cob.scss';
 import options from './func/options';
+import animation from './func/animation';
 
 export default function ScalesList(props) { 
     let keyAdd = 0;
@@ -9,6 +10,7 @@ export default function ScalesList(props) {
         const buttonEls = document.querySelectorAll(".kChnge");
         keyString = buttonEls[key + 3].innerHTML;
         console.log("C + " + key + " = " + keyString);       
+        animation.consoleLog("C + " + key + " = " + keyString);
         limitToScale();
 
         const btnElLen = buttonEls.length;
@@ -95,6 +97,8 @@ export default function ScalesList(props) {
         document.getElementById("kbcob-m-2").innerHTML = options.scalesChoice;
         console.log(options.scalesChoice);
         console.log(activeScale);
+        animation.consoleLog(options.scalesChoice);
+        animation.consoleLog(activeScale);
     }
 
     return (      

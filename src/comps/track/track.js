@@ -14,7 +14,7 @@ export default function Track(props) {
     setInterval(function () {
         try {trackH.current.style.top = (24 + (options.trackhead * 15)) + "px"}
         catch {}
-    }, (options.beatLength / options.beatFraction));
+    }, options.beat64Len);
     
     function changeTrack() {options.trackSelection = props.trackno}
 
