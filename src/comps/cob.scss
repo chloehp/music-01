@@ -97,3 +97,19 @@
   margin: 3%;
   color: #41473C;
 }
+.sm-item {
+  width: 90%; height: 12%;
+  margin-top: 5%;
+  border-radius: 15px;
+  background-color: #41473C;
+  color: #899D7E;
+  font-size: 0;
+  background-position: 15% center;
+  background-size: 30%;
+  background-repeat: no-repeat;
+}
+#sm-latency {background-image: url('../assets/hit-latency.svg');}
+#sm-rounding {background-image: url('../assets/beat-rounding.svg');}
+#sm-fraction {background-image: url('../assets/beat-fraction.svg');}
+#sm-bpm {}
+#sm-length {background-image: url('../assets/track-length.svg');}

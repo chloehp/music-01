@@ -1,7 +1,7 @@
 //scss
 import '../App.scss';
 import './cob.scss';
-//
+//react
 import { useRef } from 'react';
 //func
 import note from './func/note';
@@ -17,8 +17,7 @@ import InstrusAndEffects from './instrus-effects';
 export default function KbPage(props) {    
     //refs   
     const kbCob0 = useRef(); const kbCob1 = useRef(); const kbCob2 = useRef(); const kbCob3 = useRef();
-    const m0Ref = useRef();    const m1Ref = useRef();    const m2Ref = useRef();
-    
+    const m0Ref = useRef();    const m1Ref = useRef();    const m2Ref = useRef();    
     const kbRef = useRef(); const trackRef = useRef(); const trPlayBtn = useRef(); const scalesWinRef = useRef();
 
     let kbTrack = true;
@@ -104,12 +103,12 @@ export default function KbPage(props) {
                 <div ref={kbCob0} className='kb-page--cob' id='kbcob-0'>
                     <div id='main-menu'>
                         <h3>Settings</h3>
-                        <p>Hit latency</p>  
-                        <p>Beat Rounding</p>
-                        <p>Beat Fraction</p>
-                        <p>BPM</p>          
-                        <p>Track Length</p> 
-                        <p>Credits</p> 
+                        <div className='sm-item' id='sm-latency'>Hit latency</div>
+                        <div className='sm-item' id='sm-rounding'>Beat Rounding</div>
+                        <div className='sm-item' id='sm-fraction'>Beat Fraction</div>
+                        <div className='sm-item' id='sm-bpm'>BPM</div>
+                        <div className='sm-item' id='sm-length'>Track Length</div>
+                        <p>Credits</p>
                     </div>
                 </div>
                 <div ref={kbCob1} className='kb-page--cob' id='kbcob-1'><InstrusAndEffects /></div>

@@ -58,15 +58,3 @@ $b-key-width: 8.4%;
     width: 100%;
     text-align: center;
 }
-
-#red-spot {
-  border-radius: 100%;
-  background-color: #a52121;
-  width: 54%;
-  aspect-ratio: 1/1;
-  //transition: all 150ms ease-out;
-}
-#red-spot.r-s-on {
-  border-radius: 24%;
-  background-color: #000;
-}

@@ -12,7 +12,7 @@ export default function Tracker(props) {
     const [trCompsAr, setTracks] = useState([firstTrackObject])
 
     function addTrack() {
-        tr.newTrack();                                                  // adds mew track array, changes trackSelection to new track
+        tr.newTrack();                                                  // adds new track array, changes trackSelection to new track
         const newTrackObject = { trackno : options.trackSelection };    //
         setTracks([...trCompsAr, newTrackObject]);
         

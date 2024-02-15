@@ -110,9 +110,13 @@ const note = {
 
   //
   playGo : function() {
+    const pauseSpot = document.getElementById("pause-spot");
+    const playSpot = document.getElementById("play-spot");
     if (options.play === true) {
       playInsts = [];
       options.play = false; 
+      pauseSpot.style.opacity = 0;
+      playSpot.style.opacity = 1;
       return
     } 
     else {
@@ -124,6 +128,8 @@ const note = {
           playInsts.push(instrumentSwitch[instruFromTrck].x);
         }
       }
+      pauseSpot.style.opacity = 1;
+      playSpot.style.opacity = 0;
       console.log(playInsts);
     }
 

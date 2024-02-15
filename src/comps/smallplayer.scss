@@ -8,17 +8,49 @@
     cursor: pointer;
     transition: scale 300ms;
     div {pointer-events: none;}
+
+    &--icon {
+      position: absolute;
+      left: 50%; top: 50%;
+      translate: -50% -50%;
+      width: 54%;
+      aspect-ratio: 1/1;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
   .smallplayer:hover {scale: 1.1;}
+
   #back-button{
     left: 15%; top: 9%;
   }
+    #restart-spot {
+      background-image: url('../assets/restart.svg');
+    }
   #play-button{
     left: 39%; top: 9%;
   }
+    #play-spot {
+      background-image: url('../assets/play.svg');
+      opacity: 1;
+    }
+    #pause-spot {
+      background-image: url('../assets/pause.svg');
+      opacity: 0;
+    }
   #rec-button{
     right: 15%; top: 9%;
   }
+    #red-spot {
+      border-radius: 100%;
+      background-color: #a52121;
+    }
+    #red-spot.r-s-on {
+      border-radius: 15%;
+      background-color: #000;
+    }
+  
   .seeker {
     position: absolute;
     bottom: 0; 
