@@ -18,7 +18,7 @@ export default function KbPage(props) {
     //refs   
     const kbCob0 = useRef(); const kbCob1 = useRef(); const kbCob2 = useRef(); const kbCob3 = useRef();
     const m0Ref = useRef();    const m1Ref = useRef();    const m2Ref = useRef();    
-    const kbRef = useRef(); const trackRef = useRef(); const trPlayBtn = useRef(); const scalesWinRef = useRef();
+    const kbRef = useRef(); const trackRef = useRef(); const trPlayBtn = useRef(); const scalesWinRef = useRef(); const beatCounter = useRef();
 
     let kbTrack = true;
     function kbPageChange() { //maybe clean this up with css animations?
@@ -97,23 +97,66 @@ export default function KbPage(props) {
         else {scalesWinRef.current.classList.add("win-open")}
     }
 
+    function beatCountInit() {
+        const hCircle = beatCounter.current.children;
+        for (let i = 0; i < hCircle.length; i++) {hCircle[i].style.transition = "rotate " + (options.beat64Len * 16) + "ms linear"}
+        beatCountTurn(hCircle);
+        /*const spInterval = */setInterval(function(){    
+            beatCountTurn(hCircle);
+        }, options.beat64Len * 64);   
+    }
+    function beatCountTurn(hCircle) {
+        hCircle[2].style.rotate = ""; 
+        hCircle[3].style.rotate = "";
+        hCircle[5].style.rotate = "";
+        hCircle[5].style.zIndex = 90;
+        hCircle[7].style.zIndex = 90;
+
+        hCircle[2].style.zIndex = 84; 
+        hCircle[3].style.zIndex = 84;
+        hCircle[7].style.rotate = "180deg";
+        setTimeout(function(){
+            hCircle[7].style.zIndex = 84;
+            hCircle[5].style.zIndex = 96;
+            hCircle[5].style.rotate = "180deg";
+        }, options.beat64Len * 16);
+        setTimeout(function(){
+            hCircle[2].style.zIndex = 93;
+            hCircle[2].style.rotate = "360deg";
+        }, options.beat64Len * 32);
+        setTimeout(function(){
+            hCircle[3].style.zIndex = 99;
+            hCircle[3].style.rotate = "180deg";
+            
+            hCircle[5].style.zIndex = 93;
+            hCircle[7].style.rotate = "";
+        }, options.beat64Len * 48);
+    }
+
     return (      
         <div className='kb-page'>
             <div>
                 <div ref={kbCob0} className='kb-page--cob' id='kbcob-0'>
                     <div id='main-menu'>
-                        <h3>Settings</h3>
                         <div className='sm-item' id='sm-latency'>Hit latency</div>
                         <div className='sm-item' id='sm-rounding'>Beat Rounding</div>
                         <div className='sm-item' id='sm-fraction'>Beat Fraction</div>
                         <div className='sm-item' id='sm-bpm'>BPM</div>
                         <div className='sm-item' id='sm-length'>Track Length</div>
+                        <div className='sm-item' id='sm-qwerty'>Qwerty Keyboard</div>
                         <p>Credits</p>
                     </div>
                 </div>
                 <div ref={kbCob1} className='kb-page--cob' id='kbcob-1'><InstrusAndEffects /></div>
                 <div ref={kbCob2} className='kb-page--cob' id='kbcob-2'><SmallPlayer /></div>
-                <div ref={kbCob3} className='kb-page--cob' id='kbcob-3'></div>
+                <div ref={kbCob3} className='kb-page--cob' id='kbcob-3'>
+                    <div className='beatCounter' ref={beatCounter} onClick={beatCountInit}>
+                        <div className='beatCounter--C1L'></div><div className='beatCounter--C1R'></div>
+                        <div className='beatCounter--C2L'></div><div className='beatCounter--C2R'></div>
+                        <div className='beatCounter--C1L'></div><div className='beatCounter--C1R'></div>
+                        <div className='beatCounter--C2L'></div><div className='beatCounter--C2R'></div>
+                    </div>
+                </div>
 
                 <div ref={m0Ref} className='kb-page--cob cobm' id='kbcob-m-0' onClick={kbPageChange}></div>
                 <div ref={m1Ref} className='kb-page--cob cobm' id='kbcob-m-1'>

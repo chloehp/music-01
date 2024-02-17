@@ -9,7 +9,7 @@ const options = {
   musicalQwerty : true, // does pressing notes on a physical keyboard make notes - bool
   
   //track options       
-  beat64Len : 15,       // beat length in milliseconds
+  beat64Len : 30,       // beat length in milliseconds
                         // 
   trackSelection : 0,   // select active track for editing or recording on
   trackhead : 0,        // where you are in the track, measured in fractions of a beat
