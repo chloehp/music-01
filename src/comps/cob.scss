@@ -16,8 +16,9 @@
   &--octave:active {scale: 1.5;}
 }
 #kbcob-0 {
-  width: 42%; height: 70%;
-  left: -30%; top: -30%;
+  width: 42%; height: 75%;
+  left: -30%; top: -36%;
+  background-color: #E1F0DA;
 }
 #kbcob-0.hide {
   left: -75%;
@@ -93,27 +94,34 @@
 #main-menu {
   position: absolute;
   bottom: 0; right: 0;
-  width: 21%; height: 54%;
-  margin: 3%;
+  width: 27%; height: 52%;
   color: #41473C;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .sm-item {
-  width: 90%; height: 15%;
+  width: 45%; //height: 15%;
+  aspect-ratio: 1/1;
   margin-top: 5%;
   border-radius: 15px;
-  background-color: #41473C;
-  color: #899D7E;
+  background-color: #899D7E;
+  color: #E1F0DA;
   font-size: 0;
-  background-position: 15% center;
-  background-size: 27%;
+  background-position: center;
+  background-size: 69%;
   background-repeat: no-repeat;
+  position: relative;
+  transition: scale 300ms;
 }
-#sm-latency {background-image: url('../assets/hit-latency.svg');}
-#sm-rounding {background-image: url('../assets/beat-rounding.svg');}
-#sm-fraction {background-image: url('../assets/beat-fraction.svg');}
-//#sm-bpm {}
-#sm-length {background-image: url('../assets/track-length.svg');}
-#sm-qwerty {background-image: url('../assets/qwerty.svg');}
+.sm-item:hover {scale: 1.1;}
+#sm-latency {background-image: url(../assets/symb/hit-latency.svg);}
+#sm-rounding {background-image: url(../assets/symb/beat-rounding.svg);}
+#sm-fraction {background-image: url(../assets/symb/beat-fraction.svg);}
+#sm-bpm {background-image: url(../assets/symb/bpm.svg);}
+#sm-length {background-image: url(../assets/symb/track-length.svg);}
+#sm-qwerty {background-image: url(../assets/symb/qwerty.svg);}
+#sm-qwerty {background-image: url(../assets/symb/note-bool.svg);}
 
 .beatCounter {
   position: absolute;
@@ -133,18 +141,18 @@
   }
   &--C1L {
     rotate: 180deg;
-    background-image: url('../assets/half-circle1.svg');
+    background-image: url(../assets/symb/half-circle1.svg);
   }
   &--C1R {
     rotate: 0deg;
-    background-image: url('../assets/half-circle1.svg');
+    background-image: url(../assets/symb/half-circle1.svg);
   }
   &--C2L {
     rotate: 180deg;
-    background-image: url('../assets/half-circle2.svg');
+    background-image: url(../assets/symb/half-circle2.svg);
   }
   &--C2R {
     rotate: 0deg;
-    background-image: url('../assets/half-circle2.svg');
+    background-image: url(../assets/symb/half-circle2.svg);
   }
 }

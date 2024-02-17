@@ -26,17 +26,17 @@
     left: 15%; top: 9%;
   }
     #restart-spot {
-      background-image: url('../assets/restart.svg');
+      background-image: url(../assets/symb/restart.svg);
     }
   #play-button{
     left: 39%; top: 9%;
   }
     #play-spot {
-      background-image: url('../assets/play.svg');
+      background-image: url(../assets/symb/play.svg);
       opacity: 1;
     }
     #pause-spot {
-      background-image: url('../assets/pause.svg');
+      background-image: url(../assets/symb/pause.svg);
       opacity: 0;
     }
   #rec-button{

@@ -6,6 +6,7 @@ import options from "./options";
 import tr from "./tracks";
 import instrumentSwitch from "./instrument-switch";
 import trackFill from "./track-fill";
+import animation from "./animation";
 //import { Time } from "tone";
     
 // func vars
@@ -89,6 +90,7 @@ const note = {
       options.record = true;
       track = tr.tracks[options.trackSelection];                    // set selected track as track to record to
       recordStartTime = new Date();                                 // record starts from now
+      animation.beatCountInit();                                    // turn on beat counter
       document.getElementById("red-spot").classList.add("r-s-on");  // change red spot 
       console.log("record go");
     }    
@@ -124,12 +126,13 @@ const note = {
       recordStartTime = (new Date() - 60) + 180;
       for (let i = 0; i < tr.tracks.length; i++) {
         if (tr.tracks[i][0]) {
-          const instruFromTrck = tr.tracks[i][0].ins;
-          playInsts.push(instrumentSwitch[instruFromTrck].x);
+          const instruFromTrck = tr.tracks[i][0].ins;               // get instrument used to play this track
+          playInsts.push(instrumentSwitch[instruFromTrck].x);       // push to array 
         }
       }
-      pauseSpot.style.opacity = 1;
-      playSpot.style.opacity = 0;
+      animation.beatCountInit();                                    // turn on beat counter
+      pauseSpot.style.opacity = 1;                                  // show pause symbol
+      playSpot.style.opacity = 0;                                   // hide play symbol
       console.log(playInsts);
     }
 
