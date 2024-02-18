@@ -1,5 +1,7 @@
 import options from "./options";
 
+let beatIndex = 0;
+
 const animation = {
     bobble : function(element) {
         element.classList.remove("sp-bobble");    
@@ -28,34 +30,50 @@ const animation = {
         const spInterval = setInterval(function(){    
             if ((options.play === true) || (options.record === true)) {animation.beatCountTurn(hCircle)}
             else {clearInterval(spInterval); return}
-        }, options.beat64Len * 64);   
+        }, options.beat64Len * 16);   
+        if (options.trackhead === 0) {animation.beatCountReset(hCircle)}
     },
-    beatCountTurn : function(hCircle) {
+    beatCountReset : function(hCircle) {
         hCircle[2].style.rotate = ""; 
         hCircle[3].style.rotate = "";
         hCircle[5].style.rotate = "";
+        hCircle[7].style.rotate = "";
+        hCircle[2].style.zIndex = 90;
+        hCircle[3].style.zIndex = 90;
         hCircle[5].style.zIndex = 90;
         hCircle[7].style.zIndex = 90;
-
-        hCircle[2].style.zIndex = 84; 
-        hCircle[3].style.zIndex = 84;
-        hCircle[7].style.rotate = "180deg";
-        setTimeout(function(){
-            hCircle[7].style.zIndex = 84;
-            hCircle[5].style.zIndex = 96;
-            hCircle[5].style.rotate = "180deg";
-        }, options.beat64Len * 16);
-        setTimeout(function(){
-            hCircle[2].style.zIndex = 93;
-            hCircle[2].style.rotate = "360deg";
-        }, options.beat64Len * 32);
-        setTimeout(function(){
-            hCircle[3].style.zIndex = 99;
-            hCircle[3].style.rotate = "180deg";
-            
-            hCircle[5].style.zIndex = 93;
-            hCircle[7].style.rotate = "";
-        }, options.beat64Len * 48);
+    },
+    beatCountTurn : function(hCircle) {
+        switch(beatIndex) {
+            default: // 0
+                hCircle[2].style.rotate = ""; 
+                hCircle[3].style.rotate = "";
+                hCircle[5].style.rotate = "";
+                hCircle[5].style.zIndex = 90;
+                hCircle[7].style.zIndex = 90;
+        
+                hCircle[2].style.zIndex = 84; 
+                hCircle[3].style.zIndex = 84;
+                hCircle[7].style.rotate = "180deg";
+                break;
+            case 1: 
+                hCircle[7].style.zIndex = 84;
+                hCircle[5].style.zIndex = 96;
+                hCircle[5].style.rotate = "180deg";
+                break;
+            case 2: 
+                hCircle[2].style.zIndex = 93;
+                hCircle[2].style.rotate = "360deg";
+                break;
+            case 3:
+                hCircle[3].style.zIndex = 99;
+                hCircle[3].style.rotate = "180deg";            
+                hCircle[5].style.zIndex = 93;
+                hCircle[7].style.rotate = "";
+                beatIndex = -1;
+                break;
+        }
+        beatIndex++;
     },
 }
 

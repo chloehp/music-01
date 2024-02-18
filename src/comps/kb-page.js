@@ -123,12 +123,13 @@ export default function KbPage(props) {
                     </div>
                 </div>
 
-                <div ref={m0Ref} className='kb-page--cob cobm' id='kbcob-m-0' onClick={kbPageChange}></div>
+                <div ref={m0Ref} className='kb-page--cob cobm' id='kbcob-m-0' onClick={kbPageChange}><p className='cobm--p'>Tracker</p></div>
                 <div ref={m1Ref} className='kb-page--cob cobm' id='kbcob-m-1'>
-                    <div className='kb-page--cob--octave' style={{top: 0}}    onClick={() => changeOctave(options.octave + 1)}></div>
-                    <div className='kb-page--cob--octave' style={{bottom: 0}} onClick={() => changeOctave(options.octave - 1)}></div>
+                    <p className='cobm--p'>Octave</p>
+                    <div className='cobm--octave' style={{top: 0}}    onClick={() => changeOctave(options.octave + 1)}></div>
+                    <div className='cobm--octave' style={{bottom: 0}} onClick={() => changeOctave(options.octave - 1)}></div>
                 </div>
-                <div ref={m2Ref} className='kb-page--cob cobm' id='kbcob-m-2' onClick={m2Click}>Scales</div>
+                <div ref={m2Ref} className='kb-page--cob cobm' id='kbcob-m-2' onClick={m2Click}><p className='cobm--p'>Scales</p></div>
                 <div ref={trPlayBtn} id='tracker-play-btn' onMouseDown={clickPlayButton}>Play/Pause</div>
             </div>
             
