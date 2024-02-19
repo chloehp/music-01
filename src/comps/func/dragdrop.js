@@ -7,7 +7,8 @@ function dragElement(elmnt, lenChange = false) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     const originalX = elmnt.offsetLeft;
     const originalY = elmnt.offsetTop;
-    const trackerEl = document.querySelector(".tracker");
+    const originalH = parseInt(elmnt.style.height);
+    //const trackerEl = document.querySelector(".tracker");
     elmnt.onmousedown = dragMouseDown;
     elmnt.ontouchstart = dragTouchDown;
 
@@ -21,6 +22,7 @@ function dragElement(elmnt, lenChange = false) {
         e = e || window.event;
         //e.preventDefault();
         if (e.target.classList.contains("track--track--column--point--input")) {return}
+        else if (e.target.classList.contains("track--track--column--point--btm")) {lenChange = true}
         // get the mouse cursor position at startup:
         pos3 = e.clientX; pos4 = e.clientY;
         document.onmouseup = closeDragElement;
@@ -28,9 +30,10 @@ function dragElement(elmnt, lenChange = false) {
         document.onmousemove = elementDrag;
     }
     function dragTouchDown(e) {
-        trackerEl.style.touchAction = "none";
-        e = e || window.event;
-        //e.preventDefault();
+        //trackerEl.style.touchAction = "none";
+        e = e || window.event;        
+        if (e.target.classList.contains("track--track--column--point--input")) {return}
+        else if (e.target.classList.contains("track--track--column--point--btm")) {lenChange = true}
         // get the mouse cursor position at startup:
         pos3 = e.clientX; pos4 = e.clientY;
         document.ontouchend = closeTouchElement;
@@ -50,12 +53,10 @@ function dragElement(elmnt, lenChange = false) {
         if (lenChange === false) {
             elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
             elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            thisPointInArray.start -= (pos2 / 15);
         }
         else {
             const chHeight = parseInt(elmnt.style.height) - pos2;
             elmnt.style.height = chHeight + "px";
-            thisPointInArray.len -= (pos2 / 15);
         }
     }
 
@@ -76,11 +77,14 @@ function dragElement(elmnt, lenChange = false) {
     function changePosition() {        
         const movedPosX = Math.trunc((elmnt.offsetLeft - originalX) / 54);
         const movedPosY = elmnt.offsetTop - originalY;
+        const changedH = parseInt(elmnt.style.height) - originalH;
         thisPointInArray.pos += movedPosX;
         
         if ((movedPosX === 0) && (movedPosY === 0) && (lenChange === false)) {
             console.log(elmnt.id)
         }
+        else if (lenChange === true) {thisPointInArray.len += (changedH / 15);}
+        else {thisPointInArray.start += (movedPosY / 15)}
     }
 }
 

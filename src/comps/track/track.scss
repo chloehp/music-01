@@ -27,6 +27,18 @@
         background-color: #798E6D;
         margin-bottom: 15px;
         padding: 6px;
+        font-size: 30px;
+        position: relative;
+
+        &--x {
+            position: absolute;
+            right: 0; top: 0;
+            height: 1em;
+            aspect-ratio: 1/1;
+            rotate: 45deg;
+            cursor: pointer;
+            user-select: none;
+        }
     }
     &--track {        
         position: relative;

@@ -50,13 +50,14 @@
     &--p {
       position: absolute;
       left: 0; top: 50%;
-      width: 100%; height: 30px;
+      width: 100%; height: auto;
       translate: 0 -50%;
       margin: 0;
       text-align: center;
       font-size: 30px;
       line-height: 30px;
       font-family: AlumniSansIt;
+      text-wrap: balance;
     }
     &--octave {
       position: absolute;
@@ -137,7 +138,7 @@
 
 .beatCounter {
   position: absolute;
-  right: 9%; top: 24%;
+  right: 9%; bottom: 24%;
   height: 52%;
   aspect-ratio: 1/1;
 

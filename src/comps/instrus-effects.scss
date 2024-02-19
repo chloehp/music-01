@@ -8,13 +8,13 @@
         background-color: #BFD8AF;
     }
     &--instruments {
-        width: 66%;
+        width: 60%;
         position: relative;
         text-align: center;
         color: #BFD8AF;
     }
     &--effects {
-        width: 33%;
+        width: 40%;
         height: 51%;
         display: flex;
         flex-direction: column;
@@ -30,6 +30,17 @@
             color: #899D7E;
             text-align: center;
             font-size: 30px;
+            position: relative;
+
+            &--x {
+                position: absolute;
+                right: 3%; top: 1.5%;
+                height: 1em;
+                aspect-ratio: 1/1;
+                rotate: 45deg;
+                cursor: pointer;
+                user-select: none;
+            }
         }
     }
 }

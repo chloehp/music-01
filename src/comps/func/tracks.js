@@ -14,6 +14,15 @@ const tr = {
         console.log(tr.trackEls);
     },
     //
+    deleteTrack : function(index){
+        tr.tracks[index] = [];
+        tr.trackEls[index] = [];
+        if (options.trackSelection < 1) {options.trackSelection = 0}
+        else {options.trackSelection--}
+        console.log(tr.tracks);
+        console.log(tr.trackEls);
+    },
+    //
     evalTrackForDisplay : function(thisTrack){
         let han = 0;    // highest active notes
         let len = 0;

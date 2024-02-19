@@ -94,7 +94,7 @@ export default function ScalesList(props) {
                 }                
             }
         }
-        document.getElementById("kbcob-m-2").innerHTML = options.scalesChoice;
+        document.getElementById("kbcob-m-2").children[0].innerHTML = options.scalesChoice;
         console.log(options.scalesChoice);
         console.log(activeScale);
         animation.consoleLog(options.scalesChoice);

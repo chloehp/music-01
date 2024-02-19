@@ -6,7 +6,8 @@ import dragElement from './dragdrop';
 
 function trackFill(roundBeats = true) {
     const trackSel = options.trackSelection;
-    const trackEl = document.querySelectorAll(".track--track--tofill")[trackSel];    
+    const trackEl = document.getElementById("track" + trackSel);
+    //console.log(trackSel);
     trackEl.innerHTML = null;
     
     if (tr.tracks[trackSel]){

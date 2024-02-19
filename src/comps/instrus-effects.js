@@ -20,6 +20,10 @@ export default function InstrusAndEffects(props) {
             console.log("Effect added");
         }, 30);   
     }
+    function rmvEffect(x) {
+        effectArray.splice(x, 1);
+        setEffects([...effectArray]);
+    }
 
     return (
         <div className='instrs-efcts fill'>
@@ -30,7 +34,9 @@ export default function InstrusAndEffects(props) {
             <div className='instrs-efcts--sep'></div>
             <div ref={effectContainer} className='instrs-efcts--effects'>
                 {effectArray.map((item, key) => (
-                    <div className='instrs-efcts--effects--e'></div>
+                    <div className='instrs-efcts--effects--e' key={key}>
+                        <div className='instrs-efcts--effects--e--x' onClick={() => rmvEffect(key)}>+</div>
+                    </div>
                 ))}
                 <div className='instrs-efcts--effects--e clicker' id='add-effect' onClick={addEffect}>+</div>
             </div>

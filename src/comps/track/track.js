@@ -20,7 +20,9 @@ export default function Track(props) {
 
     return (      
         <div ref={trRef} className='track' onMouseDown={changeTrack} id={"track" + props.trackno}>
-            <div className='track--details'></div>
+            <div className='track--details'>
+                <div className='track--details--x' onClick={() => props.removeFunc(props.trackno)}>+</div>
+            </div>
             <div className='track--track'>    
                 <div ref={trackH} className='track--track--head'></div>      
                 <div className='track--track--tofill'></div>
