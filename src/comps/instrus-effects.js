@@ -31,7 +31,6 @@ export default function InstrusAndEffects(props) {
                 <h1 className='instrs-efcts--instruments--t'>Instrument</h1>
                 <div className='instrs-efcts--instruments--pic'></div>
             </div>
-            <div className='instrs-efcts--sep'></div>
             <div ref={effectContainer} className='instrs-efcts--effects'>
                 {effectArray.map((item, key) => (
                     <div className='instrs-efcts--effects--e' key={key}>

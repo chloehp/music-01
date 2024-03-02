@@ -97,9 +97,10 @@ const note = {
     const recordInterval = setInterval(function(){                                    //set interval
       if ((options.trackhead > options.trackLength) || (options.record === false)) {  // if record reaches end of track or recording is turned off
         clearInterval(recordInterval);                                                // stop interval
+        options.record = false;                                                       //
         note.trackSet()                                                               // reset track
         document.getElementById("red-spot").classList.remove("r-s-on");               // change red spot
-        trackFill();                                                                  // save recording
+        if (track[0]) {trackFill()}                                                   // if something was recorded, fix and display
         console.log("record stop");
         return
       }

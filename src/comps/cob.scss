@@ -93,6 +93,11 @@
 
 #tracker-play-btn {
   background-color: #E1F0DA;
+  background-image: url(../assets/symb/play.svg);
+  background-repeat: no-repeat;
+  background-size: 45%;
+  background-position: center;
+
   border: #41473C 2px solid;
   border-radius: 30px;
   position: absolute;
@@ -126,6 +131,8 @@
   background-repeat: no-repeat;
   position: relative;
   transition: scale 300ms;
+  cursor: pointer;
+  filter: brightness(1);
 }
 .sm-item:hover {scale: 1.1;}
 #sm-latency {background-image: url(../assets/symb/hit-latency.svg);}
@@ -136,9 +143,25 @@
 #sm-qwerty {background-image: url(../assets/symb/qwerty.svg);}
 #sm-notes {background-image: url(../assets/symb/note-bool.png); background-size: 54%;}
 
+
+#style-console {
+  position: absolute;
+  left: 5%; top: 0;
+  width: 100%; height: 100%;
+  overflow: inherit;
+}
+
+.note-displayer {
+  position: absolute;
+  bottom: 15%; right: 24%;
+  height: 70%; width: 27%;
+  background-color: #899D7E;
+  border-radius: 15px;
+}
+
 .beatCounter {
   position: absolute;
-  right: 9%; bottom: 24%;
+  right: 6%; bottom: 24%;
   height: 52%;
   aspect-ratio: 1/1;
 

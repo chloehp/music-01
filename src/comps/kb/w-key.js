@@ -7,6 +7,7 @@ export default function WKey(props) {
         <div className='w-key' 
         onMouseDown={() => note.attackNote(props.note)}
         onTouchStart={() => note.attackNote(props.note)}
+        //onMouseEnter={() => note.attackNote(props.note)}
         onMouseUp={() => note.releaseNote(props.note)}
         onMouseLeave={() => note.releaseNote(props.note)}
         onTouchEnd={() => note.releaseNote(props.note)}

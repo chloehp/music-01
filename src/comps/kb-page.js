@@ -107,14 +107,15 @@ export default function KbPage(props) {
                         <div className='sm-item' id='sm-fraction'>Beat Fraction</div>
                         <div className='sm-item' id='sm-bpm'>BPM</div>
                         <div className='sm-item' id='sm-length'>Track Length</div>
-                        <div className='sm-item' id='sm-qwerty'>Qwerty Keyboard</div>
-                        <div className='sm-item' id='sm-notes'>Visible Notes</div>
+                        <div className='sm-item' onClick={options.changeMusicalQwerty} id='sm-qwerty'>Qwerty Keyboard</div>
+                        <div className='sm-item' onClick={options.changeVisNotes} id='sm-notes'>Visible Notes</div>
                     </div>
                     <p >Credits</p>
                 </div>
                 <div ref={kbCob1} className='kb-page--cob' id='kbcob-1'><InstrusAndEffects /></div>
                 <div ref={kbCob2} className='kb-page--cob' id='kbcob-2'><SmallPlayer /></div>
                 <div ref={kbCob3} className='kb-page--cob' id='kbcob-3'>
+                    <div id='style-console'></div>
                     <div className='beatCounter' id='beatCounter'>
                         <div className='beatCounter--C1L'></div><div className='beatCounter--C1R'></div>
                         <div className='beatCounter--C2L'></div><div className='beatCounter--C2R'></div>
@@ -130,7 +131,7 @@ export default function KbPage(props) {
                     <div className='cobm--octave' style={{bottom: 0}} onClick={() => changeOctave(options.octave - 1)}></div>
                 </div>
                 <div ref={m2Ref} className='kb-page--cob cobm' id='kbcob-m-2' onClick={m2Click}><p className='cobm--p'>Scales</p></div>
-                <div ref={trPlayBtn} id='tracker-play-btn' onMouseDown={clickPlayButton}>Play/Pause</div>
+                <div ref={trPlayBtn} id='tracker-play-btn' onMouseDown={clickPlayButton}></div>
             </div>
             
             <ScalesList scalesWinRef={scalesWinRef}/>

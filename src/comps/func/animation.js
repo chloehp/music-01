@@ -12,7 +12,7 @@ const animation = {
     },
     consoleLog : function(text) {        
         const newItem = document.createElement("p");
-        const theConsole = document.getElementById("kbcob-3");
+        const theConsole = document.getElementById("style-console");
         newItem.innerHTML = text;
         theConsole.appendChild(newItem);
         
