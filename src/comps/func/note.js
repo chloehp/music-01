@@ -45,7 +45,7 @@ const note = {
         }, 300);
         return true
       }
-      catch {console.error("Uh oh. How did you get this? Please write in and let me know."); return false}      
+      catch {console.error("Uh oh. How did you get this? Please write in and let me know. chloe.hughespenzer@gmail.com \nError note.js validate function catch"); return false}      
     }
     else {
       return false
@@ -68,7 +68,7 @@ const note = {
         instrument.triggerRelease(playNote, now + hL);                                  // release note 
         if (options.record === true) {                                                  // if recording
           const nowTime = (new Date()) - recordStartTime;                               //
-          const identifier = track.length + "-id-" + Math.floor(Math.random() * 1000);  // make new id
+          const identifier = track.length + "-id-" + Math.floor(Math.random() * 9000);  // make new id
           const startTime = (activeNotes[i].t / quaVar) + pausePoint;                   //
           const noteLength = (nowTime - activeNotes[i].t) / quaVar;                     // note length is difference between now and when note was pressed, divided by 1/64th note
           const newPoint = {id : identifier, n : playNote, start : startTime, len : noteLength, ins : options.instruSelect, eff : effect, on : false, pos : activeNotes[i].p};  // create object to be recorded

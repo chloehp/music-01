@@ -107,7 +107,10 @@ h1 {
   z-index: 900;
 
   &--scn {
-    width: 240px; height: 240px;
+    width: 450px; height: 450px;
+    text-align: center;
+    color: #41473C;
+    font-size: 390%; font-weight: 540;
     &--btn {
       border-radius: 100%;
       background-color: #BFD8AF;
@@ -117,9 +120,7 @@ h1 {
     }
     &--p {
       width: 100%; height: auto;
-      text-align: center;
-      color: #41473C;
-      font-size: 390%; font-weight: 540;
+      * {margin: 0;}
     }
     &--btn:hover {filter: brightness(1.2);}
     &--btn:active {scale: 1.2;}

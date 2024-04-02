@@ -48,6 +48,8 @@
         background-color: #798E6D; 
         padding: 24px 6px;
         overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
 
         &--tofill {
             display: flex;

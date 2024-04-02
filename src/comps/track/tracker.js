@@ -19,14 +19,13 @@ export default function Tracker(props) {
         const trackerEl = document.getElementById("wholeTracker");
         trackerEl.scrollTop = 0;
         setTimeout(function(){trackerEl.scrollLeft = trackerEl.scrollWidth}, 210);
-        console.log("track added");
-        console.log(options.trackSelection);
+        console.log("track " + options.trackSelection +" added");
     }
     function rmvTrack(x) {
         tr.deleteTrack(x);
         trCompsAr.splice(x, 1);
         setTracks([...trCompsAr]);
-        console.log("track removed");
+        console.log("track " + x +" removed");
     }
 
     function addScroll() {document.getElementById("addNew").style.top = document.getElementById("wholeTracker").scrollTop + "px"}    
