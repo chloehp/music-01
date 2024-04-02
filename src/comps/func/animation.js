@@ -16,10 +16,11 @@ const animation = {
         newItem.innerHTML = text;
         theConsole.appendChild(newItem);
         
-        const conInter = setInterval(function(){
+        const conInter = setInterval(function(){ // scroll console to bottom
             if (theConsole.scrollTop + theConsole.clientHeight >= theConsole.scrollHeight) {clearInterval(conInter); return}
             else {theConsole.scrollTop += 3}
         }, 30); 
+        console.log("MuCon:_" + text);
     },
 
     

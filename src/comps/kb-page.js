@@ -103,7 +103,7 @@ export default function KbPage(props) {
                 <div ref={kbCob0} className='kb-page--cob' id='kbcob-0'>
                     <div id='main-menu'>
                         <div className='sm-item' id='sm-latency'>Hit latency</div>
-                        <div className='sm-item' id='sm-rounding'>Beat Rounding</div>
+                        <div className='sm-item' onClick={options.changeBeatRounding} id='sm-rounding'>Beat Rounding</div>
                         <div className='sm-item' id='sm-fraction'>Beat Fraction</div>
                         <div className='sm-item' id='sm-bpm'>BPM</div>
                         <div className='sm-item' id='sm-length'>Track Length</div>
