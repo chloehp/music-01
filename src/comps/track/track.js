@@ -11,11 +11,13 @@ export default function Track(props) {
         else {console.log("track trref false"); return}
     }, 150);  
     
-    setInterval(function () {
+    /*
+    setInterval(function () { // move to trackfill
         try {trackH.current.style.top = (24 + (options.trackhead * 15)) + "px"}
         catch {}
     }, options.beat64Len);
-    
+    */
+
     function changeTrack() {options.trackSelection = props.trackno}
 
     return (      
@@ -24,7 +26,7 @@ export default function Track(props) {
                 <div className='track--details--x' onClick={() => props.removeFunc(props.trackno)}>+</div>
             </div>
             <div className='track--track'>    
-                <div ref={trackH} className='track--track--head'></div>      
+                {/*<div ref={trackH} className='track--track--head'></div>*/}
                 <div className='track--track--tofill'></div>
             </div>
         </div>

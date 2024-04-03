@@ -10,18 +10,17 @@ function trackFill(roundBeats = true) {
     //console.log(trackEl);
     
     trackEl.innerHTML = null;
-
-    //for (let i = 0; i < trackEl.childElementCount; i++) {
-    //    const chClass = trackEl.children[i].classList.value;
-    //    if ((chClass === "track--track--tofill") || (chClass === "track--track--column") || (chClass === "track--track--colspace")) {
-    //        trackEl.children[i].remove();
-    //    }
-    //}
     
     if (tr.tracks[trackSel]){
         const trackArray = tr.tracks[trackSel];
         const trackDetails = tr.evalTrackForDisplay(trackArray);
         const trackLength = options.trackLength || Math.ceil(trackDetails.trackLen);
+        
+        //trackhead
+        const trackH = document.createElement("div");
+        trackH.setAttribute("class", "track--track--head");
+        trackEl.appendChild(trackH);        
+        setInterval(function () { trackH.current.style.top = (24 + (options.trackhead * 15)) + "px" }, options.beat64Len);
 
         for (let x = 0; x < trackDetails.highActiveNotes; x++) { // active note columns
             if (x !== 0) {
@@ -29,6 +28,7 @@ function trackFill(roundBeats = true) {
                 colSpace.setAttribute("class", "track--track--colspace");
                 trackEl.appendChild(colSpace); 
             }
+
             const column = document.createElement("div");
             column.setAttribute("class", "track--track--column");
             trackEl.appendChild(column);
