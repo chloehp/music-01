@@ -5,8 +5,6 @@ import '../App.scss';
 
 export default function Start(props) {    
 
-    const start = "SNART (snail start)";
-
     return (      
         <div ref={props.startRef} className='start'>
           <div className='start--scn center'>

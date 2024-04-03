@@ -7,8 +7,16 @@ import dragElement from './dragdrop';
 function trackFill(roundBeats = true) {
     const trackSel = options.trackSelection;
     const trackEl = document.getElementById("track" + trackSel).children[1];
-    console.log(trackEl);
+    //console.log(trackEl);
+    
     trackEl.innerHTML = null;
+
+    //for (let i = 0; i < trackEl.childElementCount; i++) {
+    //    const chClass = trackEl.children[i].classList.value;
+    //    if ((chClass === "track--track--tofill") || (chClass === "track--track--column") || (chClass === "track--track--colspace")) {
+    //        trackEl.children[i].remove();
+    //    }
+    //}
     
     if (tr.tracks[trackSel]){
         const trackArray = tr.tracks[trackSel];
