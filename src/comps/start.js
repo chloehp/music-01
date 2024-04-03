@@ -11,7 +11,7 @@ export default function Start(props) {
             <div className='start--scn--btn' onClick={props.startInitFun}>
                 <div className='start--scn--p center'>
                   <h1>SNART</h1>
-                  <p>(snail start)</p>
+                  <p>{"{snail start}"}</p>
                 </div>
             </div>
           </div>

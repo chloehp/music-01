@@ -12,11 +12,11 @@ const options = {
   visibleNotes : true,  //
   
   // track options       
-  beat64Len : 30,       // beat length in milliseconds
                         // 
   trackSelection : 0,   // select active track for editing or recording on
   trackhead : 0,        // where you are in the track, measured in fractions of a beat
   instruSelect : 0,     // live instrument selection from instrument-switch.js
+  beat64Len : 30,       // beat length in milliseconds
   trackLength : 200,    // track length in beats
   timeSigTop    : 4,    // top of time signature
   timeSigBottom : 4,    // bottom of time signature

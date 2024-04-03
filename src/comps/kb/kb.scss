@@ -13,6 +13,7 @@
     transition: bottom 600ms ease-in-out;
     z-index: 90;
     touch-action: none;
+    user-select: none;
 
     &--oct-group {
         width: calc(100% / 3);

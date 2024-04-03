@@ -3,7 +3,8 @@ import './track.scss';
 import { useRef } from 'react';
 
 export default function Track(props) {    
-    const trRef = useRef(); const trackH = useRef();        
+    const trRef = useRef();
+    //const trackH = useRef();        
     
     //printTrack();
     setTimeout(function(){

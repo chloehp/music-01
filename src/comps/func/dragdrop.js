@@ -75,16 +75,19 @@ function dragElement(elmnt, lenChange = false) {
         trackFill();
     }
     function changePosition() {        
-        const movedPosX = Math.trunc((elmnt.offsetLeft - originalX) / 54);
-        const movedPosY = elmnt.offsetTop - originalY;
-        const changedH = parseInt(elmnt.style.height) - originalH;
-        thisPointInArray.pos += movedPosX;
-        
-        if ((movedPosX === 0) && (movedPosY === 0) && (lenChange === false)) {
-            console.log(elmnt.id)
+        try {
+            const movedPosX = Math.trunc((elmnt.offsetLeft - originalX) / 54);
+            const movedPosY = elmnt.offsetTop - originalY;
+            const changedH = parseInt(elmnt.style.height) - originalH;
+            thisPointInArray.pos += movedPosX;
+            
+            if ((movedPosX === 0) && (movedPosY === 0) && (lenChange === false)) {
+                console.log(elmnt.id)
+            }
+            else if (lenChange === true) {thisPointInArray.len += (changedH / 15);}
+            else {thisPointInArray.start += (movedPosY / 15)}
         }
-        else if (lenChange === true) {thisPointInArray.len += (changedH / 15);}
-        else {thisPointInArray.start += (movedPosY / 15)}
+        catch {console.warn("Length drag on unselected track")}
     }
 }
 

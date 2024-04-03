@@ -1,4 +1,5 @@
 import note from "./note";
+import trackFill from "./track-fill";
 
 const keySwitch = function(key, oct, down){
     switch(key) {
@@ -50,6 +51,7 @@ const keySwitch = function(key, oct, down){
       case "Enter": 
         if (down === false) {          
           console.log("Enter");
+          trackFill();
         }
       return false;
 

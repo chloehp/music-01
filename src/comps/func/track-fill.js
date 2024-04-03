@@ -20,7 +20,7 @@ function trackFill(roundBeats = true) {
         const trackH = document.createElement("div");
         trackH.setAttribute("class", "track--track--head");
         trackEl.appendChild(trackH);        
-        setInterval(function () { trackH.current.style.top = (24 + (options.trackhead * 15)) + "px" }, options.beat64Len);
+        setInterval(function () { trackH.style.top = (24 + (options.trackhead * 15)) + "px" }, options.beat64Len);
 
         for (let x = 0; x < trackDetails.highActiveNotes; x++) { // active note columns
             if (x !== 0) {
