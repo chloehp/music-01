@@ -1,5 +1,18 @@
 SNAILER SCALES
 
+To do:
+
+>New simpler design focusing on Scales functionality, but keep similar so not too much work
+    >Reduce side menu to three buttons: Tracker (make tracker icon), Options, and maybe Credits? or Help?
+    >Get rid of console, replace with Scales
+    >Replace tracker and scales with octave buttons
+>Fill in the track details sections, use to display instruments and if the track is selected
+>Fix the visual beat counter thing, make with small svg segments
+>Make snail logo, title and background
+
+!>BUG: if use drags note from not selected track, breaks app
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
