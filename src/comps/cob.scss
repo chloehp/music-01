@@ -7,23 +7,23 @@
   transition: all 600ms;
   overflow: hidden; 
 }
-#kbcob-0 {
+#cob-menu {
   width: 42%; height: 75%;
   left: -30%; top: -36%;
   background-color: #E1F0DA;
 }
-#kbcob-0.hide {
+#cob-menu.hide {
   left: -75%;
 }
-#kbcob-1 {
+#cob-instrus-efcts {
   width: 33%; height: 54%;
   left: 15%; top: 18%;
 }
-#kbcob-2 {
+#cob-smallplayer {
   width: 36%; height: 27%;
   left: 51%; top: 18%;
 }
-#kbcob-3 {
+#cob-scales {
   width: 34.5%; height: 15%;
   left: 51%; top: 1.5%;
   background-color: #E1F0DA;
@@ -33,7 +33,7 @@
   font-style: italic;
   padding-left: 1.5%;
 }
-#kbcob-1.hide, #kbcob-2.hide, #kbcob-3.hide {
+#cob-instrus-efcts.hide, #cob-smallplayer.hide, #cob-scales.hide {
   opacity: 0;
   pointer-events: none;
 }
@@ -143,13 +143,14 @@
 #sm-qwerty {background-image: url(../assets/symb/qwerty.svg);}
 #sm-notes {background-image: url(../assets/symb/note-bool.png); background-size: 54%;}
 
-
+/*
 #style-console {
   position: absolute;
   left: 5%; top: 0;
   width: 100%; height: 100%;
   overflow: inherit;
 }
+*/
 
 .note-displayer {
   position: absolute;

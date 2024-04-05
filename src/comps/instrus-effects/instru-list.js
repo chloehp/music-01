@@ -1,5 +1,5 @@
 import './cob.scss';
-import options from './func/options';
+import options from '../func/options';
 
 export default function InstrumentList(props) { 
     

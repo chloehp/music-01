@@ -10,6 +10,7 @@ const animation = {
             element.classList.remove("sp-bobble");    
         }, 1200)
     },
+    /*
     consoleLog : function(text) {        
         const newItem = document.createElement("p");
         const theConsole = document.getElementById("style-console");
@@ -22,7 +23,7 @@ const animation = {
         }, 30); 
         console.log("MuCon:_" + text);
     },
-
+    */
     
     beatCountInit : function() {
         const hCircle = document.getElementById('beatCounter').children;
