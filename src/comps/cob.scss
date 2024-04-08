@@ -24,14 +24,12 @@
   left: 51%; top: 18%;
 }
 #cob-scales {
-  width: 34.5%; height: 15%;
+  width: 36%; height: 15%;
   left: 51%; top: 1.5%;
   background-color: #E1F0DA;
   color: #899D7E;
   font-size: 12px;
   line-height: 0.75em;
-  font-style: italic;
-  padding-left: 1.5%;
 }
 #cob-instrus-efcts.hide, #cob-smallplayer.hide, #cob-scales.hide {
   opacity: 0;
@@ -160,36 +158,3 @@
   border-radius: 15px;
 }
 
-.beatCounter {
-  position: absolute;
-  right: 6%; bottom: 24%;
-  height: 52%;
-  aspect-ratio: 1/1;
-
-  div {
-    position: absolute;
-    height: 100%; width: 100%;
-    left: 0; top: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: rotate 1800ms linear;
-    z-index: 90;
-  }
-  &--C1L {
-    rotate: 180deg;
-    background-image: url(../assets/symb/half-circle1.svg);
-  }
-  &--C1R {
-    rotate: 0deg;
-    background-image: url(../assets/symb/half-circle1.svg);
-  }
-  &--C2L {
-    rotate: 180deg;
-    background-image: url(../assets/symb/half-circle2.svg);
-  }
-  &--C2R {
-    rotate: 0deg;
-    background-image: url(../assets/symb/half-circle2.svg);
-  }
-}

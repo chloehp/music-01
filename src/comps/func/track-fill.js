@@ -20,7 +20,7 @@ function trackFill(roundBeats = true) {
         const trackH = document.createElement("div");
         trackH.setAttribute("class", "track--track--head");
         trackEl.appendChild(trackH);        
-        setInterval(function () { trackH.style.top = (24 + (options.trackhead * 15)) + "px" }, options.beat64Len);
+        setInterval(function () { trackH.style.top = (24 + (options.trackhead * 15)) + "px" }, options.beatFLen);
 
         for (let x = 0; x < trackDetails.highActiveNotes; x++) { // active note columns
             if (x !== 0) {
@@ -35,9 +35,9 @@ function trackFill(roundBeats = true) {
 
             for (let y = 0; y < trackLength; y++) { // beat rows
                 const row = document.createElement("div");
-                if (y % 16 === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl2")}
-                else if (y % (16 * options.timeSigTop) === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl3")}
-                else {row.setAttribute("class", "track--track--column--row tr-r-lvl1")}
+                if (y % options.beatFraction === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl2")}                              // slightly darker to mark 1 full beat
+                else if (y % (options.beatFraction * options.timeSigTop) === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl3")}  // darker to mark a bar
+                else {row.setAttribute("class", "track--track--column--row tr-r-lvl1")}                                                             // normal beat fraction, normal brightness
                 column.appendChild(row);
                 row.onmousedown = function(){note.trackSet(y)};
             }

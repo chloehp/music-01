@@ -9,6 +9,7 @@ To do:
 >Fill in the track details sections, use to display instruments and if the track is selected
 >Fix the visual beat counter thing, make with small svg segments
 >Make snail logo, title and background
+>New button bobble animation - pseudo 3d
 
 !>BUG: if use drags note from not selected track, breaks app
 

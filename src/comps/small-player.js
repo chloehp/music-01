@@ -8,13 +8,13 @@ import { useRef } from 'react';
 
 export default function SmallPlayer(props) { 
 
-    let chooseMeasure = 3;  //0: small beats //1: beats //2: milliseconds //3: minutes and seconds
+    let chooseMeasure = 0;  //0: small beats //1: beats //2: milliseconds //3: minutes and seconds
     let measTrkLen = 0;
     if      (chooseMeasure === 0) {measTrkLen = options.trackLength}
-    else if (chooseMeasure === 1) {measTrkLen = options.trackLength}
-    else if (chooseMeasure === 2) {measTrkLen = Math.trunc(options.trackLength * options.beat64Len)}
+    else if (chooseMeasure === 1) {measTrkLen = options.trackLength / options.beatFraction}
+    else if (chooseMeasure === 2) {measTrkLen = Math.trunc(options.trackLength * options.beatFLen)}
     else    {//chooseMeasure === 3
-        const tSec = (options.trackLength * options.beat64Len) / 1000;
+        const tSec = (options.trackLength * options.beatFLen) / 1000;
         if (tSec > 60) {                                // if performance issues occur, make extra var to only do this every 6th interval, 450 milliseconds
             const mins = Math.floor(tSec / 60);
             const secs = Math.round(tSec % 60);
@@ -47,10 +47,10 @@ export default function SmallPlayer(props) {
     let tNow = 0;
     setInterval(function () {
         if      (chooseMeasure === 0) {tNow = Math.trunc(options.trackhead)}    // small beats
-        else if (chooseMeasure === 1) {tNow = Math.trunc(options.trackhead)}    // beats
-        else if (chooseMeasure === 2) {tNow = Math.trunc(options.trackhead * options.beat64Len)}  // milliseconds
+        else if (chooseMeasure === 1) {tNow = Math.trunc(options.trackhead / options.beatFraction + 1)}    // beats
+        else if (chooseMeasure === 2) {tNow = Math.trunc(options.trackhead * options.beatFLen)}  // milliseconds
         else    {//chooseMeasure === 3      // minutes:seconds
-            const tSec = (options.trackhead * options.beat64Len) / 1000;
+            const tSec = (options.trackhead * options.beatFLen) / 1000;
             if (tSec > 60) {                                // if performance issues occur, make extra var to only do this every 6th interval, 450 milliseconds
                 const mins = Math.floor(tSec / 60);
                 const secs = Math.round(tSec % 60);
@@ -61,9 +61,10 @@ export default function SmallPlayer(props) {
         }
         try {
             trackHead.current.style.left = ((options.trackhead / options.trackLength) * 100) + "%";
+            //console.log(options.trackhead);
             timeNow.current.innerHTML = tNow;
         } catch {}
-    }, 75);
+    }, 72);
 
     return (      
         <div>

@@ -1,4 +1,3 @@
-import animation from "./animation";
 
 const options = {    
   // user options
@@ -14,10 +13,11 @@ const options = {
   // track options       
                         // 
   trackSelection : 0,   // select active track for editing or recording on
-  trackhead : 0,        // where you are in the track, measured in fractions of a beat
+  trackhead : 0,        // where you are in the track, measured in fractions of a beat // what fraction is this
   instruSelect : 0,     // live instrument selection from instrument-switch.js
-  beat64Len : 30,       // beat length in milliseconds
-  trackLength : 200,    // track length in beats
+  beatFraction : 16,    // beatFLen is this fraction of a whole beat ( 1/x )
+  beatFLen : 30,        // beat fraction length in milliseconds
+  trackLength : 192,    // track length in beats
   timeSigTop    : 4,    // top of time signature
   timeSigBottom : 4,    // bottom of time signature
 
@@ -33,13 +33,13 @@ const options = {
       options.visibleNotes = false;                                           // set visibleNotes option false
       for (let i = 0; i < knLen; i++) {keyNotes[i].style.display = "none"}    // for each key note, display: none
       document.getElementById("sm-notes").style.filter = "brightness(0.75)";  // sm-notes button lower brightness
-      animation.consoleLog("Visible Notes: OFF");
+      console.log("Visible Notes: OFF");
     }
     else {
       options.visibleNotes = true;                                            // set visibleNotes option true
       for (let i = 0; i < knLen; i++) {keyNotes[i].style.display = "block"}   // for each key note, display: block
       document.getElementById("sm-notes").style.filter = "brightness(1)";     // sm-notes button full brightness
-      animation.consoleLog("Visible Notes: ON");
+      console.log("Visible Notes: ON");
     }
   },
   //
@@ -47,12 +47,12 @@ const options = {
     if (options.musicalQwerty === true) {
       options.musicalQwerty = false;                                          // set musicalQwerty option false
       document.getElementById("sm-qwerty").style.filter = "brightness(0.75)"; // sm-qwerty button lower brightness
-      animation.consoleLog("Musical QWERTY: OFF");                            
+      console.log("Musical QWERTY: OFF");                            
     }
     else {
       options.musicalQwerty = true;                                           // set musicalQwerty option true
       document.getElementById("sm-qwerty").style.filter = "brightness(1)";    // sm-qwerty button full brightness
-      animation.consoleLog("Musical QWERTY: ON");                             
+      console.log("Musical QWERTY: ON");                             
     }
   },
   //

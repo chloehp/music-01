@@ -6,7 +6,7 @@ import options from "./options";
 import tr from "./tracks";
 import instrumentSwitch from "./instrument-switch";
 import trackFill from "./track-fill";
-import animation from "./animation";
+//import animation from "./animation";
 //import { Time } from "tone";
     
 // func vars
@@ -16,7 +16,7 @@ let track = tr.tracks[options.trackSelection];
 const now = Tone.now();
 let recordStartTime = new Date();
 
-let quaVar = options.beat64Len;                              // hemidemisemiquaver
+let quaVar = options.beatFLen;                              // hemidemisemiquaver
 let instrument = instrumentSwitch[options.instruSelect].x;   // instrument choice
 let playInsts = [];                                          // instruments used in playback
 let effect = null;                                           // effect choice
@@ -90,7 +90,7 @@ const note = {
       options.record = true;
       track = tr.tracks[options.trackSelection];                    // set selected track as track to record to
       recordStartTime = new Date();                                 // record starts from now
-      animation.beatCountInit();                                    // turn on beat counter
+      //animation.beatCountInit();                                    // turn on beat counter
       document.getElementById("red-spot").classList.add("r-s-on");  // change red spot 
       console.log("record go");
     }    
@@ -131,7 +131,7 @@ const note = {
           playInsts.push(instrumentSwitch[instruFromTrck].x);       // push to array 
         }
       }
-      animation.beatCountInit();                                    // turn on beat counter
+      //animation.beatCountInit();                                    // turn on beat counter
       pauseSpot.style.opacity = 1;                                  // show pause symbol
       playSpot.style.opacity = 0;                                   // hide play symbol
       console.log(playInsts);

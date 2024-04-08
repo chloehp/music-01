@@ -1,6 +1,3 @@
-import options from "./options";
-
-let beatIndex = 0;
 
 const animation = {
     bobble : function(element) {
@@ -25,14 +22,15 @@ const animation = {
     },
     */
     
+    /*
     beatCountInit : function() {
         const hCircle = document.getElementById('beatCounter').children;
-        for (let i = 0; i < hCircle.length; i++) {hCircle[i].style.transition = "rotate " + (options.beat64Len * 16) + "ms linear"}
+        for (let i = 0; i < hCircle.length; i++) {hCircle[i].style.transition = "rotate " + (options.beatFLen * 16) + "ms linear"}
         animation.beatCountTurn(hCircle);
         const spInterval = setInterval(function(){    
             if ((options.play === true) || (options.record === true)) {animation.beatCountTurn(hCircle)}
             else {clearInterval(spInterval); return}
-        }, options.beat64Len * 16);   
+        }, options.beatFLen * 16);   
         if (options.trackhead === 0) {animation.beatCountReset(hCircle)}
     },
     beatCountReset : function(hCircle) {
@@ -77,6 +75,7 @@ const animation = {
         }
         beatIndex++;
     },
+    */
 }
 
 export default animation;

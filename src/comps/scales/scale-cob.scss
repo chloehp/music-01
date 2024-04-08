@@ -1,0 +1,94 @@
+.scales-area {
+    width: 100%; height: 100%;
+    color: #41473c;
+
+    &--scale--type {
+        position: absolute;
+        top: 50%; left: 6%;
+        translate: 0 -50%;
+        height: 45%; width: 42%;
+        background-color: #899d7e;
+        border-radius: 24px;
+    }
+    &--in {
+        position: absolute;
+        top: 50%; left: 50%;
+        translate: 0 -50%;
+        margin: 0;
+        font-size: 30px;
+        font-family: AlumniSansIt;
+    }
+    &--scale--note {
+        position: absolute;
+        top: 50%; left: 56%;
+        translate: 0 -50%;
+        height: 45%; width: 21%;
+        background-color: #899d7e;
+        border-radius: 24px;
+    }
+    &--dropdown {
+      position: absolute;
+      width: 100%; height: 24px;
+      left: 0; bottom: 0;
+      background-color: #899d7e;
+      background-image: url(../../assets/symb/double-arrow.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 15px;
+      cursor: pointer;
+      transition: scale 300ms;
+    }
+    &--dropdown:hover {scale: 1.3;}
+}
+
+
+.beatCounter {
+    position: absolute;
+    right: 4%; top: 50%;
+    translate: 0 -50%;
+    height: 52%;
+    aspect-ratio: 1/1;
+    background-color: #899d7e;
+    border-radius: 100%;
+
+    &--seg {
+      position: absolute;
+      left: 50%; top: 0;
+      width: 50%; height: 50%;
+      background-image: url(../../assets/symb/segment.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 0;
+      transform-origin: 0 100%;
+      display: none;
+    }
+  
+    /*
+    div {
+      position: absolute;
+      height: 100%; width: 100%;
+      left: 0; top: 0;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: rotate 1800ms linear;
+      z-index: 90;
+    }
+    &--C1L {
+      rotate: 180deg;
+      background-image: url(../../assets/symb/half-circle1.svg);
+    }
+    &--C1R {
+      rotate: 0deg;
+      background-image: url(../../assets/symb/half-circle1.svg);
+    }
+    &--C2L {
+      rotate: 180deg;
+      background-image: url(../../assets/symb/half-circle2.svg);
+    }
+    &--C2R {
+      rotate: 0deg;
+      background-image: url(../../assets/symb/half-circle2.svg);
+    }
+    */
+  }
