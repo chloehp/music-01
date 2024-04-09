@@ -93,7 +93,7 @@ export default function ScalesList(props) {
                 }                
             }
         }
-        document.getElementById("kbcob-m-2").children[0].innerHTML = options.scalesChoice;
+        //document.getElementById("kbcob-m-oct-down").children[0].innerHTML = options.scalesChoice;
         console.log(options.scalesChoice);
         console.log(activeScale);
         console.log(options.scalesChoice);

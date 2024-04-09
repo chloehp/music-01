@@ -8,7 +8,7 @@
         background-color: #BFD8AF;
     }
     &--instruments {
-        width: 55%; height: 45%;
+        width: 72%; height: 72%;
         position: relative;
         margin: 6%;
         margin-right: 0;
@@ -19,10 +19,10 @@
         color: #BFD8AF;
 
         &--pic {
-            width: 100%; height: 54%;
+            width: 100%; height: 45%;
             background-image: url(../../assets/img/kbEx1.svg);
             background-repeat: no-repeat;
-            background-size: 60%;
+            background-size: contain;
             background-position: center;
         }
     }

@@ -31,7 +31,7 @@ export default function Tracker(props) {
     function addScroll() {document.getElementById("addNew").style.top = document.getElementById("wholeTracker").scrollTop + "px"}    
 
     return (      
-        <div ref={props.trackRef} onScroll={addScroll} id={"wholeTracker"} className='tracker hide'>
+        <div ref={props.trackRef} onScroll={addScroll} id={"wholeTracker"} className='tracker hide' aria-hidden='true'>
             <div className='fill' style={{display: "flex"}}>
                 {trCompsAr.map((x, key) => ( <Track trackno={x.trackno} removeFunc={rmvTrack} key={key}/>))}
                 <div className='add-new' id={"addNew"}>

@@ -1,5 +1,4 @@
-import options from '../func/options';
-import './scale-cob.scss';
+//import './scale-cob.scss';
 //import options from '../func/options';
 
 //setInterval(function () {

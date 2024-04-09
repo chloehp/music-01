@@ -1,9 +1,9 @@
 import note from "./note";
-import trackFill from "./track-fill";
+//import trackFill from "./track-fill";
 
 const keySwitch = function(key, oct, down){
     switch(key) {
-      case "Shift": return "C" + oct;
+      //case "Shift": return "C" + oct;
       case "a": return "C#" + oct;
       case "z": return "D" + oct;
       case "s": return "D#" + oct;
@@ -48,12 +48,13 @@ const keySwitch = function(key, oct, down){
       case " ": 
         if (down === false) {note.playGo()}
       return false;
-      case "Enter": 
-        if (down === false) {          
-          console.log("Enter");
-          trackFill();
-        }
-      return false;
+      //case "Enter": 
+      //  if (down === false) {          
+      //    console.log("Enter");
+      //    try {trackFill()}
+      //    catch {console.log("no track yet")}
+      //  }
+      //return false;
 
       default: return false;
     }

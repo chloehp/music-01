@@ -2,7 +2,7 @@ import './kb.scss';
 import note from '../func/note';
 
 export default function BKey(props) {    
-    const noOctvNote = props.note.slice(0, 2);
+    const noOctvNote = props.note.slice(0, 1);
     return (      
         <div className='b-key' 
         onMouseDown={() => note.attackNote(props.note)}
@@ -13,7 +13,7 @@ export default function BKey(props) {
         onTouchCancel={() => note.releaseNote(props.note)}
         id={"kk-" + props.note}
         >
-            <p className='key-note'>{noOctvNote}</p>
+            <p className='key-note'>{noOctvNote + "♯"}</p>
         </div>
     );
 }

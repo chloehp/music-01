@@ -1,28 +1,28 @@
 .scales-area {
     width: 100%; height: 100%;
     color: #41473c;
+    font-size: 36px;
+    font-family: AlumniSansIt;
 
     &--scale--type {
         position: absolute;
-        top: 50%; left: 6%;
+        top: 45%; left: 6%;
         translate: 0 -50%;
-        height: 45%; width: 42%;
+        height: 54%; width: 54%;
         background-color: #899d7e;
         border-radius: 24px;
     }
     &--in {
         position: absolute;
-        top: 50%; left: 50%;
+        top: 45%; left: 64%;
         translate: 0 -50%;
         margin: 0;
-        font-size: 30px;
-        font-family: AlumniSansIt;
     }
     &--scale--note {
         position: absolute;
-        top: 50%; left: 56%;
+        top: 45%; right: 6%;
         translate: 0 -50%;
-        height: 45%; width: 21%;
+        height: 54%; width: 21%;
         background-color: #899d7e;
         border-radius: 24px;
     }

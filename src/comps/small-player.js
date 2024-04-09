@@ -68,16 +68,16 @@ export default function SmallPlayer(props) {
 
     return (      
         <div>
-            <div className='smallplayer' id='back-button' onMouseDown={(e) => clickBackButton(e)}>
+            <button className='smallplayer' id='back-button' onMouseDown={(e) => clickBackButton(e)}>
                 <div id='restart-spot' className='smallplayer--icon'></div>
-            </div>
-            <div className='smallplayer' id='play-button' onMouseDown={(e) => clickPlayButton(e)}>
+            </button>
+            <button className='smallplayer' id='play-button' onMouseDown={(e) => clickPlayButton(e)}>
                 <div id='play-spot' className='smallplayer--icon'></div>
                 <div id='pause-spot' className='smallplayer--icon'></div>
-            </div>
-            <div className='smallplayer' id='rec-button'  onMouseDown={(e) => clickRecButton(e)}>
+            </button>
+            <button className='smallplayer' id='rec-button'  onMouseDown={(e) => clickRecButton(e)}>
                 <div id='red-spot' className='smallplayer--icon'></div>
-            </div>
+            </button>
 
             <div className='seeker'>
                 <div className='seeker--t' ref={timeNow}>0</div>

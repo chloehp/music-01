@@ -11,7 +11,7 @@ To do:
 >Make snail logo, title and background
 >New button bobble animation - pseudo 3d
 
-!>BUG: if use drags note from not selected track, breaks app
+!>BUG: if use drags note from not selected track, breaks app - kind of fixed with try catch
 
 
 # Getting Started with Create React App

@@ -3,6 +3,14 @@
   src: url(./assets/fonts/AlumniSansInlineOne-Italic.ttf);
 }
 
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+}
+
 .clicker {cursor: pointer;}
 .clicker:hover {filter: brightness(0.75);}
 .clicker:active {scale: 1.06;}
