@@ -68,14 +68,14 @@ export default function SmallPlayer(props) {
 
     return (      
         <div>
-            <button className='smallplayer' id='back-button' onMouseDown={(e) => clickBackButton(e)}>
+            <button className='smallplayer' id='back-button' onMouseDown={(e) => clickBackButton(e)} aria-label='Restart track'>
                 <div id='restart-spot' className='smallplayer--icon'></div>
             </button>
-            <button className='smallplayer' id='play-button' onMouseDown={(e) => clickPlayButton(e)}>
+            <button className='smallplayer' id='play-button' onMouseDown={(e) => clickPlayButton(e)} aria-label='Play track'>
                 <div id='play-spot' className='smallplayer--icon'></div>
                 <div id='pause-spot' className='smallplayer--icon'></div>
             </button>
-            <button className='smallplayer' id='rec-button'  onMouseDown={(e) => clickRecButton(e)}>
+            <button className='smallplayer' id='rec-button'  onMouseDown={(e) => clickRecButton(e)} aria-label='Record track'>
                 <div id='red-spot' className='smallplayer--icon'></div>
             </button>
 

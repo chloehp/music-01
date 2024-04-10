@@ -1,4 +1,4 @@
-import './kb.scss';
+import './keyboard.scss';
 import note from '../func/note';
 
 export default function BKey(props) {    
