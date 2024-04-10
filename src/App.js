@@ -33,6 +33,7 @@ export default function App() {
   function initiate() {
     Tone.start();
     startRef.current.classList.add("hide");    
+    startRef.current.setAttribute("aria-hidden", "true");
     //const octEls = document.querySelectorAll(".keyboard--oct-group");    //get all octaves and keys
     //console.log(octEls[0].children[0].id);
 

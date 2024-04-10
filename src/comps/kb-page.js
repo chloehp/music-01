@@ -14,12 +14,13 @@ import SmallPlayer from './small-player';
 import ScalesList from './scales-list';
 import InstrusAndEffects from './instrus-effects/instrus-effects';
 import Scales from './scales/scales';
+import Settings from './settings/settings';
 //import BeatCounter from './scales/beat-counter';
 
 export default function KbPage(props) {    
     //refs   
     const menuCob = useRef(); const instrusEfctsCob = useRef(); const smallPlayerCob = useRef(); const scalesCob = useRef();
-    const m0Ref = useRef();    const m1Ref = useRef();    const m2Ref = useRef();    
+    const mOctUp = useRef();    const mOctave = useRef();    const mOctDown = useRef();    
     const kbRef = useRef(); const trackRef = useRef(); const trPlayBtn = useRef(); const scalesWinRef = useRef();
 
     let kbTrack = true;
@@ -29,7 +30,6 @@ export default function KbPage(props) {
             instrusEfctsCob.current.classList.add("hide");
             smallPlayerCob.current.classList.add("hide");
             scalesCob.current.classList.add("hide");
-
             setTimeout(function(){
                 trPlayBtn.current.classList.add("trak");
             }, 300);       
@@ -50,6 +50,7 @@ export default function KbPage(props) {
                 instrusEfctsCob.current.classList.remove("hide");
                 smallPlayerCob.current.classList.remove("hide");
                 scalesCob.current.classList.remove("hide");
+                trackRef.current.setAttribute("aria-hidden", "true");
             }, 1200);    
             kbTrack = true;
         }
@@ -76,6 +77,21 @@ export default function KbPage(props) {
         animation.bobble(trPlayBtn.current);
     }
 
+    let settingsOpen = false;
+    function displaySettings() {
+        const setEl = document.getElementById("settings");
+        if (settingsOpen === false) {
+            setEl.setAttribute("aria-hidden", "false");
+            setEl.classList.remove("hide");
+            settingsOpen = true;
+        }
+        else {
+            setEl.setAttribute("aria-hidden", "true");
+            setEl.classList.add("hide");
+            settingsOpen = false
+        }
+    }
+
     //function m2Click() {
     //    if (scalesWinRef.current.classList.contains("win-open") === true) {scalesWinRef.current.classList.remove("win-open")}
     //    else {scalesWinRef.current.classList.add("win-open")}
@@ -83,13 +99,14 @@ export default function KbPage(props) {
 
     return (      
         <div className='kb-page'>
-        <Tracker trackRef={trackRef}/>
+            <Settings />
+            <Tracker trackRef={trackRef}/>
             <div>
                 <div ref={menuCob} className='kb-page--cob' id='cob-menu'></div>
                     <button className='kb-page--cob cobm' id='kbcob-m-tracker' onClick={kbPageChange}>
                         <p className='cobm--p'>Tracker</p>
                     </button>
-                    <button className='kb-page--cob cobm' id='kbcob-m-settings'>
+                    <button className='kb-page--cob cobm' id='kbcob-m-settings' onClick={displaySettings}>
                         <p className='cobm--p'>Settings</p>
                     </button>
                     <button className='kb-page--cob cobm' id='kbcob-m-help'>
@@ -107,11 +124,11 @@ export default function KbPage(props) {
                     {/*<BeatCounter />*/}
                 </div>
 
-                <button ref={m0Ref} className='kb-page--cob cobm' id='kbcob-m-oct-up' onClick={() => changeOctave(options.octave + 1)} aria-label='Octave: Up 1'></button>
-                <div ref={m1Ref} className='kb-page--cob cobm' id='kbcob-m-oct'>
+                <button ref={mOctUp} className='kb-page--cob cobm' id='kbcob-m-oct-up' onClick={() => changeOctave(options.octave + 1)} aria-label='Octave: Up 1'></button>
+                <div ref={mOctave} className='kb-page--cob cobm' id='kbcob-m-oct'>
                     <p className='cobm--p'>Octave</p>
                 </div>
-                <button ref={m2Ref} className='kb-page--cob cobm' id='kbcob-m-oct-down' onClick={() => changeOctave(options.octave - 1)} aria-label='Octave: Down 1'></button>
+                <button ref={mOctDown} className='kb-page--cob cobm' id='kbcob-m-oct-down' onClick={() => changeOctave(options.octave - 1)} aria-label='Octave: Down 1'></button>
 
                 <div ref={trPlayBtn} id='tracker-play-btn' onMouseDown={clickPlayButton}></div>
             </div>

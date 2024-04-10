@@ -6,7 +6,7 @@ import '../App.scss';
 export default function Start(props) {    
 
     return (      
-        <div ref={props.startRef} className='start'>
+        <div ref={props.startRef} className='start' aria-hidden='false'>
           <div className='start--scn center'>
             <button className='start--scn--btn' onClick={props.startInitFun}>
                 <div className='start--scn--p center'>
