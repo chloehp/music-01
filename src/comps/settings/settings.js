@@ -1,28 +1,30 @@
-
+import './settings.scss'
 import options from '../func/options';
 import { useRef } from 'react';
 
 export default function Settings(props) {
    return (
-      <div id='settings' aria-hidden='true'>
-         <h2>Settings</h2>
+      <div id='settings' className='snackground' aria-hidden='true'>
+         <h1>Settings</h1>
          <div className='gridcon'>
             <GridItemSelect title={"Theme"}/>
-            <GridItemBool title={"Beat rounding"} variable={options.beatRounding}/>
-            <GridItemBool title={"Musical QWERTY"}/>
-            <GridItemBool title={"Visible notes"}/>
-            <GridItemNum title={"Hit latency"}/>
-
-            <GridItemNum title={"BPM"}/>
-            <GridItemNum title={"Track length"}/>
-            <GridItemNum title={"Time Signature"}/>
-            
-            <div className='gridcon--g'>
-               <div className='gridcon--g--ico'></div>
-               <p>About</p>
-            </div>
-
+            <GridItemBool title={"Beat rounding"} fun={options.changeBeatRounding}/>
+            <GridItemBool title={"Musical QWERTY"} fun={options.changeMusicalQwerty}/>            
          </div>
+         <div className='gridcon'>
+            <GridItemBool title={"Visible notes"} fun={options.changeVisNotes}/>
+            <GridItemNum title={"Hit latency"}/>
+            <GridItemNum title={"BPM"}/>     
+         </div>
+         <div className='gridcon'>
+            <GridItemNum title={"Track length"}/>
+            <GridItemNum title={"Time Signature"}/>            
+            <div className='gridcon--g'>
+               <div className='gridcon--g--ico pressed'></div>
+               <p>About</p>
+            </div>     
+         </div>
+         <button className='closeX' onClick={props.displaySettings}>+</button>
       </div>
    )
 }
@@ -30,8 +32,9 @@ export default function Settings(props) {
 function GridItemNum(props) {
    return (
       <div className='gridcon--g'>
-         <div className='gridcon--g--ico'></div>
-         <input type='number' aria-label={props.title + " input"}/>
+         <div className='gridcon--g--ico pressed'>
+            <input type='number' aria-label={props.title + " input"}/>
+         </div>
          <p>{props.title}</p>
       </div>
    )
@@ -40,30 +43,28 @@ function GridItemBool(props) {
    const btn = useRef();
 
    function action() {
-      if (props.variable === true) {
-         btn.current.children[0].classList.add("btn-off");
-         btn.current.setAttribute("aria-pressed", "false");
-         props.variable = false;
+      let b = props.fun();
+      if (b === true) {
+         btn.current.classList.add("pressed");
+         btn.current.setAttribute("aria-pressed", "true");
       }
       else {
-         btn.current.children[0].classList.remove("btn-off");
-         btn.current.setAttribute("aria-pressed", "true");
-         props.variable = true;
+         btn.current.classList.remove("pressed");
+         btn.current.setAttribute("aria-pressed", "false");
       }
    }
 
    return (
-      <button className='gridcon--g' ref={btn} aria-pressed='true' onClick={action}>
-         <div className='gridcon--g--ico'></div>
+      <div className='gridcon--g'>
+         <button className='gridcon--g--ico pressed' ref={btn} aria-pressed='true' onClick={action} ></button>
          <p>{props.title}</p>
-      </button>
+      </div>
    )
 }
 function GridItemSelect(props) {
    return (
       <div className='gridcon--g'>
-         <div className='gridcon--g--ico'></div>
-         <input type='number' aria-label={props.title + " input"}/>
+         <div className='gridcon--g--ico pressed'></div>
          <p>{props.title}</p>
       </div>
    )

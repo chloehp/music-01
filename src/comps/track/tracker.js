@@ -5,8 +5,6 @@ import './track.scss';
 //func
 import options from '../func/options';
 import tr from '../func/tracks';
-//pages
-import Track from './track';
 
 export default function Tracker(props) {    
     const firstTrackObject = { trackno : 0 }

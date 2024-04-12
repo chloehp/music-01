@@ -1,34 +1,54 @@
 
 #settings {
    position: absolute;
-   top: 0; left: 0;
+   top: -120vh; left: 0;
+   visibility: hidden;
    width: 100%; height: 100%;
-   transition: top 1s;
+   transition: top 1s 180ms, visibility 1s 180ms;
+   z-index: 150;
+   background-color: #8ea781;
+
+   h1 {text-align: center;}
 }
-#settings.hide {top: 120vh;}
+#settings.open {top: 0; visibility: visible;}
 
 
 .gridcon {
-   display: grid;
-   gap: 6px;
-   grid-template-columns: auto auto auto;
+   display: flex;
+   justify-content: center;
 
    &--g {
       display: flex;
       justify-content: center;
       flex-direction: column;
-      width: 18%;
+      width: 12%;
+      margin: 6px;
       aspect-ratio: 18/21;
       border-radius: 9%;
       padding: 15px;
+      background-color: #bfd8af;
+      text-align: center;
 
       &--ico {
-         width: auto;
+         position: relative;
+         width: 100%;
          aspect-ratio: 1/1;
          border-radius: 9%;
+         background-color: #41473c;
          background-repeat: no-repeat;
          background-size: contain;
          background-position: center;
+         filter: brightness(0.45);
+
+         input {
+            position: absolute;
+            left: 0; top: 50%;
+            translate: 0 -50%;
+            width: 96%; 
+            font-size: 2.7em;
+            background: none;
+         }
       }
+      &--ico.pressed {filter: brightness(1);}
    }
 }

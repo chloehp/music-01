@@ -5,13 +5,14 @@
     background-color: #E1F0DA;
     border: #798E6D 2px solid;
     border-radius: 30px;
+    visibility: visible;
     z-index: 30;
-    transition: opacity 900ms;
+    transition: opacity 900ms, visibility 900ms;
     overflow: auto;
 }
 .tracker.hide {
     opacity: 0;
-    pointer-events: none;
+    visibility: hidden;
 }
 
 .track {

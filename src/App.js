@@ -61,7 +61,7 @@ export default function App() {
 
   
   return (
-    <div className="App">
+    <div className="App snackground">
       <Start startRef={startRef} startInitFun={initiate}/>
       <KbPage />
       <p id='note-displayer'></p>

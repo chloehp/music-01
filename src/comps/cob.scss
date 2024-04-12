@@ -11,9 +11,12 @@
   width: 41%; height: 75%;
   left: -30%; top: -30%;
   background-color: #E1F0DA;
+  visibility: visible;
+  z-index: 180;
 }
 #cob-menu.hide {
   left: -75%;
+  visibility: hidden;
 }
 #cob-smallplayer {
   width: 33%; height: 27%;
@@ -33,14 +36,14 @@
 }
 #cob-instrus-efcts.hide, #cob-smallplayer.hide, #cob-scales.hide {
   opacity: 0;
-  pointer-events: none;
+  visibility: hidden;
 }
 
 .cobm {
     width: 7%; 
     min-width: 90px;
     aspect-ratio: 1/1;
-    transition: all ease-in-out 630ms 120ms;  
+    transition: all ease-in-out 630ms 120ms, scale 300ms;  
     z-index: 120;
     cursor: pointer;   
     color: #E1F0DA;
@@ -65,10 +68,11 @@
     &--octave:hover {background-color: #798E6D;}
     &--octave:active {scale: 1.5;}
 }
+.cobm:hover {scale: 1.1;}
 
-#kbcob-m-tracker  {top:  3%; left: 1.5%;}
-#kbcob-m-settings {top: 17%; left: 1.5%;}
-#kbcob-m-help     {top: 31%; left: 1.5%;}
+#kbcob-m-tracker  {top:  3%; left: 1.5%; z-index: 183;}
+#kbcob-m-settings {top: 17%; left: 1.5%; z-index: 183;}
+#kbcob-m-help     {top: 31%; left: 1.5%; z-index: 183;}
 
 #kbcob-m-oct-up         {
   top:  6%; left: 90%;
@@ -80,6 +84,7 @@
 }
 #kbcob-m-oct            {
   top: 20%; left: 90%; 
+  background-color: #41473C;
   cursor: auto;
 }
 #kbcob-m-oct-down       {

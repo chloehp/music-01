@@ -3,14 +3,6 @@
   src: url(./assets/fonts/AlumniSansInlineOne-Italic.ttf);
 }
 
-button {
-	background: none;
-	color: inherit;
-	border: none;
-	font: inherit;
-	cursor: pointer;
-}
-
 .clicker {cursor: pointer;}
 .clicker:hover {filter: brightness(0.75);}
 .clicker:active {scale: 1.06;}
@@ -83,8 +75,15 @@ button {
 }
 .win.win-open {opacity: 1; pointer-events: all;}
 
+.snackground {
+  background-color: #8ea781;  
+  background-image: url(./assets/img/snailexport1.svg);
+  background-size: auto 150%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .App {
-  background-color: #8ea781;
   position: absolute;
   top: 0;  left: 0;
   height: 100%;  width: 100%;
@@ -96,6 +95,23 @@ h1 {
   font-size: 2em;
   font-weight: 300;
 }
+button {  
+	background: none;
+	color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+}
+
+.closeX {
+  position: absolute;
+  right: 3%; top: 3%;
+  rotate: 45deg;
+  font-size: 3em;
+  line-height: 1em;
+  transition: scale 90ms;
+}
+.closeX:hover {scale: 1.2;}
 
 .kb-page {
   width: 100%;
@@ -111,7 +127,8 @@ h1 {
   max-width: 1530px;
   background-color: #8ea781;
   position: absolute;
-  transition: top 1s;
+  visibility: visible;
+  transition: top 1s 150ms, visibility 1s 150ms;
   z-index: 900;
 
   &--scn {
@@ -134,7 +151,7 @@ h1 {
     &--btn:active {scale: 1.2;}
   }
 }
-.start.hide {top: -120vh;}
+.start.hide {top: -120vh; visibility: hidden;}
 
 #note-displayer {
   position: absolute;
