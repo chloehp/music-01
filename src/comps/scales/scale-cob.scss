@@ -1,8 +1,15 @@
 .scales-area {
-    width: 100%; height: 100%;
-    color: #41473c;
+    position: absolute;
+    width: 36%; height: 15%;
+    left: 51%; top: 30%;
+    color: #41473c;  
+    border-radius: 30px;
     font-size: 36px;
     font-family: AlumniSansIt;
+    //font-size: 12px;
+    //line-height: 0.75em;
+    z-index: 120;
+    pointer-events: none;
 
     &--scale--type {
         position: absolute;
@@ -31,12 +38,16 @@
       width: 100%; height: 24px;
       left: 0; bottom: 0;
       background-color: #899d7e;
-      background-image: url(../../assets/symb/double-arrow.svg);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 15px;
-      cursor: pointer;
+      //background-image: url(../../assets/symb/double-arrow.svg);
+      //background-position: center;
+      //background-repeat: no-repeat;
+      //background-size: 15px;
+      color: #e1f0da;
+      text-align: center;
+      font-size: 36px;
       transition: scale 300ms;
+
+      p {margin: -2.1%;}
     }
     &--dropdown:hover {scale: 1.3;}
 }

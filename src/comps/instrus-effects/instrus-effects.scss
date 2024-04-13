@@ -1,4 +1,10 @@
 .instrs-efcts {
+    background-color: #899D7E;
+    border-radius: 30px;
+    position: absolute;
+    width: 36%; height: 24%;
+    left: 51%; top: 3%;
+    overflow: hidden; 
     display: flex;
 
     &--sep {

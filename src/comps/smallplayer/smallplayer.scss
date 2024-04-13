@@ -1,34 +1,122 @@
-.smallplayer{
+.smallplayer {
+  
+  background-color: #899D7E;
+  border-radius: 30px;
   position: absolute;
-  top: 9%;
-  width: 100%; height: 50%;
-  display: flex;
-  justify-content: space-evenly;
+  width: 33%; height: 27%;
+  left: 15%; top: 18%;
+  overflow: hidden; 
 
-  &--btn {
-    position: relative;
-    height: 90%;
-    aspect-ratio: 1/1;
-    background-color: #41473C;
-    color: #899D7E;
-    border-radius: 30%;
-    cursor: pointer;
-    transition: scale 300ms;
-    div {pointer-events: none;}
-
-    &--icon {
-      position: absolute;
-      left: 50%; top: 50%;
-      translate: -50% -50%;
-      width: 54%;
+  &--buttons {
+    position: absolute;
+    top: 9%;
+    width: 100%; height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+  
+    &--btn {
+      position: relative;
+      height: 90%;
       aspect-ratio: 1/1;
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
+      background-color: #41473C;
+      color: #899D7E;
+      border-radius: 30%;
+      cursor: pointer;
+      transition: scale 300ms;
+      div {pointer-events: none;}
+  
+      &--icon {
+        position: absolute;
+        left: 50%; top: 50%;
+        translate: -50% -50%;
+        width: 54%;
+        aspect-ratio: 1/1;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
     }
+    &--btn:hover {scale: 1.1;}
   }
-  &--btn:hover {scale: 1.1;}
+    
+  &--optionSelect {
+    position: relative;
+    width: 9%; height: 90%;
+    color: #e1f0da;
+    text-align: center;
+    font-family: AlumniSansIt;
+    font-size: 24px;
+  
+    &--arrow {
+      position: absolute;
+      left: 50%;
+      translate: -50%;
+      width: 60%;
+      aspect-ratio: 1/1;
+      background-repeat: no-repeat;
+      background-size: contain;   
+      background-image: url(../../assets/symb/single-arrow.svg);
+      transition: scale 60ms linear; 
+    }
+    &--p {
+      position: absolute;
+      top: 36%;
+      width: 100%;
+      margin: 0;
+      text-wrap: nowrap;
+    }
+    &--arrow:hover {scale: 1.2;}
+    &--arrow:active {scale: 0.9;}
+  }
+  
+  &--seeker {
+    position: absolute;
+    bottom: 0; 
+    width: 100%; height: 27%;
+    display: flex;
+    justify-content: space-evenly;
+    color: #BFD8AF;
+  
+    &--t {
+      width: 3em; height: 3em;
+      translate: 0 -24%;
+      line-height: 2.75em;
+      text-align: center;
+      color: #41473c;
+      background-color: #e1f0da;
+      border: 0;
+      border-radius: 100%;
+    }
+    //&--t::placeholder {
+    //  opacity: 0.9;
+    //  color: #41473c;
+    //}
+    &--track {
+      position: relative;
+      height: 36%; width: 75%;
+      cursor: pointer;
+  
+      &--line {
+        position: absolute;
+        left: 0%; top: 42%;
+        width: 100%; height: 15%;
+        background-color: #BFD8AF;
+        pointer-events: none;
+      }
+      &--head {
+        position: absolute;
+        left: 0%; top: 0;
+        width: 7px; height: 100%;
+        background-color: #41473C;
+        border-radius: 6px;
+        translate: -50%;
+        pointer-events: none;
+        transition: left 60ms linear;
+      }
+    }
+  }  
 }
+
 
 #restart-spot {
   background-image: url(../../assets/symb/restart.svg);
@@ -50,83 +138,10 @@
   background-color: #000;
 }
 
-.optionSelect {
-  position: relative;
-  width: 9%; height: 90%;
-  color: #e1f0da;
-  text-align: center;
-  font-family: AlumniSansIt;
-  font-size: 24px;
-
-  &--arrow {
-    position: absolute;
-    left: 50%;
-    translate: -50%;
-    width: 60%;
-    aspect-ratio: 1/1;
-    background-repeat: no-repeat;
-    background-size: contain;   
-    transition: scale 60ms linear; 
-  }
-  &--up {
-    top: 5%;
-    background-image: url(../../assets/symb/single-arrow.svg);
-    rotate: 180deg;
-  }
-  &--down {
-    bottom: 5%;
-    background-image: url(../../assets/symb/single-arrow.svg);
-  }
-  &--p {
-    position: absolute;
-    top: 36%;
-    width: 100%;
-    margin: 0;
-    text-wrap: nowrap;
-  }
-  &--arrow:hover {scale: 1.2;}
-  &--arrow:active {scale: 0.9;}
+#sp-b-up {
+  top: 5%;
+  rotate: 180deg;
 }
-
-.seeker {
-  position: absolute;
-  bottom: 0; 
-  width: 100%; height: 27%;
-  display: flex;
-  justify-content: space-evenly;
-  color: #BFD8AF;
-
-  &--t {
-    width: 3em; height: 3em;
-    translate: 0 -24%;
-    line-height: 2.7em;
-    text-align: center;
-    color: #41473c;
-    background-color: #e1f0da;
-    border: 0;
-    border-radius: 100%;
-  }
-  &--track {
-    position: relative;
-    height: 36%; width: 75%;
-    cursor: pointer;
-
-    &--line {
-      position: absolute;
-      left: 0%; top: 42%;
-      width: 100%; height: 15%;
-      background-color: #BFD8AF;
-      pointer-events: none;
-    }
-    &--head {
-      position: absolute;
-      left: 0%; top: 0;
-      width: 7px; height: 100%;
-      background-color: #41473C;
-      border-radius: 6px;
-      translate: -50%;
-      pointer-events: none;
-      transition: left 60ms linear;
-    }
-  }
+#sp-b-down {
+  bottom: 5%;
 }

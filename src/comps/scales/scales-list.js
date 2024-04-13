@@ -1,5 +1,5 @@
-import './cob.scss';
-import options from './func/options';
+import '../cob.scss';
+import options from '../func/options';
 
 export default function ScalesList(props) { 
     let keyAdd = 0;
@@ -102,9 +102,21 @@ export default function ScalesList(props) {
 
     return (      
         <div className='win' ref={props.scalesWinRef} style={{width: '30%', height: '75%', right: '12%', top: '6%'}}>
+            {/*
             <div className='win--title'>
                 <h2>Scales</h2>
                 <div className='win--spacer'></div>
+            </div>
+            */}
+            <div className='win--container'>
+                <div className='win--container--block sclLimBtn block-selected' style={{width: '15vw'}} onClick={() => limitToScale(0)}>None</div>
+                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(1)}>Major</div>
+                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(2)}>Minor</div>
+                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(3)}>Major Pentatonic</div>
+                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(4)}>Minor Pentatonic</div>
+                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(5)}>Major Blues</div>
+                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(6)}>Minor Blues</div>
+                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(7)}>Harmonic Minor</div>
             </div>
             <div className='win--container'>
                 <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(-3)}>A</div>
@@ -119,16 +131,6 @@ export default function ScalesList(props) {
                 <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(6)}>F#</div>
                 <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(7)}>G</div>
                 <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(8)}>G#</div>
-            </div>
-            <div className='win--container'>
-                <div className='win--container--block sclLimBtn block-selected' style={{width: '15vw'}} onClick={() => limitToScale(0)}>None</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(1)}>Major</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(2)}>Minor</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(3)}>Major Pentatonic</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(4)}>Minor Pentatonic</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(5)}>Major Blues</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(6)}>Minor Blues</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(7)}>Harmonic Minor</div>
             </div>
         </div>
     );
