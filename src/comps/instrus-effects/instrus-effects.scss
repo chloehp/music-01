@@ -1,12 +1,15 @@
 .instrs-efcts {
     background-color: #899D7E;
-    border-radius: 30px;
+    border-radius: 15px;
     position: absolute;
     width: 36%; height: 24%;
     left: 51%; top: 3%;
     overflow: hidden; 
     display: flex;
-
+    
+    @media (min-height: 450px) {
+        border-radius: 30px;
+    }
     &--sep {
         width: 3px; height: 45%;
         margin-top: 6%;
@@ -16,18 +19,21 @@
     &--instruments {
         width: 72%; height: 72%;
         position: relative;
-        margin: 6%;
-        border-radius: 15px;
+        margin: 4.5%;
+        border-radius: 12px;
         background-color: #41473C;
         text-align: left;
         //text-transform: uppercase;
-        color: #BFD8AF;
-        
+        color: #BFD8AF;        
         background-image: url(../../assets/img/kbEx1.svg);
         background-repeat: no-repeat;
         background-size: 69%;
         background-position: 120% 39%;
 
+        @media (min-height: 450px) {
+            margin: 6%;
+            border-radius: 15px;
+        }
         h1 {margin-left: 15px;}
     }
     &--effects {

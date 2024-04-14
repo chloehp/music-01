@@ -92,8 +92,12 @@
   font-weight: 300;
 }
 h1 {
-  font-size: 2em;
+  font-size: 27px;
   font-weight: 300;
+
+  @media (min-height: 450px) {
+    font-size: 36px;
+  }
 }
 button {  
 	background: none;
