@@ -4,12 +4,12 @@ import options from '../func/options';
 export default function ScalesList(props) { 
     let keyAdd = 0;
     let keyString = "C";
+    let typeString = "";
     function changeKey(key = 0) {            
         keyAdd = key;   
         const buttonEls = document.querySelectorAll(".kChnge");
         keyString = buttonEls[key + 3].innerHTML;
-        console.log("C + " + key + " = " + keyString);       
-        console.log("C + " + key + " = " + keyString);
+        console.log("C + " + key + " = " + keyString);     
         limitToScale();
 
         const btnElLen = buttonEls.length;
@@ -80,12 +80,14 @@ export default function ScalesList(props) {
         const bkLen = blackKeys.length;
         if (scale === 0) {
             options.scalesChoice = "Scales";
+            typeString = "";
             for (let i = 0; i < bkLen; i++) {
                 blackKeys[i].classList.remove("scales-on")
             }
         }
         else {
             options.scalesChoice = buttonEls[scale].innerHTML + " in " + keyString;
+            typeString = buttonEls[scale].innerHTML;
             for (let i = 0; i < bkLen; i++) {
                 const bCL = blackKeys[i].classList;                
                 if (bCL.contains("width-0") === false){
@@ -93,7 +95,9 @@ export default function ScalesList(props) {
                 }                
             }
         }
-        //document.getElementById("kbcob-m-oct-down").children[0].innerHTML = options.scalesChoice;
+        document.getElementById("scale-type").innerHTML = typeString;
+        document.getElementById("scale-note").innerHTML = keyString;
+
         console.log(options.scalesChoice);
         console.log(activeScale);
         console.log(options.scalesChoice);
@@ -101,36 +105,30 @@ export default function ScalesList(props) {
     }
 
     return (      
-        <div className='win' ref={props.scalesWinRef} style={{width: '30%', height: '75%', right: '12%', top: '6%'}}>
-            {/*
-            <div className='win--title'>
-                <h2>Scales</h2>
-                <div className='win--spacer'></div>
+        <div className='scales-list' ref={props.scalesListRef}>
+            <div className='scales-list--container' style={{width: '54%'}}>
+                <button className='scales-list--container--block sclLimBtn block-selected' onClick={() => limitToScale(0)}>None</button>
+                <button className='scales-list--container--block sclLimBtn' onClick={() => limitToScale(1)}>Major</button>
+                <button className='scales-list--container--block sclLimBtn' onClick={() => limitToScale(2)}>Minor</button>
+                <button className='scales-list--container--block sclLimBtn' onClick={() => limitToScale(3)}>Major Pentatonic</button>
+                <button className='scales-list--container--block sclLimBtn' onClick={() => limitToScale(4)}>Minor Pentatonic</button>
+                <button className='scales-list--container--block sclLimBtn' onClick={() => limitToScale(5)}>Major Blues</button>
+                <button className='scales-list--container--block sclLimBtn' onClick={() => limitToScale(6)}>Minor Blues</button>
+                <button className='scales-list--container--block sclLimBtn' onClick={() => limitToScale(7)}>Harmonic Minor</button>
             </div>
-            */}
-            <div className='win--container'>
-                <div className='win--container--block sclLimBtn block-selected' style={{width: '15vw'}} onClick={() => limitToScale(0)}>None</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(1)}>Major</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(2)}>Minor</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(3)}>Major Pentatonic</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(4)}>Minor Pentatonic</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(5)}>Major Blues</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(6)}>Minor Blues</div>
-                <div className='win--container--block sclLimBtn' style={{width: '15vw'}} onClick={() => limitToScale(7)}>Harmonic Minor</div>
-            </div>
-            <div className='win--container'>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(-3)}>A</div>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(-2)}>A#</div>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(-1)}>B</div>
-                <div className='win--container--block kChnge block-selected' style={{width: '1vw'}} onClick={() => changeKey(0)}>C</div>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(1)}>C#</div>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(2)}>D</div>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(3)}>D#</div>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(4)}>E</div>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(5)}>F</div>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(6)}>F#</div>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(7)}>G</div>
-                <div className='win--container--block kChnge' style={{width: '1vw'}} onClick={() => changeKey(8)}>G#</div>
+            <div className='scales-list--container'>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(-3)}>A</button>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(-2)}>A♯</button>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(-1)}>B</button>
+                <button className='scales-list--container--block kChnge block-selected' onClick={() => changeKey(0)}>C</button>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(1)}>C♯</button>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(2)}>D</button>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(3)}>D♯</button>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(4)}>E</button>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(5)}>F</button>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(6)}>F♯</button>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(7)}>G</button>
+                <button className='scales-list--container--block kChnge' onClick={() => changeKey(8)}>G♯</button>
             </div>
         </div>
     );

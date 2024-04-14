@@ -21,7 +21,7 @@ export default function KbPage(props) {
     //refs   
     const menuCob = useRef(); const cobs = useRef(); const scaleBack = useRef();
     const mOctUp = useRef();    const mOctave = useRef();    const mOctDown = useRef();    
-    const kbRef = useRef(); const trackRef = useRef(); const trPlayBtn = useRef(); const scalesWinRef = useRef();
+    const kbRef = useRef(); const trackRef = useRef(); const trPlayBtn = useRef(); const scalesListRef = useRef();
 
     let kbTrack = true;
     function kbPageChange(event) { //maybe clean this up with css animations?
@@ -91,9 +91,10 @@ export default function KbPage(props) {
         }
         else {
         setTimeout(function(){
-            console.log("try qselect again");
-            changeOctave(changeTo, "instant");                              // if it didn't work, try again without smooth scroll
-        }, 300)} 
+                console.log("try qselect again");
+                changeOctave(changeTo, "instant");                              // if it didn't work, try again without smooth scroll
+            }, 300)
+        } 
         if (event) {animation.bobble(event.target)}
     }
     changeOctave(3, "instant");     // default start octave
@@ -102,11 +103,6 @@ export default function KbPage(props) {
         note.playGo();
         animation.bobble(trPlayBtn.current);
     }
-
-    //function m2Click() {
-    //    if (scalesWinRef.current.classList.contains("win-open") === true) {scalesWinRef.current.classList.remove("win-open")}
-    //    else {scalesWinRef.current.classList.add("win-open")}
-    //}
     
     let scaleExpanded = false;
     function scaleExpand() {
@@ -115,11 +111,17 @@ export default function KbPage(props) {
             scaleBack.current.classList.add("expanded");
             dropdownButton.style.rotate = "180deg";
             scaleExpanded = true;
+            setTimeout(function(){
+                scalesListRef.current.classList.add("open")
+            }, 150)
         }
         else {
-            scaleBack.current.classList.remove("expanded");
-            dropdownButton.style.rotate = "0deg";
+            scalesListRef.current.classList.remove("open");
             scaleExpanded = false;
+            setTimeout(function(){
+                scaleBack.current.classList.remove("expanded");
+                dropdownButton.style.rotate = "0deg";
+            }, 90)
         }
     } 
 
@@ -143,6 +145,7 @@ export default function KbPage(props) {
                     <InstrusAndEffects />
                     <SmallPlayer />
                     <div className='kb-page--cob cob-scales' ref={scaleBack}>
+                        <ScalesList scalesListRef={scalesListRef}/>
                         <button className='cob-scales--dropdown' onClick={scaleExpand}></button>
                     </div>
                     <Scales />
@@ -158,7 +161,6 @@ export default function KbPage(props) {
             </div>
             
             <Keyboard kbRef={kbRef}/>
-            <ScalesList scalesWinRef={scalesWinRef}/>
         </div>
     );
 }
