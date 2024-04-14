@@ -5,7 +5,7 @@ export default function ScalesList(props) {
     let keyAdd = 0;
     let keyString = "C";
     let typeString = "";
-    function changeKey(key = 0) {            
+    function changeKey(key = 0) {  
         keyAdd = key;   
         const buttonEls = document.querySelectorAll(".kChnge");
         keyString = buttonEls[key + 3].innerHTML;
@@ -80,14 +80,14 @@ export default function ScalesList(props) {
         const bkLen = blackKeys.length;
         if (scale === 0) {
             options.scalesChoice = "Scales";
-            typeString = "";
+            typeString = "";    
             for (let i = 0; i < bkLen; i++) {
                 blackKeys[i].classList.remove("scales-on")
             }
         }
         else {
             options.scalesChoice = buttonEls[scale].innerHTML + " in " + keyString;
-            typeString = buttonEls[scale].innerHTML;
+            typeString = buttonEls[scale].innerHTML;       
             for (let i = 0; i < bkLen; i++) {
                 const bCL = blackKeys[i].classList;                
                 if (bCL.contains("width-0") === false){
@@ -98,8 +98,6 @@ export default function ScalesList(props) {
         document.getElementById("scale-type").innerHTML = typeString;
         document.getElementById("scale-note").innerHTML = keyString;
 
-        console.log(options.scalesChoice);
-        console.log(activeScale);
         console.log(options.scalesChoice);
         console.log(activeScale);
     }

@@ -35,7 +35,7 @@
   left: 51%; top: 30%;
   background-color: #E1F0DA;
   z-index: 120;
-  transition: height 450ms, filter 450ms;
+  transition: height 450ms, filter 450ms, opacity 300ms linear;
   
   &--dropdown {  
     position: absolute;

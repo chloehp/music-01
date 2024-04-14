@@ -9,7 +9,10 @@
     z-index: 120;
     pointer-events: none;
 
-    &--scale--type {
+    &--scale {
+      pointer-events: auto;
+      
+      &--type {
         position: absolute;
         top: 45%; left: 6%;
         translate: 0 -50%;
@@ -18,22 +21,25 @@
         line-height: 2em;
         text-align: center;
         border-radius: 24px;
-    }
-    &--in {
-        position: absolute;
-        top: 45%; left: 64%;
-        translate: 0 -50%;
-        margin: 0;
-    }
-    &--scale--note {
-        position: absolute;
-        top: 45%; right: 6%;
-        translate: 0 -50%;
-        height: 54%; width: 21%;
-        background-color: #899d7e;
-        line-height: 2em;
-        text-align: center;
-        border-radius: 24px;
+        cursor: pointer;
+      }
+      &--in {
+          position: absolute;
+          top: 45%; left: 64%;
+          translate: 0 -50%;
+          margin: 0;
+      }
+      &--note {
+          position: absolute;
+          top: 45%; right: 6%;
+          translate: 0 -50%;
+          height: 54%; width: 21%;
+          background-color: #899d7e;
+          line-height: 2em;
+          text-align: center;
+          border-radius: 24px;
+          cursor: pointer;
+      }
     }
 }
 

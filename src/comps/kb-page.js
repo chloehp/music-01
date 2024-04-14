@@ -148,7 +148,7 @@ export default function KbPage(props) {
                         <ScalesList scalesListRef={scalesListRef}/>
                         <button className='cob-scales--dropdown' onClick={scaleExpand}></button>
                     </div>
-                    <Scales />
+                    <Scales scaleExpand={scaleExpand}/>
                 </div>
 
                 <button ref={mOctUp} className='kb-page--cob cobm' id='kbcob-m-oct-up' onClick={(e) => changeOctave(options.octave + 1, "smooth", e)} aria-label='Octave: Up 1'></button>
