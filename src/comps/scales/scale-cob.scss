@@ -82,20 +82,29 @@
   &--container {
     display: flex;
     flex-direction: column;
-    padding: 15px 30px;
+    padding: 6px 12px;
     overflow-y: auto; overflow-x: hidden;  
 
+    @media (min-height: 450px) {
+      padding: 15px 30px;
+    }
     &--block {
       min-width: 3em;
       width: 100%;
       background-color: #41473C;
-      border-radius: 15px;
-      margin: 12px 0;
-      padding: 15px;
+      border-radius: 6px;
+      margin: 6px 0;
+      padding: 9px;
       text-align: left;
       text-wrap: nowrap;
       cursor: pointer;
       transition: scale 300ms;
+
+      @media (min-height: 450px) {
+        border-radius: 15px;
+        margin: 12px 0;
+        padding: 15px;
+      }
     }
     &--block:hover {scale: 1.1;}
     &--block.block-selected {

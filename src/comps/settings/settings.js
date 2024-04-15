@@ -7,16 +7,12 @@ export default function Settings(props) {
       <div id='settings' className='snackground' aria-hidden='true'>
          <h1>Settings</h1>
          <div className='gridcon'>
-            <GridItemSelect title={"Theme"}/>
+            <GridItemSelect title={"Theme"} fun={options.changeTheme}/>
             <GridItemBool title={"Beat rounding"} fun={options.changeBeatRounding}/>
-            <GridItemBool title={"Musical QWERTY"} fun={options.changeMusicalQwerty}/>            
-         </div>
-         <div className='gridcon'>
+            <GridItemBool title={"Musical QWERTY"} fun={options.changeMusicalQwerty}/>        
             <GridItemBool title={"Visible notes"} fun={options.changeVisNotes}/>
             <GridItemNum title={"Hit latency"}/>
-            <GridItemNum title={"BPM"}/>     
-         </div>
-         <div className='gridcon'>
+            <GridItemNum title={"BPM"}/>
             <GridItemNum title={"Track length"}/>
             <GridItemNum title={"Time Signature"}/>            
             <div className='gridcon--g'>
@@ -33,7 +29,7 @@ function GridItemNum(props) {
    return (
       <div className='gridcon--g'>
          <div className='gridcon--g--ico pressed'>
-            <input type='number' aria-label={props.title + " input"}/>
+            <input type='text' aria-label={props.title + " input"}/>
          </div>
          <p>{props.title}</p>
       </div>
@@ -43,8 +39,7 @@ function GridItemBool(props) {
    const btn = useRef();
 
    function action() {
-      let b = props.fun();
-      if (b === true) {
+      if (props.fun() === true) {
          btn.current.classList.add("pressed");
          btn.current.setAttribute("aria-pressed", "true");
       }
@@ -62,9 +57,17 @@ function GridItemBool(props) {
    )
 }
 function GridItemSelect(props) {
+   const sel = useRef();
+   function prev() {sel.current.children[0].innerHTML = props.fun(-1)}
+   function next() {sel.current.children[0].innerHTML = props.fun(1)}
+   
    return (
       <div className='gridcon--g'>
-         <div className='gridcon--g--ico pressed'></div>
+         <div className='gridcon--g--ico pressed' ref={sel}>
+            <p className='gridcon--g--ico--txt'></p>
+            <button className='gridcon--g--ico--prev-ar' aria-label={"Previous " + props.title} onClick={prev}><div></div></button>
+            <button className='gridcon--g--ico--next-ar' aria-label={"Next " + props.title} onClick={next}><div></div></button>
+         </div>
          <p>{props.title}</p>
       </div>
    )

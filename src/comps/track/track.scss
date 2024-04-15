@@ -4,11 +4,15 @@
     width: 83%; height: 98%;
     background-color: #E1F0DA;
     border: #798E6D 2px solid;
-    border-radius: 30px;
+    border-radius: 15px;
     visibility: visible;
     z-index: 30;
     transition: opacity 900ms, visibility 900ms;
     overflow: auto;
+    
+    @media (min-height: 450px) {
+        border-radius: 30px;
+    }
 }
 .tracker.hide {
     opacity: 0;
@@ -24,13 +28,17 @@
 
     &--details {
         width: 100%; height: 15%;
-        border-radius: 30px;
+        border-radius: 15px;
         background-color: #798E6D;
         margin-bottom: 15px;
         padding: 6px;
-        font-size: 30px;
+        font-size: 24px;
         position: relative;
-
+    
+        @media (min-height: 450px) {
+            border-radius: 30px;
+            font-size: 30px;
+        }
         &--x {
             position: absolute;
             right: 0; top: 0;
@@ -45,13 +53,17 @@
         position: relative;
         width: 100%; height: auto;
         min-height: 72.5%;
-        border-radius: 30px; 
+        border-radius: 15px; 
         background-color: #798E6D; 
-        padding: 24px 6px;
+        padding: 12px 3px;
         overflow: hidden;
         display: flex;
         justify-content: space-evenly;
-
+    
+        @media (min-height: 450px) {
+            border-radius: 30px;
+            padding: 24px 6px;
+        }
         &--tofill {
             display: flex;
             justify-content: center;
@@ -86,12 +98,15 @@
                 position: absolute;
                 width: $row-width;
                 background-color: #BFD8AF;
-                border-radius: 9px;
+                border-radius: 6px;
                 z-index: 90;
                 overflow: hidden;
                 cursor: move;
                 //-webkit-user-drag: element;
-
+    
+                @media (min-height: 450px) {
+                    border-radius: 9px;
+                }
                 &--input {
                     width: 100%;
                     margin: 0; padding: 0; border: 0;
@@ -128,12 +143,15 @@
 
     &--a {
         width: 100%; height: 100%;
-        border-radius: 30px;
+        border-radius: 15px;
         background-color: #899D7E;
         filter: brightness(1);
         cursor: pointer;
         transition: all linear 60ms;
-
+    
+        @media (min-height: 450px) {
+            border-radius: 30px;
+        }
         &--plus {
             top: 48%;
             color: #41473C;

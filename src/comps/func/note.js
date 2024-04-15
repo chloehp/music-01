@@ -69,11 +69,11 @@ const note = {
         if (options.record === true) {                                                  // if recording
           const nowTime = (new Date()) - recordStartTime;                               //
           const identifier = track.length + "-id-" + Math.floor(Math.random() * 9000);  // make new id
-          const startTime = (activeNotes[i].t / options.beatFLen) + pausePoint;                   //
-          const noteLength = (nowTime - activeNotes[i].t) / options.beatFLen;                     // note length is difference between now and when note was pressed, divided by 1/64th note
+          const startTime = (activeNotes[i].t / options.beatFLen) + pausePoint;         // get start time
+          const noteLength = (nowTime - activeNotes[i].t) / options.beatFLen;           // note length is difference between now and when note was pressed, divided by 1/64th note
           const newPoint = {id : identifier, n : playNote, start : startTime, len : noteLength, ins : options.instruSelect, eff : effect, on : false, pos : activeNotes[i].p};  // create object to be recorded
           track.push(newPoint);                                                         // push object to array     
-          if ((nowTime / options.beatFLen) > options.trackLength) {note.recordGo()}               // if reached track length, stop recording
+          if ((nowTime / options.beatFLen) > options.trackLength) {note.recordGo()}     // if reached track length, stop recording
         }
         activeNotes.splice(i, 1);                                                       // remove from array
         document.getElementById("kk-" + playNote).style.filter = "contrast(1)"          // visual press key
