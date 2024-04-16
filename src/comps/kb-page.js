@@ -67,7 +67,7 @@ export default function KbPage(props) {
             settingsOpen = false
         }
         animation.bobble(event.target);
-        console.log(settingsOpen);
+        console.log("settings open: " + settingsOpen);
     }
 
     let helpActive = false;

@@ -64,9 +64,9 @@
     font-size: 21px;
     
     @media (min-height: 450px) {
-      translate: 0;
-      height: 90%;
-      font-size: 24px;
+      translate: 0 -3%;
+      height: 100%;
+      font-size: 27px;
     }
   
     &--arrow {

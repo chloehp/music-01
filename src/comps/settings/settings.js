@@ -3,18 +3,21 @@ import options from '../func/options';
 import { useRef } from 'react';
 
 export default function Settings(props) {
+   const hitLat = [options.hitLatency];
+   const bpm = [options.getBPM()];
+   const trLen = [options.trackLength];
    return (
       <div id='settings' className='snackground' aria-hidden='true'>
          <h1>Settings</h1>
          <div className='gridcon'>
-            <GridItemSelect title={"Theme"} fun={options.changeTheme}/>
-            <GridItemBool title={"Beat rounding"} fun={options.changeBeatRounding}/>
-            <GridItemBool title={"Musical QWERTY"} fun={options.changeMusicalQwerty}/>        
-            <GridItemBool title={"Visible notes"} fun={options.changeVisNotes}/>
-            <GridItemNum title={"Hit latency"}/>
-            <GridItemNum title={"BPM"}/>
-            <GridItemNum title={"Track length"}/>
-            <GridItemNum title={"Time Signature"}/>            
+            <GridItemSelect title={"Theme"} opt={options.changeTheme}/>
+            <GridItemBool title={"Beat rounding"} opt={options.changeBeatRounding}/>
+            <GridItemBool title={"Musical QWERTY"} opt={options.changeMusicalQwerty}/>        
+            <GridItemBool title={"Visible notes"} opt={options.changeVisNotes}/>
+            <GridItemNum title={"Hit latency"} opt={hitLat}/>
+            <GridItemNum title={"BPM"} opt={bpm}/>
+            <GridItemNum title={"Track length"} opt={trLen}/>
+            <GridItemSelect title={"Time Signature"}/>            
             <div className='gridcon--g'>
                <div className='gridcon--g--ico pressed'></div>
                <p>About</p>
@@ -26,10 +29,26 @@ export default function Settings(props) {
 }
 
 function GridItemNum(props) {
+   const inp = useRef();
+   const deef = props.opt[0];
+   function changeValTo() {
+      const val = inp.current.value;
+      if (props.title === "BPM"){
+         //code bpm change later
+      }
+      else {
+         if (isNaN(val) === false) {
+            props.opt[0] = val;
+            console.log("update " + props.title);
+         }
+         else {}
+      }
+   }
+
    return (
       <div className='gridcon--g'>
          <div className='gridcon--g--ico pressed'>
-            <input type='text' aria-label={props.title + " input"}/>
+            <input type='text' aria-label={props.title + " input"} defaultValue={deef} ref={inp} onChange={changeValTo}/>
          </div>
          <p>{props.title}</p>
       </div>
@@ -39,7 +58,7 @@ function GridItemBool(props) {
    const btn = useRef();
 
    function action() {
-      if (props.fun() === true) {
+      if (props.opt() === true) {
          btn.current.classList.add("pressed");
          btn.current.setAttribute("aria-pressed", "true");
       }
@@ -58,8 +77,8 @@ function GridItemBool(props) {
 }
 function GridItemSelect(props) {
    const sel = useRef();
-   function prev() {sel.current.children[0].innerHTML = props.fun(-1)}
-   function next() {sel.current.children[0].innerHTML = props.fun(1)}
+   function prev() {sel.current.children[0].innerHTML = props.opt(-1)}
+   function next() {sel.current.children[0].innerHTML = props.opt(1)}
    
    return (
       <div className='gridcon--g'>
