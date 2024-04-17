@@ -163,7 +163,7 @@ export default function SmallPlayer(props) {
                     <div className='smallplayer--seeker--track--line'></div>
                     <div className='smallplayer--seeker--track--head' ref={trackHead}></div>
                 </div>
-                <form action='#' className='smallplayer--seeker--t' ref={measTrkLenEl} title='Track length'>
+                <form onSubmit={e => e.preventDefault()} className='smallplayer--seeker--t' ref={measTrkLenEl} title='Track length'>
                     <input className='smallplayer--seeker--t--submit' type='submit' aria-label='New track length enter' onClick={changeTrackLen}></input>
                     <input className='smallplayer--seeker--t--text'   type='text'   aria-label='Track length' onChange={peakTLButton} onClick={changeTrackLen}></input>
                 </form>
