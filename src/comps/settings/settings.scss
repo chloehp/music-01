@@ -52,7 +52,7 @@
          border-radius: 9%;
          background-color: #41473c;
          background-repeat: no-repeat;
-         background-size: contain;
+         background-size: 60%;
          background-position: center;
          overflow: hidden;
          filter: brightness(0.45);
@@ -77,6 +77,7 @@
             font-size: 2.7em;
             text-align: center;
             color: #E1F0DA;
+            white-space: pre-wrap;
          }
          &--prev-ar, &--next-ar {
             position: absolute;
@@ -106,3 +107,7 @@
       &--ico.pressed {filter: brightness(1);}
    }
 }
+
+#settings-beat {background-image: url(../../assets/symb/beat-rounding.svg);}
+#settings-qwerty {background-image: url(../../assets/symb/qwerty.svg);}
+#settings-visnotes {background-image: url(../../assets/symb/note-bool.png);}

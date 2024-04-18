@@ -10,18 +10,17 @@ const options = {
   musicalQwerty : true, // does pressing notes on a physical keyboard make notes - bool
   visibleNotes : true,  // Show notes on the keyboard
   mute : false,         // Mute sound
-  themeSelection : 0,   // Select the theme from an array, not set up yet
   
   // track options       
                         // 
   trackSelection : 0,   // select active track for editing or recording on
   trackhead : 0,        // where you are in the track, measured in fractions of a beat // what fraction is this
-  instruSelect : 0,     // live instrument selection from instrument-switch.js
+  instruSelect : 1,     // live instrument selection from instrument-switch.js
   beatFraction : 16,    // beatFLen is this fraction of a whole beat ( 1/x )
-  beatFLen : 31.25,        // beat fraction length in milliseconds
+  beatFLen : 25,        // beat fraction length in milliseconds
   trackLength : 240,    // track length in beats
   timeSigTop    : 4,    // top of time signature
-  timeSigBottom : 4,    // bottom of time signature
+  //timeSigBottom : 4,  // bottom of time signature
   measureSelect : 0,    // select type of time measure (small player)
 
   record : false,       // is track currently recording
@@ -53,13 +52,6 @@ const options = {
       console.log("Visible Notes: ON");
     }
     return options.visibleNotes;
-  },
-  //
-  themeAr : ["monoGreen", "multiDark", "highContrast"],
-  changeTheme : function(x) {
-    if (x < 0)
-    options.themeSelection = x;
-    return options.themeAr[x]
   },
   //
   getBPM : function() { return 60 / ((options.beatFLen * options.beatFraction) / 1000) }, // calc BPM from beatLength

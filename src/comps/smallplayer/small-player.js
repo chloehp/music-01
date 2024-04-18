@@ -42,13 +42,12 @@ export default function SmallPlayer(props) {
     workRenderLength();
 
     function changeBPM(x) {
-        console.log(options.beatFLen);
         let xBPM = options.getBPM() + x;
         if (xBPM < 30) {xBPM = 30}
         if (xBPM > 900) {xBPM = 900}
         setBPM(xBPM);
         options.beatFLen = options.getNewBeatFLenFromNewBPM(xBPM);
-        console.log(options.beatFLen);
+        console.log("BPM updated. BeatFLen is now:\n" + options.beatFLen);
     }
     function changeMeasure(x) {
         let meas = chooseMeasure;

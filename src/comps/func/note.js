@@ -17,7 +17,7 @@ const now = Tone.now();
 let recordStartTime = new Date();
 
 //let quaVar = options.beatFLen;                              // hemidemisemiquaver
-let instrument = instrumentSwitch[options.instruSelect].x;   // instrument choice
+//let instrument = instrumentSwitch[options.instruSelect].x;   // instrument choice
 let playInsts = [];                                          // instruments used in playback
 let effect = null;                                           // effect choice
 let pausePoint = 0;
@@ -56,7 +56,7 @@ const note = {
     for (let i = 0; i < activeNotes.length; i++) {if (activeNotes[i].n === playNote) {return}}  // check if note is already being played, return if true
     const startTime = ((new Date()) - recordStartTime);                                         // start time
     activeNotes.push({n : playNote, t : startTime, p : activeNotes.length});                    // push to array
-    instrument.triggerAttack(playNote, now + hL);                                               // attack note
+    instrumentSwitch[options.instruSelect].x.triggerAttack(playNote, now + hL);                                               // attack note
     document.getElementById("kk-" + playNote).style.filter = "contrast(0.3)";                   // visual press key
     //console.log("attack note");
     displayNote();
@@ -65,7 +65,7 @@ const note = {
   releaseNote : function(playNote, hL = options.hitLatency){ 
     for (let i = 0; i < activeNotes.length; i++) {
       if (activeNotes[i].n === playNote) {
-        instrument.triggerRelease(playNote, now + hL);                                  // release note 
+        instrumentSwitch[options.instruSelect].x.triggerRelease(playNote, now + hL);                                  // release note 
         if (options.record === true) {                                                  // if recording
           const nowTime = (new Date()) - recordStartTime;                               //
           const identifier = track.length + "-id-" + Math.floor(Math.random() * 9000);  // make new id

@@ -4,7 +4,7 @@ import tr from './tracks';
 import note from './note';
 import dragElement from './dragdrop';
 
-function trackFill(roundBeats = true) {
+function trackFill(roundBeats = options.beatRounding) {
     const trackSel = options.trackSelection;
     const trackEl = document.getElementById("track" + trackSel).children[1];
     //console.log(trackEl);
@@ -35,9 +35,9 @@ function trackFill(roundBeats = true) {
 
             for (let y = 0; y < trackLength; y++) { // beat rows
                 const row = document.createElement("div");
-                if (y % options.beatFraction === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl2")}                              // slightly darker to mark 1 full beat
-                else if (y % (options.beatFraction * options.timeSigTop) === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl3")}  // darker to mark a bar
-                else {row.setAttribute("class", "track--track--column--row tr-r-lvl1")}                                                             // normal beat fraction, normal brightness
+                if (y % (options.beatFraction * options.timeSigTop) === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl3")}  // darker to mark a bar
+                else if (y % options.beatFraction === 0) {row.setAttribute("class", "track--track--column--row tr-r-lvl2")}                    // slightly darker to mark 1 full beat
+                else {row.setAttribute("class", "track--track--column--row tr-r-lvl1")}                                                        // normal beat fraction, normal brightness
                 column.appendChild(row);
                 row.onmousedown = function(){note.trackSet(y)};
             }

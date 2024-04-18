@@ -131,15 +131,9 @@ export default function KbPage(props) {
             <Tracker trackRef={trackRef}/>
             <div>
                 <div ref={menuCob} className='kb-page--cob' id='cob-menu'></div>
-                <button className='kb-page--cob cobm' id='kbcob-m-tracker' onClick={(e) => kbPageChange(e)}>
-                    <p className='cobm--p'>Tracker</p>
-                </button>
-                <button className='kb-page--cob cobm' id='kbcob-m-settings' onClick={(e) => displaySettings(e)}>
-                    <p className='cobm--p'>Settings</p>
-                </button>
-                <button className='kb-page--cob cobm' id='kbcob-m-help' onClick={(e) => displayHelp(e)}>
-                    <p className='cobm--p'>Help</p>
-                </button>
+                <button className='kb-page--cob cobm' id='kbcob-m-tracker' onClick={(e) => kbPageChange(e)}>Tracker</button>
+                <button className='kb-page--cob cobm' id='kbcob-m-settings' onClick={(e) => displaySettings(e)}>Settings</button>
+                <button className='kb-page--cob cobm' id='kbcob-m-help' onClick={(e) => displayHelp(e)}>Help</button>
 
                 <div ref={cobs} className='cobs'>
                     <InstrusAndEffects />

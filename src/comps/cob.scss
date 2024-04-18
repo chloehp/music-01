@@ -71,11 +71,14 @@
     width: 7%; 
     min-width: 75px;
     aspect-ratio: 3/2;
-    transition: all ease-in-out 630ms 120ms, scale 300ms;  
     z-index: 120;
     cursor: pointer;   
     color: #E1F0DA;
     font-size: 24px;
+    text-align: center;
+    font-family: AlumniSansIt;
+    text-wrap: balance;
+    transition: all ease-in-out 630ms 120ms, scale 300ms;  
     
     @media (min-height: 450px) {
       aspect-ratio: 1/1;
@@ -87,10 +90,6 @@
       width: 100%; height: auto;
       translate: 0 -50%;
       margin: 0;
-      text-align: center;
-      line-height: 30px;
-      font-family: AlumniSansIt;
-      text-wrap: balance;
     }
     &--octave {
       position: absolute;
