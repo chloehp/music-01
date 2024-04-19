@@ -129,6 +129,7 @@ export default function KbPage(props) {
         <div className='kb-page'>
             <Settings displaySettings={displaySettings}/>
             <Tracker trackRef={trackRef}/>
+            <div id='title-logo' aria-label='Logo - Snailer Scaler'></div>
             <div>
                 <div ref={menuCob} className='kb-page--cob' id='cob-menu'></div>
                 <button className='kb-page--cob cobm' id='kbcob-m-tracker' onClick={(e) => kbPageChange(e)}>Tracker</button>

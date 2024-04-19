@@ -74,7 +74,7 @@
     z-index: 120;
     cursor: pointer;   
     color: #E1F0DA;
-    font-size: 24px;
+    font-size: 27px;
     text-align: center;
     font-family: AlumniSansIt;
     text-wrap: balance;
@@ -82,7 +82,7 @@
     
     @media (min-height: 450px) {
       aspect-ratio: 1/1;
-      font-size: 30px;
+      font-size: 39px;
     }
     &--p {
       position: absolute;
@@ -121,6 +121,7 @@
 
 #kbcob-m-oct-up         {
   top:  3%; left: 90%;
+  background-color: #899d7e;
   background-image: url(../assets/symb/single-arrow.svg);
   background-repeat: no-repeat;
   background-size: 45%;
@@ -142,6 +143,7 @@
 }
 #kbcob-m-oct-down       {
   top: 33%; left: 90%;
+  background-color: #899d7e;
   background-image: url(../assets/symb/single-arrow.svg);
   background-repeat: no-repeat;
   background-size: 45%;

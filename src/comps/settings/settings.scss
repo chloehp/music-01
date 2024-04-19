@@ -12,7 +12,8 @@
    h1 {
       text-align: center;
       line-height: 2em;
-      background-color: #899d7e;
+      color: #41473c;
+      background-color: #e1f0da;
       border-radius: 15px;
       width: 45%;
       margin: 15px auto;
@@ -50,6 +51,8 @@
          width: 100%;
          aspect-ratio: 1/1;
          border-radius: 9%;
+         font-family: AlumniSansIt;  
+         color: #E1F0DA;
          background-color: #41473c;
          background-repeat: no-repeat;
          background-size: 60%;
@@ -62,8 +65,9 @@
             left: 0;
             width: 96%; height: 100%;
             border: 0;
-            font-size: 2.7em;
-            color: #bfd8af;
+            font-size: 3.3em;
+            font-family: inherit;
+            color: inherit;
             text-align: center;
             background: none;
          }
@@ -73,10 +77,8 @@
             left: 0; top: 50%;
             translate: 0 -50%;  
             margin: 0;
-            font-family: AlumniSansIt;  
             font-size: 2.7em;
             text-align: center;
-            color: #E1F0DA;
             white-space: pre-wrap;
          }
          &--prev-ar, &--next-ar {

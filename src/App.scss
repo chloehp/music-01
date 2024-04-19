@@ -2,6 +2,10 @@
   font-family: AlumniSansIt;
   src: url(./assets/fonts/AlumniSansInlineOne-Italic.ttf);
 }
+@font-face {
+  font-family: OpenDyslexic;
+  src: url(./assets/fonts/OpenDyslexic-Regular.otf);
+}
 
 .clicker {cursor: pointer;}
 .clicker:hover {filter: brightness(0.75);}
@@ -27,54 +31,6 @@
   font-size: 0;
 }
 
-.win {
-  position: absolute;
-  border-radius: 30px;
-  z-index: 150;
-  background-color: rgba(61, 61, 61, 0.9);
-  display: flex;
-  color: #BFD8AF;
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 300ms;
-
-  &--spacer {
-    width: calc(100% - 60px); height: 2px;
-    margin-left: 30px;
-    background-color: #BFD8AF;
-    border-radius: 15px;
-  }
-  &--title {
-    position: absolute;
-    width: 100%;
-  }
-  &--container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 24%;
-    padding: 0 30px;
-    overflow-y: auto; overflow-x: hidden;  
-
-    &--block {
-      background-color: #41473C;
-      border-radius: 15px;
-      margin: 18px auto 0;
-      padding: 15px;
-      text-align: left;
-      cursor: pointer;
-      transition: scale 300ms;
-    }
-    &--block:hover {scale: 1.1;}
-    &--block.block-selected {
-      background-color: #BFD8AF;
-      color: #41473C;
-      font-weight: bold;
-    }
-  }
-}
-.win.win-open {opacity: 1; pointer-events: all;}
-
 .snackground {
   background-color: #8ea781;  
   background-image: url(./assets/img/snailexport1.svg);
@@ -90,6 +46,7 @@
   display: flex;
   justify-content: center;
   font-weight: 300;
+  font-family: OpenDyslexic;
 }
 h1 {
   font-size: 27px;
@@ -113,6 +70,7 @@ button {
   rotate: 45deg;
   font-size: 3em;
   line-height: 1em;
+  color: #41473C;
   transition: scale 90ms;
 }
 .closeX:hover {scale: 1.2;}
@@ -140,19 +98,25 @@ button {
     text-align: center;
     color: #41473C;
     font-size: 390%; font-weight: 540;
+
     &--btn {
       border-radius: 100%;
       background-color: #BFD8AF;
       width: 100%;
       aspect-ratio: 1/1;
       cursor: pointer;
+      transition: scale 300ms;
     }
     &--p {
       width: 100%; height: auto;
       * {margin: 0;}
     }
-    &--btn:hover {filter: brightness(1.2);}
-    &--btn:active {scale: 1.2;}
+    h1 {
+      font-size: 180%;
+      line-height: 1.1em;
+    }
+    &--btn:hover {filter: brightness(1.2); scale: 1.1;}
+    &--btn:active {scale: 0.9;}
   }
 }
 .start.hide {top: -120vh; visibility: hidden;}
@@ -163,6 +127,19 @@ button {
   top: 6%;  left: 0;
   width: 100%;
   text-align: center;
+}
+#title-logo {
+  display: none;
+  @media (min-height: 450px) {
+    display: block;
+    position: absolute;
+    left: 15%; top: 0;
+    width: 33%; height: 24%;
+    background-image: url(./assets/img/logo-v1.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
 }
 
 // GLOBAL ANIMATIONS
