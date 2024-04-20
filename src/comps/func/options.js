@@ -15,7 +15,7 @@ const options = {
                         // 
   trackSelection : 0,   // select active track for editing or recording on
   trackhead : 0,        // where you are in the track, measured in fractions of a beat // what fraction is this
-  instruSelect : 1,     // live instrument selection from instrument-switch.js
+  instruSelect : Math.floor(Math.random() * 5), // live instrument selection from instrument-switch.js
   beatFraction : 16,    // beatFLen is this fraction of a whole beat ( 1/x )
   beatFLen : 25,        // beat fraction length in milliseconds
   trackLength : 240,    // track length in beats

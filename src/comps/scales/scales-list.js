@@ -104,7 +104,7 @@ export default function ScalesList(props) {
 
     return (      
         <div className='scales-list' ref={props.scalesListRef}>
-            <div className='scales-list--container' style={{width: '54%'}}>
+            <div className='scales-list--container' style={{width: '63%'}}>
                 <button className='scales-list--container--block sclLimBtn block-selected' onClick={() => limitToScale(0)}>None</button>
                 <button className='scales-list--container--block sclLimBtn' onClick={() => limitToScale(1)}>Major</button>
                 <button className='scales-list--container--block sclLimBtn' onClick={() => limitToScale(2)}>Minor</button>

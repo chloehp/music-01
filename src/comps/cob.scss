@@ -69,7 +69,7 @@
 
 .cobm {
     width: 7%; 
-    min-width: 75px;
+    min-width: 60px;
     aspect-ratio: 3/2;
     z-index: 120;
     cursor: pointer;   
@@ -78,11 +78,22 @@
     text-align: center;
     font-family: AlumniSansIt;
     text-wrap: balance;
+    background-repeat: no-repeat;
+    background-size: 54%;
+    background-position: center;
     transition: all ease-in-out 630ms 120ms, scale 300ms;  
     
     @media (min-height: 450px) {
       aspect-ratio: 1/1;
       font-size: 39px;
+      width: 9%;     
+      translate: -6% -6%;
+      background-size: 75%;
+
+      @media (min-width: 1200px) {
+        width: 7%; 
+        translate: 0;
+      }
     }
     &--p {
       position: absolute;
@@ -103,9 +114,16 @@
 
 #kbcob-m-tracker  {
   top:  3%; left: 1.5%; z-index: 183;
+  background-image: url(../assets/symb/tracker.svg);
+  background-size: 48%;
+
+  @media (min-height: 450px) {
+    background-size: 72%;
+  }
 }
 #kbcob-m-settings {
   top: 18%; left: 1.5%; z-index: 183;
+  background-image: url(../assets/symb/settings.svg);
   
   @media (min-height: 450px) {
     top: 17%;
@@ -191,36 +209,3 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
-.sm-item {
-  width: 45%; //height: 15%;
-  aspect-ratio: 1/1;
-  margin-top: 5%;
-  border-radius: 15px;
-  background-color: #899D7E;
-  color: #E1F0DA;
-  font-size: 0;
-  background-position: center;
-  background-size: 69%;
-  background-repeat: no-repeat;
-  position: relative;
-  transition: scale 300ms;
-  cursor: pointer;
-  filter: brightness(1);
-}
-.sm-item:hover {scale: 1.1;}
-#sm-latency {background-image: url(../assets/symb/hit-latency.svg);}
-#sm-rounding {background-image: url(../assets/symb/beat-rounding.svg);}
-#sm-fraction {background-image: url(../assets/symb/beat-fraction.svg);}
-#sm-bpm {background-image: url(../assets/symb/bpm.svg);}
-#sm-length {background-image: url(../assets/symb/track-length.svg);}
-#sm-qwerty {background-image: url(../assets/symb/qwerty.svg);}
-#sm-notes {background-image: url(../assets/symb/note-bool.png); background-size: 54%;}
-
-.note-displayer {
-  position: absolute;
-  bottom: 15%; right: 24%;
-  height: 70%; width: 27%;
-  background-color: #899D7E;
-  border-radius: 15px;
-}
-

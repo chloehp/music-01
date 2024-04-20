@@ -26,7 +26,7 @@
         border-radius: 12px;
         cursor: pointer;
         
-        @media (min-height: 450px) {
+        @media (min-width: 1080px) {
           top: 45%; 
           height: 54%; 
           border-radius: 24px;
@@ -66,10 +66,10 @@
 
 .scales-list {
   position: absolute;
-  bottom: 5%; left: 5%;
-  height: 72%; width: 90%;
+  bottom: 3%; left: 3%;
+  height: 72%; width: 94%;
   z-index: 126;
-  border-radius: 30px;
+  border-radius: 12px;
   background-color: #899d7e;
   color: #e1f0da;
   text-align: center;
@@ -79,13 +79,18 @@
   justify-content: space-around;
   transition: opacity 150ms linear, visibility 150ms linear;
   
+  @media (min-height: 450px) {
+    border-radius: 30px;
+    bottom: 5%; left: 5%;
+    width: 90%;
+  }
   &--container {
     display: flex;
     flex-direction: column;
-    padding: 6px 12px;
+    padding: 6px 6px;
     overflow-y: auto; overflow-x: hidden;  
 
-    @media (min-height: 450px) {
+    @media (min-width: 1080px) {
       padding: 15px 30px;
     }
     &--block {
@@ -95,15 +100,17 @@
       border-radius: 6px;
       margin: 6px 0;
       padding: 9px;
-      text-align: left;
-      text-wrap: nowrap;
+      text-align: center;
+      text-wrap: initial;
       cursor: pointer;
       transition: scale 300ms;
 
-      @media (min-height: 450px) {
+      @media (min-width: 1080px) {
         border-radius: 15px;
         margin: 12px 0;
         padding: 15px;
+        text-align: left;
+        text-wrap: nowrap;
       }
     }
     &--block:hover {scale: 1.1;}

@@ -28,6 +28,7 @@ export default function KbPage(props) {
         if (kbTrack === true) { // display tracker
             kbRef.current.classList.add("hide");
             cobs.current.classList.add("hide");
+            event.target.style.filter = "brightness(0.45)";
             setTimeout(function(){
                 trPlayBtn.current.classList.add("trak");
             }, 300);       
@@ -41,6 +42,7 @@ export default function KbPage(props) {
             trackRef.current.classList.add("hide");        
             trackRef.current.setAttribute("aria-hidden", "true");
             trPlayBtn.current.classList.remove("trak");  
+            event.target.style.filter = "brightness(1)";
             setTimeout(function(){            
                 kbRef.current.classList.remove("hide");
             }, 600);   
@@ -59,11 +61,13 @@ export default function KbPage(props) {
         if (settingsOpen === false) {
             setEl.setAttribute("aria-hidden", "true");
             setEl.classList.add("open");
+            event.target.style.filter = "brightness(0.45)";
             settingsOpen = true;
         }
         else {
             setEl.setAttribute("aria-hidden", "false");
             setEl.classList.remove("open");
+            event.target.style.filter = "brightness(1)";
             settingsOpen = false
         }
         animation.bobble(event.target);
@@ -73,9 +77,11 @@ export default function KbPage(props) {
     let helpActive = false;
     function displayHelp(event) {
         if (helpActive === false) {
+            event.target.style.filter = "brightness(0.45)";
             helpActive = true;
         }
         else {
+            event.target.style.filter = "brightness(1)";
             helpActive = false
         }
         animation.bobble(event.target);
@@ -132,9 +138,9 @@ export default function KbPage(props) {
             <div id='title-logo' aria-label='Logo - Snailer Scaler'></div>
             <div>
                 <div ref={menuCob} className='kb-page--cob' id='cob-menu'></div>
-                <button className='kb-page--cob cobm' id='kbcob-m-tracker' onClick={(e) => kbPageChange(e)}>Tracker</button>
-                <button className='kb-page--cob cobm' id='kbcob-m-settings' onClick={(e) => displaySettings(e)}>Settings</button>
-                <button className='kb-page--cob cobm' id='kbcob-m-help' onClick={(e) => displayHelp(e)}>Help</button>
+                <button className='kb-page--cob cobm' id='kbcob-m-tracker' title='Tracker' aria-label='Tracker' onClick={(e) => kbPageChange(e)}></button>
+                <button className='kb-page--cob cobm' id='kbcob-m-settings' title='Settings' aria-label='Settings' onClick={(e) => displaySettings(e)}></button>
+                <button className='kb-page--cob cobm' id='kbcob-m-help' title='Help' aria-label='Help' onClick={(e) => displayHelp(e)}>Help</button>
 
                 <div ref={cobs} className='cobs'>
                     <InstrusAndEffects />

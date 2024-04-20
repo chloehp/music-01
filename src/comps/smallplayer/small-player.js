@@ -51,7 +51,7 @@ export default function SmallPlayer(props) {
     }
     function changeMeasure(x) {
         let meas = chooseMeasure;
-        const labels = [("b/" + options.beatFraction), "Beats", "ms", "M:S"];
+        const labels = [("b" + options.beatFraction), "B", "ms", "M:S"];
         if (x < 0) {meas--}
         else if (x > 0) {meas++}
         
