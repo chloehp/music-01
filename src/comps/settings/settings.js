@@ -34,9 +34,15 @@ function GridItemNum(props) {
       const val = inp.current.value;
       if (isNaN(val) === false) {
          switch (props.title){
-            case "Hit latency" : options.hitLatency = val; break;
-            case "BPM": options.beatFLen = options.getNewBeatFLenFromNewBPM(val); break;
-            case "Track length": options.trackLength = val; break;
+            case "Hit latency" : 
+               options.hitLatency = val; 
+               break;
+            case "BPM": 
+               options.beatFLen = options.getNewBeatFLenFromNewBPM(val); 
+               break;
+            case "Track length": 
+               options.trackLength = val; 
+               break;
             default: console.log("other");
          }
       }

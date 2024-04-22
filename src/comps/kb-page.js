@@ -96,7 +96,7 @@ export default function KbPage(props) {
             options.octave = changeTo;                                      // change octave option
         }
         else {
-        setTimeout(function(){
+            setTimeout(function(){
                 console.log("try qselect again");
                 changeOctave(changeTo, "instant");                              // if it didn't work, try again without smooth scroll
             }, 300)

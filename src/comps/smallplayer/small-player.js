@@ -11,15 +11,9 @@ let smallPlayerRenders = 0;
 export default function SmallPlayer(props) {     
     smallPlayerRenders++;
     const thisRender = smallPlayerRenders;
-
-    const [newBPM, setBPM] = useState(options.getBPM());
+    
     const [chooseMeasure, setMeasure] = useState(options.measureSelect);    //0: small beats //1: beats //2: milliseconds //3: minutes and seconds
-    const [measureLabel, setMeasureLabel] = useState("b/" + options.beatFraction);
-
-    const measTrkLenEl = useRef();
-    const timeNowEl = useRef(); 
-    const trackHead = useRef();
-
+    
     let measTrkLen = 0;
     if      (chooseMeasure === 0) {measTrkLen = options.trackLength}
     else if (chooseMeasure === 1) {measTrkLen = options.trackLength / options.beatFraction}
@@ -34,12 +28,14 @@ export default function SmallPlayer(props) {
         }
         else {measTrkLen = tSec.toFixed(2)}
     }
-    
-    function workRenderLength() {
-        if (measTrkLenEl.current) { measTrkLenEl.current.children[1].value = measTrkLen }
-        else {setTimeout(function(){workRenderLength()}, 150)}
-    }
-    workRenderLength();
+
+    const [newBPM, setBPM] = useState(options.getBPM());
+    const [trackLen, setTrackLen] = useState(measTrkLen);
+    const [measureLabel, setMeasureLabel] = useState("b" + options.beatFraction);
+
+    const trkLenBtn = useRef();
+    const timeNowEl = useRef(); 
+    const trackHead = useRef();
 
     function changeBPM(x) {
         let xBPM = options.getBPM() + x;
@@ -79,7 +75,6 @@ export default function SmallPlayer(props) {
     
     function seek(event, down) {
         const seekPos = event.nativeEvent.offsetX / event.target.offsetWidth;   // returns decimal
-        //options.trackhead = options.trackLength * seekPos;
         note.trackSet(options.trackLength * seekPos);
     }
 
@@ -89,10 +84,10 @@ export default function SmallPlayer(props) {
             clearInterval(trackInterval);           // clear interval to prevent multiple instances
             return
         }
-        if      (options.measureSelect === 0) {tNow = Math.trunc(options.trackhead)}    // small beats
-        else if (options.measureSelect === 1) {tNow = Math.trunc(options.trackhead / options.beatFraction + 1)}    // beats, +1 to start at 1
-        else if (options.measureSelect === 2) {tNow = Math.trunc(options.trackhead * options.beatFLen)}  // milliseconds
-        else    {//chooseMeasure === 3      // minutes:seconds
+        if      (options.measureSelect === 0) {tNow = Math.trunc(options.trackhead)}                            // small beats
+        else if (options.measureSelect === 1) {tNow = Math.trunc(options.trackhead / options.beatFraction + 1)} // beats, +1 to start at 1
+        else if (options.measureSelect === 2) {tNow = Math.trunc(options.trackhead * options.beatFLen)}         // milliseconds
+        else    {//     .measureSelect === 3                                                                    // minutes:seconds
             const tSec = (options.trackhead * options.beatFLen) / 1000;
             if (tSec > 60) {
                 const mins = Math.floor(tSec / 60);
@@ -108,26 +103,32 @@ export default function SmallPlayer(props) {
         } catch {}
     }, 90);
 
-    function peakTLButton() { measTrkLenEl.current.children[0].style.right = "90%" }
-
+    let trkLenVal = options.trackLength;
+    function peakTLButton(event) { 
+        trkLenBtn.current.style.right = "90%";
+        trkLenVal = event.target.value;
+    }
     function changeTrackLen() {
-        note.trackSet();    // reset track to zero
-        let val = measTrkLenEl.current.children[1].value;
-        
-        if (isNaN(val) === false) {
+        //let val = measTrkLenEl.current.children[1].value;
+        note.trackSet();    // reset track to zero        
+        if (isNaN(trkLenVal) === false) {
             if      (options.measureSelect === 0) {}                                        // small beats
-            else if (options.measureSelect === 1) {val = val * options.beatFraction}        // beats
-            else if (options.measureSelect === 2) {val = val / options.beatFLen}            // milliseconds
-            else   /*options.measureSelect === 3*/{val = (val / options.beatFLen) * 1000}   // seconds
-            options.trackLength = val;
-            console.log("new track length is " + val);
+            else if (options.measureSelect === 1) {trkLenVal = trkLenVal * options.beatFraction}        // beats
+            else if (options.measureSelect === 2) {trkLenVal = trkLenVal / options.beatFLen}            // milliseconds
+            else   /*options.measureSelect === 3*/{trkLenVal = (trkLenVal / options.beatFLen) * 1000}   // seconds
+            options.trackLength = trkLenVal;
+            console.log("new track length is " + trkLenVal);
         }
         else {
-            val = options.trackLength;
+            trkLenVal = options.trackLength;
             console.log("new track length is not a number");
         }
-        measTrkLenEl.current.children[0].style.right = "4.5%";
+        trkLenBtn.current.style.right = "4.5%";
     }
+
+    //setInterval(function(){  
+    //    setBPM(options.getBPM())
+    //}, 1500); 
 
     return (      
         <div className='smallplayer'>
@@ -162,9 +163,21 @@ export default function SmallPlayer(props) {
                     <div className='smallplayer--seeker--track--line'></div>
                     <div className='smallplayer--seeker--track--head' ref={trackHead}></div>
                 </div>
-                <form onSubmit={e => e.preventDefault()} className='smallplayer--seeker--t' ref={measTrkLenEl} title='Track length'>
-                    <input className='smallplayer--seeker--t--submit' type='submit' aria-label='New track length enter' onClick={changeTrackLen}></input>
-                    <input className='smallplayer--seeker--t--text'   type='text'   aria-label='Track length' onChange={peakTLButton} onClick={changeTrackLen}></input>
+                <form onSubmit={e => e.preventDefault()} className='smallplayer--seeker--t' title='Track length'>
+                    <input 
+                        className='smallplayer--seeker--t--submit' 
+                        type='submit' 
+                        aria-label='New track length enter' 
+                        onClick={changeTrackLen} 
+                        ref={trkLenBtn}
+                    ></input>
+                    <input className='smallplayer--seeker--t--text'   
+                        type='text'   
+                        aria-label='Track length' 
+                        onChange={(e) => peakTLButton(e)} 
+                        onClick={changeTrackLen} 
+                        defaultValue={trackLen}
+                    ></input>
                 </form>
             </div>
         </div>

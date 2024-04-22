@@ -2,13 +2,15 @@ SNAILER SCALES
 
 To do:
 
->New simpler design focusing on Scales functionality, but keep similar so not too much work
-    >Reduce side menu to three buttons: Tracker (make tracker icon), Options, and maybe Credits? or Help?
-    >Get rid of console, replace with Scales
+>New simpler design focusing on Scales functionality, but keep similar so not too much work ✅
+    >Reduce side menu to three buttons: Tracker (make tracker icon), Options, and maybe Credits? or Help? ✅
+    >Get rid of console, replace with Scales ✅
 >Fill in the track details sections, use to display instruments and if the track is selected
 >Fix the visual beat counter thing, make with small svg segments
->Make snail logo, title and background
+>Make snail logo, title and background✅
 >New button bobble animation - pseudo 3d
+>Change tracker icon to have a little shell on in instead of snail face
+
 
 !>BUG: if use drags note from not selected track, breaks app - kind of fixed with try catch
 
