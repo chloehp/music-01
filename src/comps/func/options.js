@@ -21,7 +21,6 @@ const options = {
   trackLength : 240,    // track length in beats
   timeSigTop    : 4,    // top of time signature
   //timeSigBottom : 4,  // bottom of time signature
-  measureSelect : 0,    // select type of time measure (small player)
 
   record : false,       // is track currently recording
   play : false,         // is track currently playing

@@ -31,7 +31,7 @@ function displayNote(){
 
 const note = {
   //
-  validate : function(n) {
+  validate(n) {
     if (
        ((n.length === 3) || (n.length === 2)) 
     && (everyNote.includes(n.slice(0, -1)) === true)
@@ -52,7 +52,7 @@ const note = {
     }
   },
   //
-  attackNote : function(playNote, hL = options.hitLatency){ 
+  attackNote(playNote, hL = options.hitLatency){ 
     for (let i = 0; i < activeNotes.length; i++) {if (activeNotes[i].n === playNote) {return}}  // check if note is already being played, return if true
     const startTime = ((new Date()) - recordStartTime);                                         // start time
     activeNotes.push({n : playNote, t : startTime, p : activeNotes.length});                    // push to array
@@ -62,7 +62,7 @@ const note = {
     displayNote();
   },
   //
-  releaseNote : function(playNote, hL = options.hitLatency){ 
+  releaseNote(playNote, hL = options.hitLatency){ 
     for (let i = 0; i < activeNotes.length; i++) {
       if (activeNotes[i].n === playNote) {
         instrumentSwitch[options.instruSelect].x.triggerRelease(playNote, now + hL);                                  // release note 
@@ -83,7 +83,7 @@ const note = {
   },
   
   //
-  recordGo : function() {
+  recordGo() {
     if (options.play === true) {console.log("cannot record while playing track"); return}    
     if (options.record === true) {options.record = false; return} 
     else {
@@ -110,16 +110,16 @@ const note = {
       }
     }, 75); 
   },
-
+  
   //
-  playGo : function() {
-    const pauseSpot = document.getElementById("pause-spot");
-    const playSpot = document.getElementById("play-spot");
+  playGo() {
+    const playSpot1 = document.getElementById("play-spot");
+    const playSpot2 = document.getElementById("tracker-play-btn");
     if (options.play === true) {
       playInsts = [];
-      options.play = false; 
-      pauseSpot.style.opacity = 0;
-      playSpot.style.opacity = 1;
+      options.play = false;
+      playSpot1.classList.remove("pause");
+      playSpot2.classList.remove("pause");
       return
     } 
     else {
@@ -131,9 +131,9 @@ const note = {
           playInsts.push(instrumentSwitch[instruFromTrck].x);       // push to array 
         }
       }
-      //animation.beatCountInit();                                    // turn on beat counter
-      pauseSpot.style.opacity = 1;                                  // show pause symbol
-      playSpot.style.opacity = 0;                                   // hide play symbol
+      //animation.beatCountInit();                                  // turn on beat counter
+      playSpot1.classList.add("pause");                             // pause symbol
+      playSpot2.classList.add("pause");                             // pause symbol
       console.log(playInsts);
     }
 
@@ -152,7 +152,7 @@ const note = {
     }, 60);
   },
   //  
-  playTrack : function(track, ti) {
+  playTrack(track, ti) {
     const timeNow = (((new Date()) - recordStartTime) / options.beatFLen) + pausePoint;
     if (timeNow > options.trackLength) {note.trackSet(); return}  // if reached track length, reset
     options.trackhead = timeNow;                                  // set trackhead
@@ -176,7 +176,7 @@ const note = {
     }
   },
   //
-  trackSet : function(x = 0) {  // set track to 
+  trackSet(x = 0) {  // set track to 
     recordStartTime = new Date();
     options.trackhead = x;
     pausePoint = x;

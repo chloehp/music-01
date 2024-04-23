@@ -19,15 +19,18 @@ import Settings from './settings/settings';
 
 export default function KbPage(props) {    
     //refs   
-    const menuCob = useRef(); const cobs = useRef(); const scaleBack = useRef();
-    const mOctUp = useRef();    const mOctave = useRef();    const mOctDown = useRef();    
+    const cobs = useRef(); const scaleBack = useRef(); const logo = useRef(); const mOctave = useRef();
     const kbRef = useRef(); const trackRef = useRef(); const trPlayBtn = useRef(); const scalesListRef = useRef();
 
     let kbTrack = true;
-    function kbPageChange(event) { //maybe clean this up with css animations?
+    function kbPageChange(event) {
         if (kbTrack === true) { // display tracker
             kbRef.current.classList.add("hide");
             cobs.current.classList.add("hide");
+            logo.current.classList.add("hide");
+            mOctave.current.children[0].classList.add("hide");
+            mOctave.current.children[1].classList.add("hide");
+            mOctave.current.children[2].classList.add("hide");
             event.target.style.filter = "brightness(0.45)";
             setTimeout(function(){
                 trPlayBtn.current.classList.add("trak");
@@ -35,21 +38,25 @@ export default function KbPage(props) {
             setTimeout(function(){          
                 trackRef.current.classList.remove("hide");
                 trackRef.current.setAttribute("aria-hidden", "false");
-            }, 900);      
+            }, 600);      
             kbTrack = false;
         }
-        else { // display keyboard
+        else {  // display keyboard
             trackRef.current.classList.add("hide");        
             trackRef.current.setAttribute("aria-hidden", "true");
             trPlayBtn.current.classList.remove("trak");  
             event.target.style.filter = "brightness(1)";
             setTimeout(function(){            
                 kbRef.current.classList.remove("hide");
-            }, 600);   
+                mOctave.current.children[0].classList.remove("hide");
+                mOctave.current.children[1].classList.remove("hide");
+                mOctave.current.children[2].classList.remove("hide");
+            }, 300);   
             setTimeout(function(){
-                cobs.current.classList.remove("hide");
                 trackRef.current.setAttribute("aria-hidden", "true");
-            }, 1200);    
+                cobs.current.classList.remove("hide");
+                logo.current.classList.remove("hide");
+            }, 600);    
             kbTrack = true;
         }
         animation.bobble(event.target);
@@ -135,9 +142,9 @@ export default function KbPage(props) {
         <div className='kb-page'>
             <Settings displaySettings={displaySettings}/>
             <Tracker trackRef={trackRef}/>
-            <div id='title-logo' aria-label='Logo - Snailer Scaler'></div>
+            <div id='title-logo' ref={logo} aria-label='Logo - Snailer Scaler'></div>
             <div>
-                <div ref={menuCob} className='kb-page--cob' id='cob-menu'></div>
+                <div className='kb-page--cob' id='cob-menu'></div>
                 <button className='kb-page--cob cobm' id='kbcob-m-tracker' title='Tracker' aria-label='Tracker' onClick={(e) => kbPageChange(e)}></button>
                 <button className='kb-page--cob cobm' id='kbcob-m-settings' title='Settings' aria-label='Settings' onClick={(e) => displaySettings(e)}></button>
                 <button className='kb-page--cob cobm' id='kbcob-m-help' title='Help' aria-label='Help' onClick={(e) => displayHelp(e)}>Help</button>
@@ -152,13 +159,15 @@ export default function KbPage(props) {
                     <Scales scaleExpand={scaleExpand}/>
                 </div>
 
-                <button ref={mOctUp} className='kb-page--cob cobm' id='kbcob-m-oct-up' onClick={(e) => changeOctave(options.octave + 1, "smooth", e)} aria-label='Octave: Up 1'></button>
-                <div ref={mOctave} className='kb-page--cob cobm' id='kbcob-m-oct'>
-                    <p className='cobm--p'>Octave</p>
+                <div id='octaves' ref={mOctave}>
+                    <button className='kb-page--cob cobm' id='kbcob-m-oct-up' onClick={(e) => changeOctave(options.octave + 1, "smooth", e)} aria-label='Octave: Up 1'></button>
+                    <div className='kb-page--cob cobm' id='kbcob-m-oct'>
+                        <p className='cobm--p'>Octave</p>
+                    </div>
+                    <button className='kb-page--cob cobm' id='kbcob-m-oct-down' onClick={(e) => changeOctave(options.octave - 1, "smooth", e)} aria-label='Octave: Down 1'></button>
                 </div>
-                <button ref={mOctDown} className='kb-page--cob cobm' id='kbcob-m-oct-down' onClick={(e) => changeOctave(options.octave - 1, "smooth", e)} aria-label='Octave: Down 1'></button>
 
-                <div ref={trPlayBtn} id='tracker-play-btn' onMouseDown={clickPlayButton}></div>
+                <button ref={trPlayBtn} id='tracker-play-btn' aria-label='play' onMouseDown={clickPlayButton}></button>
             </div>
             
             <Keyboard kbRef={kbRef}/>

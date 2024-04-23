@@ -41,22 +41,38 @@ const keySwitch = function(key, oct, down){
       case "#": return "A" + (oct + 2);
 
       case "m": 
-        if (down === false) {          
-          console.log("mute");
-        }
-      return false;
+        if (down === false) { pressMute() }
+        return false;
       case " ": 
-        if (down === false) {note.playGo()}
-      return false;
+        if (down === false) { pressPlay() }
+        return false;
       //case "Enter": 
       //  if (down === false) {          
       //    console.log("Enter");
       //    try {trackFill()}
       //    catch {console.log("no track yet")}
       //  }
-      //return false;
+      //  return false;
 
       default: return false;
     }
 }
 export default keySwitch;
+
+let mutePressed = false;
+function pressMute() {   
+  if (mutePressed === false) {
+    mutePressed = true;
+    console.log("mute");
+    setTimeout(function(){ mutePressed = false }, 60);
+  }   
+}
+
+let playPressed = false;
+function pressPlay() {   
+  if (playPressed === false) {
+    playPressed = true;
+    note.playGo();
+    setTimeout(function(){ playPressed = false }, 60);
+  }   
+}

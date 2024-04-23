@@ -5,7 +5,6 @@ import { useRef } from 'react';
 import { useState } from 'react';
 
 export default function Settings(props) {
-   const bpm = options.getBPM();
    return (
       <div id='settings' className='snackground' aria-hidden='true'>
          <h1>Settings</h1>
@@ -14,9 +13,9 @@ export default function Settings(props) {
             <GridItemBool title={"Beat rounding"} id={"settings-beat"} opt={options.changeBeatRounding}/>
             <GridItemBool title={"Musical QWERTY"} id={"settings-qwerty"} opt={options.changeMusicalQwerty}/>        
             <GridItemBool title={"Visible notes"} id={"settings-visnotes"} opt={options.changeVisNotes}/>
-            <GridItemNum title={"Hit latency"} opt={options.hitLatency}/>
-            <GridItemNum title={"BPM"} opt={bpm}/>
-            <GridItemNum title={"Track length"} opt={options.trackLength}/>
+            <GridItemHit />
+            <GridItemBPM />
+            <GridTrackLength />
             <GridSigSelect title={"Time Signature"}/>            
             <div className='gridcon--g'>
                <div className='gridcon--g--ico pressed'></div>
@@ -27,36 +26,65 @@ export default function Settings(props) {
       </div>
    )
 }
-
-function GridItemNum(props) {
-   const inp = useRef();
-   function changeValTo() {
-      const val = inp.current.value;
-      if (isNaN(val) === false) {
-         switch (props.title){
-            case "Hit latency" : 
-               options.hitLatency = val; 
-               break;
-            case "BPM": 
-               options.beatFLen = options.getNewBeatFLenFromNewBPM(val); 
-               break;
-            case "Track length": 
-               options.trackLength = val; 
-               break;
-            default: console.log("other");
-         }
-      }
+//
+function GridItemHit(props) {
+   const input = useRef();
+   function changeHit() {
+      const val = input.current.value;
+      options.hitLatency = val; 
    }
 
    return (
       <div className='gridcon--g'>
          <div className='gridcon--g--ico pressed'>
-            <input type='text' aria-label={props.title + " input"} defaultValue={props.opt} ref={inp} onChange={changeValTo}/>
+            <input type='text' aria-label="Hit latency input" defaultValue={options.hitLatency} ref={input} onChange={changeHit}/>
          </div>
-         <p>{props.title}</p>
+         <p>Hit latency</p>
       </div>
    )
 }
+//
+function GridItemBPM(props) {   
+   const input = useRef();
+   const defaultValue = options.getBPM();
+   function changeBPM() { options.beatFLen = options.getNewBeatFLenFromNewBPM(input.current.value) }
+   let oldBPM = options.getBPM();
+   setInterval(function(){         
+      if ((input.current) && (options.getBPM() !== oldBPM)) { 
+         input.current.value = options.getBPM() 
+      }
+   }, 1500); 
+
+   return (
+      <div className='gridcon--g'>
+         <div className='gridcon--g--ico pressed'>
+            <input type='text' aria-label="BPM input" defaultValue={defaultValue} ref={input} onChange={changeBPM}/>
+         </div>
+         <p>BPM</p>
+      </div>
+   )
+}
+//
+function GridTrackLength(props) {   
+   const input = useRef();
+   function changeTrackLength() { options.trackLength = input.current.value }
+   let oldTrackLength = options.trackLength;
+   setInterval(function(){         
+      if ((input.current) && (options.trackLength !== oldTrackLength)) {
+          input.current.value = options.trackLength 
+      }
+   }, 1500); 
+
+   return (
+      <div className='gridcon--g'>
+         <div className='gridcon--g--ico pressed'>
+            <input type='text' aria-label="Track length input" defaultValue={options.trackLength} ref={input} onChange={changeTrackLength}/>
+         </div>
+         <p>Track length</p>
+      </div>
+   )
+}
+//
 function GridItemBool(props) {
    const btn = useRef();
 
@@ -80,7 +108,7 @@ function GridItemBool(props) {
 }
 let themeSelection = 0;
 function GridThemeSelect(props) {
-   const themeAr = ["Mono \nGreen", "Multi \nDark", "High \nContrast"];
+   const themeAr = ["Mono \nGreen"]; //, "Multi \nDark", "High \nContrast
    const maxSel = themeAr.length - 1;
    const [theme, setTheme] = useState(themeAr[themeSelection]);
    function prev() {
@@ -96,7 +124,7 @@ function GridThemeSelect(props) {
 
    return (
       <div className='gridcon--g'>
-         <div className='gridcon--g--ico pressed'>
+         <div className='gridcon--g--ico'>
             <p className='gridcon--g--ico--txt'>{theme}</p>
             <button className='gridcon--g--ico--prev-ar' aria-label={"Previous " + props.title} onClick={prev}><div></div></button>
             <button className='gridcon--g--ico--next-ar' aria-label={"Next " + props.title} onClick={next}><div></div></button>

@@ -177,12 +177,9 @@
 }
 #play-spot {
   background-image: url(../../assets/symb/play.svg);
-  opacity: 1;
 }
-#pause-spot {
-  background-image: url(../../assets/symb/pause.svg);
-  opacity: 0;
-}
+#play-spot.pause { background-image: url(../../assets/symb/pause.svg); }
+
 #red-spot {
   border-radius: 100%;
   background-color: rgb(153, 52, 21);
@@ -192,10 +189,10 @@
   background-color: #000;
 }
 
-#sp-b-up {
+.sp-b-up {
   top: 5%;
   rotate: 180deg;
 }
-#sp-b-down {
+.sp-b-down {
   bottom: 5%;
 }

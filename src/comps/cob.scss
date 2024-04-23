@@ -137,21 +137,25 @@
   }
 }
 
-#kbcob-m-oct-up         {
-  top:  3%; left: 90%;
+#kbcob-m-oct-up, #kbcob-m-oct, #kbcob-m-oct-down { 
+  left: 90%;
   background-color: #899d7e;
-  background-image: url(../assets/symb/single-arrow.svg);
   background-repeat: no-repeat;
   background-size: 45%;
   background-position: center;
+}
+#kbcob-m-oct-up.hide, #kbcob-m-oct.hide, #kbcob-m-oct-down.hide { left: 110%; }
+#kbcob-m-oct-up {
+  top: 3%;
+  background-image: url(../assets/symb/single-arrow.svg);
   rotate: 180deg;  
 
   @media (min-height: 450px) {
     top: 6%;
   }
 }
-#kbcob-m-oct            {
-  top: 18%; left: 90%; 
+#kbcob-m-oct {
+  top: 18%;
   background-color: #41473C;
   cursor: auto;
   
@@ -159,13 +163,9 @@
     top: 20%;
   }
 }
-#kbcob-m-oct-down       {
-  top: 33%; left: 90%;
-  background-color: #899d7e;
+#kbcob-m-oct-down {
+  top: 33%;
   background-image: url(../assets/symb/single-arrow.svg);
-  background-repeat: no-repeat;
-  background-size: 45%;
-  background-position: center;
 
   @media (min-height: 450px) {
     top: 34%;
@@ -195,10 +195,15 @@
   top: 81%; left: -15%;
   width: 9%; aspect-ratio: 1/1;
   z-index: 60;
-  cursor: pointer;
+  visibility: hidden;
   transition: all 600ms;
 }
-#tracker-play-btn.trak {left: 3%;}
+#tracker-play-btn.trak { 
+  left: 3%;
+  visibility: visible;
+}
+#tracker-play-btn.pause { background-image: url(../assets/symb/pause.svg); }
+#tracker-play-btn:hover { scale: 1.1; }
 
 #main-menu {
   position: absolute;

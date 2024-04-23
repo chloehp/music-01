@@ -33,10 +33,11 @@
 
 .snackground {
   background-color: #8ea781;  
-  background-image: url(./assets/img/snailexport1.svg);
+  background-image: url(./assets/img/snailexport2.png);
   background-size: auto 150%;
   background-position: center;
-  background-repeat: no-repeat;
+  //background-repeat: no-repeat;
+  background-size: 570px;
 }
 
 .App {
@@ -139,8 +140,10 @@ button {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    transition: opacity 300ms;
   }
 }
+#title-logo.hide { opacity: 0; }
 
 // GLOBAL ANIMATIONS
 .sp-bobble {animation: bobble 900ms;}
