@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/tools/snail/static/css/main.65da4142.css",
+    "main.js": "/tools/snail/static/js/main.d8faa177.js",
+    "static/js/453.0aedc32e.chunk.js": "/tools/snail/static/js/453.0aedc32e.chunk.js",
+    "static/media/snailexport2.png": "/tools/snail/static/media/snailexport2.c6dfc74d2f50694bf6c5.png",
+    "static/media/AlumniSansInlineOne-Italic.ttf": "/tools/snail/static/media/AlumniSansInlineOne-Italic.26f316846f72658bf226.ttf",
+    "static/media/OpenDyslexic-Regular.otf": "/tools/snail/static/media/OpenDyslexic-Regular.d9b06c5ffd7d312017e5.otf",
+    "static/media/note-bool.svg": "/tools/snail/static/media/note-bool.ecfc6bff11a31236b4b0.svg",
+    "static/media/logo-v1.svg": "/tools/snail/static/media/logo-v1.a5b31db9261bf1ec6148.svg",
+    "static/media/kbEx1.svg": "/tools/snail/static/media/kbEx1.e8a60c492193cba9c97e.svg",
+    "static/media/tracker.svg": "/tools/snail/static/media/tracker.906803b1676b385b4312.svg",
+    "static/media/settings.svg": "/tools/snail/static/media/settings.0dfe12b740536c91fdea.svg",
+    "static/media/tick.svg": "/tools/snail/static/media/tick.0ceb0a75a8611497f73b.svg",
+    "static/media/qwerty.svg": "/tools/snail/static/media/qwerty.a4a5cd928e14a7068621.svg",
+    "static/media/beat-rounding.svg": "/tools/snail/static/media/beat-rounding.696b2e144febb2f51e80.svg",
+    "index.html": "/tools/snail/index.html",
+    "static/media/double-arrow.svg": "/tools/snail/static/media/double-arrow.cad1fad9279b7acd9d14.svg",
+    "static/media/restart.svg": "/tools/snail/static/media/restart.3862c06d0ca0ad3b4f2e.svg",
+    "static/media/single-arrow.svg": "/tools/snail/static/media/single-arrow.8c07a585c8e4caf6f5c8.svg",
+    "static/media/play.svg": "/tools/snail/static/media/play.349e76101b04c57e7237.svg",
+    "static/media/pause.svg": "/tools/snail/static/media/pause.fef961488339c2c3d1fc.svg",
+    "main.65da4142.css.map": "/tools/snail/static/css/main.65da4142.css.map",
+    "main.d8faa177.js.map": "/tools/snail/static/js/main.d8faa177.js.map",
+    "453.0aedc32e.chunk.js.map": "/tools/snail/static/js/453.0aedc32e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.65da4142.css",
+    "static/js/main.d8faa177.js"
+  ]
+}
