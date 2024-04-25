@@ -19,8 +19,9 @@ import Settings from './settings/settings';
 
 export default function KbPage(props) {    
     //refs   
-    const cobs = useRef(); const scaleBack = useRef(); const logo = useRef(); const mOctave = useRef();
-    const kbRef = useRef(); const trackRef = useRef(); const trPlayBtn = useRef(); const scalesListRef = useRef();
+    const cobs = useRef(); const scaleBack = useRef(); const logo = useRef(); 
+    const mOctave = useRef(); const kbRef = useRef(); const trackRef = useRef(); 
+    const trPlayBtn = useRef(); const trBackBtn = useRef(); const scalesListRef = useRef();
 
     let kbTrack = true;
     function kbPageChange(event) {
@@ -34,6 +35,7 @@ export default function KbPage(props) {
             event.target.style.filter = "brightness(0.45)";
             setTimeout(function(){
                 trPlayBtn.current.classList.add("trak");
+                trBackBtn.current.classList.add("trak");
             }, 300);       
             setTimeout(function(){          
                 trackRef.current.classList.remove("hide");
@@ -45,6 +47,7 @@ export default function KbPage(props) {
             trackRef.current.classList.add("hide");        
             trackRef.current.setAttribute("aria-hidden", "true");
             trPlayBtn.current.classList.remove("trak");  
+            trBackBtn.current.classList.remove("trak");  
             event.target.style.filter = "brightness(1)";
             setTimeout(function(){            
                 kbRef.current.classList.remove("hide");
@@ -112,6 +115,10 @@ export default function KbPage(props) {
     }
     changeOctave(3, "instant");     // default start octave
     
+    function clickBackButton(){
+        note.trackSet();
+        animation.bobble(trBackBtn.current);
+    }
     function clickPlayButton(){
         note.playGo();
         animation.bobble(trPlayBtn.current);
@@ -167,6 +174,7 @@ export default function KbPage(props) {
                     <button className='kb-page--cob cobm' id='kbcob-m-oct-down' onClick={(e) => changeOctave(options.octave - 1, "smooth", e)} aria-label='Octave: Down 1'></button>
                 </div>
 
+                <button ref={trBackBtn} id='tracker-back-btn' aria-label='Back' onMouseDown={clickBackButton}></button>
                 <button ref={trPlayBtn} id='tracker-play-btn' aria-label='play' onMouseDown={clickPlayButton}></button>
             </div>
             

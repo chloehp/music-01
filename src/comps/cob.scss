@@ -184,27 +184,43 @@
   to {left: 90%;}
 }
 
-#tracker-play-btn {
+#tracker-play-btn, #tracker-back-btn {
   background-color: #E1F0DA;
-  background-image: url(../assets/symb/play.svg);
   background-repeat: no-repeat;
   background-size: 45%;
   background-position: center;
   border: #41473C 2px solid;
-  border-radius: 30px;
+  border-radius: 15px;
   position: absolute;
-  top: 81%; left: -15%;
+  left: -15%;
   width: 9%; aspect-ratio: 1/1;
   z-index: 60;
   visibility: hidden;
   transition: all 600ms;
 }
-#tracker-play-btn.trak { 
+#tracker-play-btn {
+  background-image: url(../assets/symb/play.svg);
+  top: 78%; 
+  @media (min-height: 450px) {
+    border-radius: 30px;
+    top: 81%; 
+  }
+}
+#tracker-back-btn {
+  background-image: url(../assets/symb/restart.svg);
+  top: 54%; 
+  rotate: 90deg;
+  @media (min-height: 450px) {
+    border-radius: 30px;
+    top: 66%; 
+  }
+}
+#tracker-play-btn.trak, #tracker-back-btn.trak { 
   left: 3%;
   visibility: visible;
 }
 #tracker-play-btn.pause { background-image: url(../assets/symb/pause.svg); }
-#tracker-play-btn:hover { scale: 1.1; }
+#tracker-play-btn:hover, #tracker-back-btn:hover { scale: 1.1; }
 
 #main-menu {
   position: absolute;
