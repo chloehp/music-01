@@ -28,16 +28,18 @@
 
     &--details {
         width: 100%; height: 15%;
+        min-width: 90px;
         border-radius: 15px;
         background-color: #798E6D;
         margin-bottom: 15px;
-        padding: 6px;
+        padding: 3px;
         font-size: 24px;
         position: relative;
     
-        @media (min-height: 450px) {
+        @media (min-width: 1080px) {
             border-radius: 30px;
             font-size: 30px;
+            padding: 6px;
         }
         &--x {
             position: absolute;
@@ -52,7 +54,7 @@
     &--track {        
         position: relative;
         width: 100%; height: auto;
-        min-height: 72.5%;
+        min-width: 90px; min-height: 72.5%;
         border-radius: 15px; 
         background-color: #798E6D; 
         padding: 12px 3px;
@@ -60,7 +62,7 @@
         display: flex;
         justify-content: space-evenly;
     
-        @media (min-height: 450px) {
+        @media (min-width: 1080px) {
             border-radius: 30px;
             padding: 24px 6px;
         }
@@ -143,13 +145,14 @@
 
     &--a {
         width: 100%; height: 100%;
+        min-width: 90px;
         border-radius: 15px;
         background-color: #899D7E;
         filter: brightness(1);
         cursor: pointer;
         transition: all linear 60ms;
     
-        @media (min-height: 450px) {
+        @media (min-width: 1080px) {
             border-radius: 30px;
         }
         &--plus {

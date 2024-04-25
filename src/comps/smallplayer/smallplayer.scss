@@ -7,10 +7,15 @@
   width: 33%; height: 42%;
   left: 15%; top: 3%;
   
-  @media (min-height: 450px) {
+  @media (min-width: 1080px) {
     border-radius: 30px;
     width: 33%; height: 21%;
     left: 15%; top: 24%;
+  }
+  @media (orientation: portrait) {
+    left: 50%; top: 60%;
+    translate: -50%;
+    width: 90%; height: 18%;
   }
 
   &--buttons {

@@ -79,6 +79,7 @@ button {
 .kb-page {
   width: 100%;
   max-width: 1530px;
+  min-height: 360px;
   background-color: #BFD8AF;
   position: relative;
   overflow: hidden;
@@ -94,12 +95,16 @@ button {
   transition: top 1s 150ms, visibility 1s 150ms;
   z-index: 900;
 
-  &--scn {
-    width: 450px; height: 450px;
+  &--scn { 
+    width: 300px; height: 300px;
     text-align: center;
     color: #41473C;
-    font-size: 390%; font-weight: 540;
+    font-size: 240%; font-weight: 540;
 
+    @media (min-width: 1080px) {      
+      width: 450px; height: 450px;
+      font-size: 390%;
+    }
     &--btn {
       border-radius: 100%;
       background-color: #BFD8AF;
@@ -141,6 +146,12 @@ button {
     background-size: contain;
     background-position: center;
     transition: opacity 300ms;
+    
+    @media (orientation: portrait) {
+      left: 50%;
+      translate: -50%;
+      width: 60%; height: 18%;
+    }
   }
 }
 #title-logo.hide { opacity: 0; }

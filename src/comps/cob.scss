@@ -5,7 +5,7 @@
   position: absolute;
   overflow: hidden; 
 
-  @media (min-height: 450px) {
+  @media (min-width: 1080px) {
     border-radius: 30px;
   }
 }
@@ -16,8 +16,11 @@
   visibility: visible;
   z-index: 180;  
 
-  @media (min-height: 450px) {
+  @media (min-width: 1080px) {
     width: 41%; height: 75%;
+  }
+  @media (orientation: portrait) {
+    width: 48%; height: 66%;
   }
 }
 #cob-menu.hide {
@@ -45,6 +48,11 @@
   z-index: 120;
   transition: height 450ms, filter 450ms, opacity 300ms linear;
   
+  @media (orientation: portrait) {
+    left: 50%; top: 39%;
+    translate: -50%;
+    width: 90%; height: 18%;
+  }
   &--dropdown {  
     display: none;
     @media (min-height: 450px) {
@@ -90,7 +98,7 @@
       translate: -6% -6%;
       background-size: 75%;
 
-      @media (min-width: 1200px) {
+      @media (min-width: 1080px) {
         width: 7%; 
         translate: 0;
       }
@@ -117,28 +125,24 @@
   background-image: url(../assets/symb/tracker.svg);
   background-size: 48%;
 
-  @media (min-height: 450px) {
-    background-size: 72%;
-  }
+  @media (min-height: 450px) { background-size: 72%; }
 }
 #kbcob-m-settings {
   top: 18%; left: 1.5%; z-index: 183;
   background-image: url(../assets/symb/settings.svg);
   
-  @media (min-height: 450px) {
-    top: 17%;
-  }
+  @media (min-height: 450px) { top: 17%; }  
+  @media (orientation: portrait) { top: 15%; }
 }
 #kbcob-m-help     {
   top: 33%; left: 1.5%; z-index: 183;
   
-  @media (min-height: 450px) {
-    top: 31%;
-  }
+  @media (min-height: 450px) { top: 31%; }
+  @media (orientation: portrait) { top: 27%; }  
 }
 
 #kbcob-m-oct-up, #kbcob-m-oct, #kbcob-m-oct-down { 
-  left: 90%;
+  right: 3%;
   background-color: #899d7e;
   background-repeat: no-repeat;
   background-size: 45%;
@@ -150,26 +154,23 @@
   background-image: url(../assets/symb/single-arrow.svg);
   rotate: 180deg;  
 
-  @media (min-height: 450px) {
-    top: 6%;
-  }
+  @media (min-height: 450px) { top: 6%; }
+  @media (orientation: portrait) { top: 3%; right: 0; }  
 }
 #kbcob-m-oct {
   top: 18%;
   background-color: #41473C;
   cursor: auto;
   
-  @media (min-height: 450px) {
-    top: 20%;
-  }
+  @media (min-height: 450px) { top: 20%; }
+  @media (orientation: portrait) { top: 15%; right: 0; }
 }
 #kbcob-m-oct-down {
   top: 33%;
   background-image: url(../assets/symb/single-arrow.svg);
 
-  @media (min-height: 450px) {
-    top: 34%;
-  }
+  @media (min-height: 450px) { top: 34%; }
+  @media (orientation: portrait) { top: 27%; right: 0; }  
 }
 
 .cobtainer {transition: opacity 750ms;}

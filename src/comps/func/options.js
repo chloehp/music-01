@@ -27,17 +27,17 @@ const options = {
 
   // funcs
   //
-  changeBeatRounding : function() {
+  changeBeatRounding() {
     options.beatRounding = !options.beatRounding;
     return options.beatRounding;
   },
   //
-  changeMusicalQwerty : function() {
+  changeMusicalQwerty() {
     options.musicalQwerty = !options.musicalQwerty;
     return options.musicalQwerty;
   },
   //
-  changeVisNotes : function() {
+  changeVisNotes() {
     const keyNotes = document.querySelectorAll(".key-note");
     const knLen = keyNotes.length;
     if (options.visibleNotes === true) {
@@ -53,8 +53,8 @@ const options = {
     return options.visibleNotes;
   },
   //
-  getBPM : function() { return 60 / ((options.beatFLen * options.beatFraction) / 1000) }, // calc BPM from beatLength
-  getNewBeatFLenFromNewBPM : function(newBPM) { return ((60 / newBPM) * 1000) / options.beatFraction }, // change beatLength based on new BPM
-  getNewBeatFractionFromNewBeatFLen : function(newBeatFLen) { return ((60 / options.getBPM()) * 1000) / newBeatFLen }, // double check this works correctly before using
+  getBPM() { return 60 / ((options.beatFLen * options.beatFraction) / 1000) }, // calc BPM from beatLength
+  getNewBeatFLenFromNewBPM(newBPM) { return ((60 / newBPM) * 1000) / options.beatFraction }, // change beatLength based on new BPM
+  getNewBeatFractionFromNewBeatFLen(newBeatFLen) { return ((60 / options.getBPM()) * 1000) / newBeatFLen }, // double check this works correctly before using
 }
 export default options;

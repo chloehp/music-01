@@ -1,6 +1,5 @@
 .keyboard {
-    width: 98%; height: 50%;
-    //aspect-ratio: 126/39;  
+    width: 98%; height: 50%; 
     bottom: 1%; left: 1%;
     position: absolute;
     display: flex;
@@ -15,8 +14,12 @@
     touch-action: none;
     user-select: none;
 
-    @media (min-height: 450px) {
+    @media (min-width: 1080px) {
         border-radius: 30px;
+    }
+    @media (orientation: portrait) {
+        height: auto;
+        aspect-ratio: 126/39; 
     }
     &--oct-group {
         width: calc(100% / 3);
@@ -37,6 +40,7 @@
     transition: width 600ms, margin 600ms; 
     @media (max-width: 300px){font-size: 0;}
 }
+.w-key.press { background-color: #929c8d; }
 
 $b-key-width: 8.4%;
 .b-key {
@@ -51,6 +55,7 @@ $b-key-width: 8.4%;
     transition: width 600ms, height 600ms, margin 600ms; 
     @media (max-width: 960px){font-size: 0;}
 }
+.b-key.press { background-color: #272b25; }
 .b-key.scales-on {
     border-left: #798E6D 1px solid;
     margin: 0;

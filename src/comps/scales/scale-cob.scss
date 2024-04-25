@@ -12,6 +12,11 @@
     @media (min-height: 450px) {
       font-size: 36px;
     }
+    @media (orientation: portrait) {
+      left: 50%; top: 39%;
+      translate: -50%;
+      width: 90%; height: 18%;
+    }
     &--scale {
       pointer-events: auto;
       
@@ -26,7 +31,7 @@
         border-radius: 12px;
         cursor: pointer;
         
-        @media (min-width: 1080px) {
+        @media (min-height: 450px) {
           top: 45%; 
           height: 54%; 
           border-radius: 24px;

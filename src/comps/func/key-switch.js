@@ -46,13 +46,6 @@ const keySwitch = function(key, oct, down){
       case " ": 
         if (down === false) { pressPlay() }
         return false;
-      //case "Enter": 
-      //  if (down === false) {          
-      //    console.log("Enter");
-      //    try {trackFill()}
-      //    catch {console.log("no track yet")}
-      //  }
-      //  return false;
 
       default: return false;
     }

@@ -5,7 +5,7 @@ const tr = {
     trackEls : [[]],    // array for track elements
 
     //
-    newTrack : function(){
+    newTrack(){
         const a = [];
         tr.tracks.push(a);
         tr.trackEls.push(a);
@@ -14,7 +14,7 @@ const tr = {
         console.log(tr.trackEls);
     },
     //
-    deleteTrack : function(index){
+    deleteTrack(index){
         tr.tracks[index] = [];
         tr.trackEls[index] = [];
         if (options.trackSelection < 1) {options.trackSelection = 0}
@@ -23,7 +23,7 @@ const tr = {
         console.log(tr.trackEls);
     },
     //
-    evalTrackForDisplay : function(thisTrack){
+    evalTrackForDisplay(thisTrack){
         let han = 0;    // highest active notes
         let len = 0;
         let instr = thisTrack[0].ins;

@@ -1,6 +1,6 @@
 
 const animation = {
-    bobble : function(element) {
+    bobble(element) {
         element.classList.remove("sp-bobble");    
         element.classList.add("sp-bobble");        
         setTimeout(function(){

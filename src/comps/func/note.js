@@ -16,8 +16,6 @@ let track = tr.tracks[options.trackSelection];
 const now = Tone.now();
 let recordStartTime = new Date();
 
-//let quaVar = options.beatFLen;                              // hemidemisemiquaver
-//let instrument = instrumentSwitch[options.instruSelect].x;   // instrument choice
 let playInsts = [];                                          // instruments used in playback
 let effect = null;                                           // effect choice
 let pausePoint = 0;
@@ -45,7 +43,7 @@ const note = {
         }, 300);
         return true
       }
-      catch {console.error("Uh oh. How did you get this? Please write in and let me know. chloe.hughespenzer@gmail.com \nError note.js validate function catch"); return false}      
+      catch {console.error("No validate"); return false}      
     }
     else {
       return false
@@ -55,9 +53,10 @@ const note = {
   attackNote(playNote, hL = options.hitLatency){ 
     for (let i = 0; i < activeNotes.length; i++) {if (activeNotes[i].n === playNote) {return}}  // check if note is already being played, return if true
     const startTime = ((new Date()) - recordStartTime);                                         // start time
-    activeNotes.push({n : playNote, t : startTime, p : activeNotes.length});                    // push to array
-    instrumentSwitch[options.instruSelect].x.triggerAttack(playNote, now + hL);                                               // attack note
-    document.getElementById("kk-" + playNote).style.filter = "contrast(0.3)";                   // visual press key
+    const key = document.getElementById("kk-" + playNote);
+    instrumentSwitch[options.instruSelect].x.triggerAttack(playNote, now + hL);                 // attack note
+    activeNotes.push({n : playNote, t : startTime, p : activeNotes.length, k : key});           // push to array
+    key.classList.add("press");                                                                 // visual press key
     //console.log("attack note");
     displayNote();
   },
@@ -65,7 +64,8 @@ const note = {
   releaseNote(playNote, hL = options.hitLatency){ 
     for (let i = 0; i < activeNotes.length; i++) {
       if (activeNotes[i].n === playNote) {
-        instrumentSwitch[options.instruSelect].x.triggerRelease(playNote, now + hL);                                  // release note 
+        instrumentSwitch[options.instruSelect].x.triggerRelease(playNote, now + hL);    // release note 
+        activeNotes[i].k.classList.remove("press");                                     // visual unpress key
         if (options.record === true) {                                                  // if recording
           const nowTime = (new Date()) - recordStartTime;                               //
           const identifier = track.length + "-id-" + Math.floor(Math.random() * 9000);  // make new id
@@ -76,7 +76,7 @@ const note = {
           if ((nowTime / options.beatFLen) > options.trackLength) {note.recordGo()}     // if reached track length, stop recording
         }
         activeNotes.splice(i, 1);                                                       // remove from array
-        document.getElementById("kk-" + playNote).style.filter = "contrast(1)"          // visual press key
+        //document.getElementById("kk-" + playNote).style.filter = "contrast(1)" 
         displayNote(); 
       }
     }
@@ -105,8 +105,8 @@ const note = {
         return
       }
       else {
-        const timeNow = (((new Date()) - recordStartTime) / options.beatFLen) + pausePoint;     // get time now compared to when the recording started
-        options.trackhead = timeNow;                                                  // move trackhead
+        const timeNow = (((new Date()) - recordStartTime) / options.beatFLen) + pausePoint;   // get time now compared to when the recording started
+        options.trackhead = timeNow;                                                          // move trackhead
       }
     }, 75); 
   },
