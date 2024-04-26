@@ -57,7 +57,9 @@
         background-repeat: no-repeat;
       }
     }
-    &--btn:hover {scale: 1.1;}
+    @media (min-width: 1080px) {     
+      &--btn:hover {scale: 1.1;}
+    }
   }
     
   &--optionSelect {
@@ -73,6 +75,8 @@
       translate: 0 -3%;
       height: 100%;
       font-size: 18px;
+      &--arrow:hover {scale: 1.2;}
+      &--arrow:active {scale: 0.9;}
     }
   
     &--arrow {
@@ -101,8 +105,6 @@
         translate: 0;
       }
     }
-    &--arrow:hover {scale: 1.2;}
-    &--arrow:active {scale: 0.9;}
   }
   
   &--seeker {

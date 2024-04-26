@@ -118,12 +118,14 @@
         text-wrap: nowrap;
       }
     }
-    &--block:hover {scale: 1.1;}
     &--block.block-selected {
       background-color: #BFD8AF;
       color: #41473C;
       font-weight: bold;
     }
+    @media (min-width: 1080px) {    
+      &--block:hover {scale: 1.1;}
+    } 
   }
 }
 .scales-list.open {

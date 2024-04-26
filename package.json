@@ -1,7 +1,7 @@
 {
   "homepage": "https://chloehp.github.io/music-01",
   "name": "music-01",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

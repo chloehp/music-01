@@ -15,7 +15,7 @@ export default function SmallPlayer(props) {
 
     const [newBPM, setBPM] = useState(options.getBPM());
     const [chooseMeasure, setMeasure] = useState(0);    //0: small beats //1: beats //2: milliseconds //3: minutes and seconds
-    const [measureLabel, setMeasureLabel] = useState("b/" + options.beatFraction);
+    const [measureLabel, setMeasureLabel] = useState("b" + options.beatFraction);
     const [trackLength, setTrackLength] = useState(calcs.timeToDifferentMeasures());
 
     const timeNowEl = useRef(); 

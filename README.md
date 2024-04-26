@@ -1,4 +1,6 @@
-SNAILER SCALES
+SNAILER SCALER
+
+React musical keyboard and recorder, with fancy scales.
 
 To do:
 

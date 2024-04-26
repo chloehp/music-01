@@ -8,8 +8,10 @@
 }
 
 .clicker {cursor: pointer;}
-.clicker:hover {filter: brightness(0.75);}
-.clicker:active {scale: 1.06;}
+@media (min-width: 1080px) {     
+  .clicker:hover {filter: brightness(0.75);}
+  .clicker:active {scale: 1.06;}
+}
 
 .center {
   position: absolute;
@@ -74,7 +76,9 @@ button {
   color: #41473C;
   transition: scale 90ms;
 }
-.closeX:hover {scale: 1.2;}
+@media (min-width: 1080px) {     
+  .closeX:hover {scale: 1.2;}
+}
 
 .kb-page {
   width: 100%;
@@ -104,6 +108,7 @@ button {
     @media (min-width: 1080px) {      
       width: 450px; height: 450px;
       font-size: 390%;
+      &--btn:hover {filter: brightness(1.2); scale: 1.1;}
     }
     &--btn {
       border-radius: 100%;
@@ -113,6 +118,7 @@ button {
       cursor: pointer;
       transition: scale 300ms;
     }
+    &--btn:active {scale: 0.9;}
     &--p {
       width: 100%; height: auto;
       * {margin: 0;}
@@ -121,8 +127,6 @@ button {
       font-size: 180%;
       line-height: 1.1em;
     }
-    &--btn:hover {filter: brightness(1.2); scale: 1.1;}
-    &--btn:active {scale: 0.9;}
   }
 }
 .start.hide {top: -120vh; visibility: hidden;}

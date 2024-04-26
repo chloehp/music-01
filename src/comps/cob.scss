@@ -52,6 +52,7 @@
     left: 50%; top: 39%;
     translate: -50%;
     width: 90%; height: 18%;
+    &--dropdown:hover {scale: 1.2;}
   }
   &--dropdown {  
     display: none;
@@ -68,7 +69,6 @@
       transition: scale 120ms linear;
     }
   }
-  &--dropdown:hover {scale: 1.2;}
 }
 .cob-scales.expanded {
   height: 60%;
@@ -94,13 +94,14 @@
     @media (min-height: 450px) {
       aspect-ratio: 1/1;
       font-size: 39px;
-      width: 9%;     
+      width: 9%;   
       translate: -6% -6%;
       background-size: 75%;
 
       @media (min-width: 1080px) {
         width: 7%; 
         translate: 0;
+        min-width: 95px;  
       }
     }
     &--p {
@@ -115,10 +116,14 @@
       left: 0;
       width: 100%; height: 39%;
     }
-    &--octave:hover {background-color: #798E6D;}
-    &--octave:active {scale: 1.5;}
 }
-.cobm:hover {scale: 1.1;}
+@media (min-width: 1080px) {
+  .cobm:hover {
+    scale: 1.1;
+    &--octave {background-color: #798E6D;}
+  }
+  .cobm--octave:active {scale: 1.5;}
+}
 
 #kbcob-m-tracker  {
   top:  3%; left: 1.5%; z-index: 183;
@@ -220,7 +225,9 @@
   visibility: visible;
 }
 #tracker-play-btn.pause { background-image: url(../assets/symb/pause.svg); }
-#tracker-play-btn:hover, #tracker-back-btn:hover { scale: 1.1; }
+@media (min-width: 1080px) {     
+  #tracker-play-btn:hover, #tracker-back-btn:hover { scale: 1.1; }
+}
 
 #main-menu {
   position: absolute;

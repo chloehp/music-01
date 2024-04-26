@@ -95,8 +95,10 @@
                background-position: center;
             }
          }
-         &--prev-ar:hover, &--next-ar:hover { scale: 1.1;}
-         &--prev-ar:active, &--next-ar:active { scale: 0.9;}
+         @media (min-width: 1080px) {     
+            &--prev-ar:hover, &--next-ar:hover { scale: 1.1;}
+            &--prev-ar:active, &--next-ar:active { scale: 0.9;}
+         }
          &--prev-ar {
             left: 0;
             div {rotate: 90deg;}
