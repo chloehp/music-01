@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/music-01/static/css/main.5bbb7cf4.css",
-    "main.js": "/music-01/static/js/main.b8fb18d6.js",
+    "main.css": "/music-01/static/css/main.6e9b6a4a.css",
+    "main.js": "/music-01/static/js/main.6fc0ff83.js",
     "static/js/453.add4d7b4.chunk.js": "/music-01/static/js/453.add4d7b4.chunk.js",
     "static/media/snailexport2.png": "/music-01/static/media/snailexport2.c6dfc74d2f50694bf6c5.png",
     "static/media/AlumniSansInlineOne-Italic.ttf": "/music-01/static/media/AlumniSansInlineOne-Italic.26f316846f72658bf226.ttf",
@@ -20,12 +20,12 @@
     "static/media/single-arrow.svg": "/music-01/static/media/single-arrow.8c07a585c8e4caf6f5c8.svg",
     "static/media/play.svg": "/music-01/static/media/play.349e76101b04c57e7237.svg",
     "static/media/pause.svg": "/music-01/static/media/pause.fef961488339c2c3d1fc.svg",
-    "main.5bbb7cf4.css.map": "/music-01/static/css/main.5bbb7cf4.css.map",
-    "main.b8fb18d6.js.map": "/music-01/static/js/main.b8fb18d6.js.map",
+    "main.6e9b6a4a.css.map": "/music-01/static/css/main.6e9b6a4a.css.map",
+    "main.6fc0ff83.js.map": "/music-01/static/js/main.6fc0ff83.js.map",
     "453.add4d7b4.chunk.js.map": "/music-01/static/js/453.add4d7b4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5bbb7cf4.css",
-    "static/js/main.b8fb18d6.js"
+    "static/css/main.6e9b6a4a.css",
+    "static/js/main.6fc0ff83.js"
   ]
 }
