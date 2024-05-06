@@ -19,6 +19,7 @@
     }
     @media (orientation: portrait) {
         height: auto;
+        max-height: 195px;
         aspect-ratio: 126/39; 
     }
     &--oct-group {

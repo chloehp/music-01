@@ -21,6 +21,7 @@
   }
   @media (orientation: portrait) {
     width: 48%; height: 66%;
+    max-width: 345px;
   }
 }
 #cob-menu.hide {
@@ -52,6 +53,7 @@
     left: 50%; top: 39%;
     translate: -50%;
     width: 90%; height: 18%;
+    max-width: 486px;
     &--dropdown:hover {scale: 1.2;}
   }
   &--dropdown {  
@@ -153,7 +155,7 @@
   background-size: 45%;
   background-position: center;
 }
-#kbcob-m-oct-up.hide, #kbcob-m-oct.hide, #kbcob-m-oct-down.hide { left: 110%; }
+#kbcob-m-oct-up.hide, #kbcob-m-oct.hide, #kbcob-m-oct-down.hide { right: -21%; }
 #kbcob-m-oct-up {
   top: 3%;
   background-image: url(../assets/symb/single-arrow.svg);
@@ -166,9 +168,21 @@
   top: 18%;
   background-color: #41473C;
   cursor: auto;
-  
-  @media (min-height: 450px) { top: 20%; }
-  @media (orientation: portrait) { top: 15%; right: 0; }
+  p::after {
+    content: "Oct";
+  }  
+  @media (min-height: 450px) {
+     top: 20%; 
+     p::after {
+       content: "Octave";
+     }
+  }
+  @media (orientation: portrait) { 
+    top: 15%; right: 0;
+    p::after {
+      content: "Oct";
+    }  
+  }  
 }
 #kbcob-m-oct-down {
   top: 33%;
@@ -206,7 +220,7 @@
 #tracker-play-btn {
   background-image: url(../assets/symb/play.svg);
   top: 78%; 
-  @media (min-height: 450px) {
+  @media (min-width: 1080px) {
     border-radius: 30px;
     top: 81%; 
   }
@@ -215,9 +229,9 @@
   background-image: url(../assets/symb/restart.svg);
   top: 54%; 
   rotate: 90deg;
-  @media (min-height: 450px) {
+  @media (min-width: 1080px) {
     border-radius: 30px;
-    top: 66%; 
+    top: 63%; 
   }
 }
 #tracker-play-btn.trak, #tracker-back-btn.trak { 

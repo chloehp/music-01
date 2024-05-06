@@ -169,7 +169,7 @@ export default function KbPage(props) {
                 <div id='octaves' ref={mOctave}>
                     <button className='kb-page--cob cobm' id='kbcob-m-oct-up' onClick={(e) => changeOctave(options.octave + 1, "smooth", e)} aria-label='Octave: Up 1'></button>
                     <div className='kb-page--cob cobm' id='kbcob-m-oct'>
-                        <p className='cobm--p'>Octave</p>
+                        <p className='cobm--p'></p>
                     </div>
                     <button className='kb-page--cob cobm' id='kbcob-m-oct-down' onClick={(e) => changeOctave(options.octave - 1, "smooth", e)} aria-label='Octave: Down 1'></button>
                 </div>

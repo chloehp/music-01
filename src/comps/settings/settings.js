@@ -18,7 +18,7 @@ export default function Settings(props) {
             <GridTrackLength />
             <GridSigSelect title={"Time Signature"}/>            
             <div className='gridcon--g'>
-               <div className='gridcon--g--ico pressed'></div>
+               <button className='gridcon--g--ico pressed' style={{fontSize: "4.5em"}}>?</button>
                <p>About</p>
             </div>     
          </div>
